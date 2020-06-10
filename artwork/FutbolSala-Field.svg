@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="595.281px" height="841.891px" viewBox="0 0 595.281 841.891" enable-background="new 0 0 595.281 841.891"
+	 xml:space="preserve">
+<rect x="111.615" y="123.304" fill="#2297B2" width="372.051" height="595.281"/>
+<g id="Campo">
+	<rect x="116.709" y="127.583" fill="#2297B2" width="360.728" height="585.592"/>
+	<g id="Franjas">
+		<rect x="117.277" y="697.699" opacity="0.1" fill="#000200" width="360.727" height="16.042"/>
+		<rect x="117.277" y="665.375" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="633.05" opacity="0.1" fill="#000200" width="360.727" height="16.042"/>
+		<rect x="117.277" y="600.724" opacity="0.1" fill="#000200" width="360.727" height="16.042"/>
+		<rect x="117.277" y="568.4" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="536.075" opacity="0.1" fill="#000200" width="360.727" height="16.042"/>
+		<rect x="117.277" y="503.75" opacity="0.1" fill="#000200" width="360.727" height="16.042"/>
+		<rect x="117.277" y="471.426" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="439.1" opacity="0.1" fill="#000200" width="360.727" height="16.042"/>
+		<rect x="117.277" y="406.775" opacity="0.1" fill="#000200" width="360.727" height="16.042"/>
+		<rect x="117.277" y="374.451" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="342.125" opacity="0.1" fill="#000200" width="360.727" height="16.043"/>
+		<rect x="117.277" y="309.801" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="277.476" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="245.15" opacity="0.1" fill="#000200" width="360.727" height="16.043"/>
+		<rect x="117.277" y="212.826" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="180.502" opacity="0.1" fill="#000200" width="360.727" height="16.041"/>
+		<rect x="117.277" y="148.176" opacity="0.1" fill="#000200" width="360.727" height="16.043"/>
+	</g>
+</g>
+<g id="Lineas">
+	<g id="Campo_2">
+		
+			<rect x="117.661" y="420.945" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" width="359.029" height="291.595"/>
+		<path fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M476.69,420.945H117.661H476.69z"/>
+		<path fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M242.53,421.177
+			c0,30.63,24.83,55.459,55.459,55.459c30.63,0,55.459-24.829,55.459-55.459"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M293.455,420.945
+			c0,2.312,1.874,4.186,4.186,4.186s4.186-1.874,4.186-4.186"/>
+	</g>
+	<g id="Campo_1">
+		
+			<rect x="117.661" y="128.73" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" width="359.029" height="291.596"/>
+		<path fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M476.69,420.326H117.661H476.69z"/>
+		<path fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M242.53,420.092
+			c0-30.629,24.83-55.457,55.459-55.457c30.63,0,55.459,24.828,55.459,55.457"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M293.455,420.326
+			c0-2.313,1.874-4.186,4.186-4.186s4.186,1.873,4.186,4.186"/>
+	</g>
+</g>
+<path fill="none" stroke="#FFFFFF" stroke-width="2.8657" stroke-miterlimit="10" d="M352.149,713.174c0,53.02-42.973,96-95.993,96
+	c-53.019,0-96-42.98-96-96s42.981-96,96-96C309.176,617.174,352.149,660.154,352.149,713.174z"/>
+</svg>

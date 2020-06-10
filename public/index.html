@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <link href="%PUBLIC_URL%/alloy-editor/assets/alloy-editor-ocean-min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/theme/1.css" rel="stylesheet">
+    <title>MyGol - Panel de control</title>
+  </head>
+  <body class="loading">
+    <style>
+      
+      body.loading {
+        background-color: #333;
+      }
+
+      .loader {
+        width: 100%;
+        padding: 0;
+        display: table !important;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+      }
+
+      .loader .center {
+        padding: 0;
+        vertical-align: middle;
+        display: table-cell !important;
+        margin: 0;
+        text-align: center;
+      }
+
+      .loader .logo {
+        width: 150px;
+        height: 150px;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+
+        position: relative;
+        margin: 50px auto;
+      }
+
+      .double-bounce1, .double-bounce2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #EEE;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+        animation: sk-bounce 2.0s infinite ease-in-out;
+      }
+
+      .double-bounce2 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+      }
+
+      @-webkit-keyframes sk-bounce {
+        0%, 100% { -webkit-transform: scale(0.0) }
+        50% { -webkit-transform: scale(1.0) }
+      }
+
+      @keyframes sk-bounce {
+        0%, 100% { 
+          transform: scale(0.0);
+          -webkit-transform: scale(0.0);
+        } 50% { 
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+        }
+      }
+    </style>
+
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+      <div class="loader">
+        <div class="center">
+          <img class="logo" src="%PUBLIC_URL%/theme/1/mygol-logo.png" alt="MyGol - Plataforma de gestión deportiva" />
+          <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

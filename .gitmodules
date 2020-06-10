@@ -1,0 +1,3 @@
+[submodule "artwork/TeamLogos/svg-to-react-cli"]
+	path = artwork/TeamLogos/svg-to-react-cli
+	url = https://github.com/dsuarezv/svg-to-react-cli.git

@@ -1,0 +1,45 @@
+
+Goals: 
+
+- Configure the stages of the payment process. Things to configure include: 
+
+	- The payment steps
+	- The fees: 
+		- Platform fee: configured by TSM (in orgs.json)
+		- Payment gateway fee (fixed + % of the total), configured by the organization (in payment config).
+
+
+
+Payments config UI: 
+
+- Will render the configuration object. 
+- Needs a save button on the bottom. 
+- Also needs to have the toption to copy existing config from other locations (namely, organization, tournament or team. Selecting this source can be tricky... probably a list of all the configurations already existing in the DB)
+
+- Platform comissions: this is set by TSM, so it should not go into the payments config object. 
+    - Should be a different object, probably configured in a different place. 
+	  But it has to go to the client, together with the steps config. 
+    - It can be on the orgs.json file, and the relevant section copied to the payment config 
+	  everytime it is requested. 
+
+- The Payments config object has some data in the top level and a payment steps definition. 
+    - Top level platform fees (applied to every purchase)
+	- Organization fees (applied to every purchase)
+	- (currency?)
+
+- The payment steps structure is defined already in the player app. There is a sample object there (at least in the repository). 
+	- Add / Edit / Delete Step: name, description
+		- Add / Edit / Delete Option: name, description, value
+
+- Use the same approach as the stages and groups: a hierarchy with dialogs to edit. 
+
+
+
+Additions: 
+
+- TSM Config: platform fee definition: % + fixed value. 
+	- Displayed in every payment (to the user), added at the end. 
+
+
+
+

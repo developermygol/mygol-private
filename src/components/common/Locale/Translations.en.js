@@ -49,6 +49,7 @@ export default {
     "Height": "Height",
     "Weight": "Weight",
     "FieldPosition": "Field position",
+    "FieldPosition.Hint": "Player position in the field",
     "TeamName": "Team",
     "ApparelNumber": "Number",
     "Add new player": "Add new player",
@@ -89,8 +90,24 @@ export default {
     "MatchEventType64": "Card4",
     "MatchEventType65": "Card5",
     "MatchEventType100": "RecordClosed",
-    
 
+    "FieldPosition0": "Sin posición",
+    "FieldPosition1": "Portero",
+    "FieldPosition2": "Defensa",
+    "FieldPosition3": "Centrocampista",
+    "FieldPosition4": "Delantero",
+    "FieldPosition5": "Delegado no jugador",
+    "FieldPosition6": "Entrenador",
+    "FieldPosition7": "Physiotherapist",
+    "FieldPosition10": "Defender F5",
+    "FieldPosition11": "Target F5",
+    "FieldPosition12": "Winger F5",
+
+    "FieldSide0": "Not set",
+    "FieldSide1": "Left",
+    "FieldSide2": "Centre",
+    "FieldSide3": "Rigth",
+    
     // Generic CRUD messages
     "Item created ok": 'Item created ok',
     "Item updated ok": 'Item updated ok',

@@ -600,6 +600,8 @@ export default {
     "Logo": "Logo",
     "Home field": "Campo local",
     "Team status": "Estado inscripción",
+    "Team goalkeeper": "Portero titular",
+    "Team goalkeeper.hint": "Opcional. Si se fija este jugador acumulará la estadística de goles encajados en el equipo y aparecerá en el ranking de porteros.",
     "Local field": "Campo local", 
     "Local field.hint": "Opcional. Si se fija se utilizará como preferencia de campo cuando el equipo juega en casa y se usará al generar los calendarios", 
     "Preferred time": "Hora preferida de juego", 

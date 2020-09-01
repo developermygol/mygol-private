@@ -8,6 +8,7 @@ export const Types = {
 
 const playerDragSpec = {
   beginDrag(props, monitor, component) {
+    // console.log("I'm being drag!");
     const item = { player: props.player, origin: props.dragSource };
     return item;
   },

@@ -8,8 +8,6 @@ import Root from "./components/common/Root";
 import mobxStore from "./store-mobx/Store";
 import mobxUiStore from "./store-mobx/UiStore";
 
-import { DragDropContext } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
 import createHistory from "history/createBrowserHistory";
 import { validateLocation } from "./RouteValidation";
 
@@ -20,7 +18,7 @@ history.listen((location, action) => {
   validateLocation(history, mobxUiStore.auth);
 });
 
-@DragDropContext(HTML5Backend, { window })
+// @DragDropContext(HTML5Backend, { window }) // Old version
 class App extends Component {
   state = {
     themeCssFile:

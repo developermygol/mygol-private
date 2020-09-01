@@ -171,6 +171,30 @@ class PlayersStore {
 
     return true;
   });
+
+  updatePlayerTacticPosition = asyncAction(function* (
+    idPlayer,
+    idTeam,
+    idTacticPosition
+  ) {
+    const data = { idPlayer, idTeam, idTacticPosition };
+
+    const res = yield request(
+      this,
+      axios.put,
+      "Player.tacticPositionUpdatedOk",
+      "/players/updateplayertacticposition",
+      data
+    );
+    if (!res) return null;
+
+    const player = findByIdInArray(this.all, idPlayer);
+    if (!player) return null;
+
+    player.teamData.idTacticPosition = idTacticPosition;
+
+    return true;
+  });
 }
 
 export default PlayersStore;

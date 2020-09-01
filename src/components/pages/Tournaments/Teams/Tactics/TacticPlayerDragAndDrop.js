@@ -20,6 +20,7 @@ class TacticPlayerDragAndDrop extends Component {
     destinationMarker,
     position
   ) => {
+    debugger;
     console.log(
       "player",
       player.name,

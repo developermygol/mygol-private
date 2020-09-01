@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { inject, observer } from "mobx-react";
 import SoccerFieldMarker from "./SoccerFieldMarker";
 //import MarkerDropTarget from './MarkerDropTarget';
 
+@inject("store", "ui")
+@observer
 export default class SoccerField extends Component {
   unscaleCoords = (evt) => {
     const pt = this.svg.createSVGPoint();
@@ -14,14 +17,25 @@ export default class SoccerField extends Component {
   };
 
   getPoints() {
-    const { positions } = this.props;
+    const { positions, store } = this.props;
+
     if (!positions) return null;
 
     return (
       <g>
         {/* {positions.map((p, i) => <MarkerDropTarget key={i} marker={{idx: i, ...p}} /> )} */}
         {positions.map((p, i) => (
-          <SoccerFieldMarker key={i} marker={{ idx: i, ...p }} />
+          <SoccerFieldMarker
+            key={i}
+            marker={{ idx: i, ...p }}
+            update={(idPlayer, idTeam, idTacticPosition) =>
+              store.players.updatePlayerTacticPosition(
+                idPlayer,
+                idTeam,
+                idTacticPosition
+              )
+            }
+          />
         ))}
       </g>
     );

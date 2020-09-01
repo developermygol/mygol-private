@@ -646,6 +646,7 @@ export default {
     "TeamPlayer.Sanctioned": "(sancionado)",
     "TeamPlayer.StatusUpdatedOk": "Estado del jugador en el equipo actualizado Ok.", 
     "Player.ApprovedStatusUpdatedOk": "Estado actualizado Ok.", 
+    "Player.tacticPositionUpdatedOk": "Posición actualizada Ok.", 
 
     // Facilities
     "Field": "Campo de juego", 

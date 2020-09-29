@@ -1,15 +1,15 @@
-import React, { Component, Fragment } from "react";
-import { Router, Route, Switch } from "react-router-dom";
-import { Provider as ProviderMobx } from "mobx-react";
+import React, { Component, Fragment } from 'react';
+import { Router, Route, Switch } from 'react-router-dom';
+import { Provider as ProviderMobx } from 'mobx-react';
 
-import Login from "./components/pages/LoginPage/Login";
-import Root from "./components/common/Root";
+import Login from './components/pages/LoginPage/Login';
+import Root from './components/common/Root';
 
-import mobxStore from "./store-mobx/Store";
-import mobxUiStore from "./store-mobx/UiStore";
+import mobxStore from './store-mobx/Store';
+import mobxUiStore from './store-mobx/UiStore';
 
-import createHistory from "history/createBrowserHistory";
-import { validateLocation } from "./RouteValidation";
+import createHistory from 'history/createBrowserHistory';
+import { validateLocation } from './RouteValidation';
 
 //import DevTools from 'mobx-react-devtools';
 
@@ -23,9 +23,9 @@ class App extends Component {
   state = {
     themeCssFile:
       process.env.PUBLIC_URL +
-      (process.env.NODE_ENV === "production"
-        ? "/theme/1." + process.env.REACT_APP_COMMIT + ".css"
-        : "/theme/1.css"),
+      (process.env.NODE_ENV === 'production'
+        ? '/theme/1.' + process.env.REACT_APP_COMMIT + '.css'
+        : '/theme/1.css'),
   };
 
   componentDidMount() {
@@ -36,11 +36,7 @@ class App extends Component {
     return (
       <ProviderMobx store={mobxStore} ui={mobxUiStore}>
         <Fragment>
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href={this.state.themeCssFile}
-          />
+          <link rel="stylesheet" type="text/css" href={this.state.themeCssFile} />
           <Router history={history}>
             <Switch>
               <Route path="/login" component={Login} />

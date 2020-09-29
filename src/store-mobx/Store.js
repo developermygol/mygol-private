@@ -1,37 +1,33 @@
-import { observable } from "mobx";
-import { asyncAction } from "mobx-utils";
-import { Localize } from "../components/common/Locale/Loc";
-import { toast } from "react-toastify";
-import { getOpErrorText } from "../components/common/FormsMobx/Utils";
+import { observable } from 'mobx';
+import { asyncAction } from 'mobx-utils';
+import { Localize } from '../components/common/Locale/Loc';
+import { toast } from 'react-toastify';
+import { getOpErrorText } from '../components/common/FormsMobx/Utils';
 
-import TournamentStore from "./TournamentsStore";
-import TeamsStore from "./TeamsStore";
-import PlayersStore from "./PlayersStore";
-import OrganizationStore from "./OrganizationStore";
-import TacticsStore from "./TacticsStore";
-import FacilitiesStore from "./FacilitiesStore";
-import RefereesStore from "./RefereesStore";
-import ContentsStore from "./ContentStore";
-import MatchesStore from "./MatchesStore";
-import UsersStore from "./UsersStore";
-import StagesStore from "./StagesStore";
-import StageGroupsStore from "./StageGroupsStore";
-import TeamGroupsStore from "./TeamGroupsStore";
-import NotificationTemplatesStore from "./NotificationTemplatesStore";
-import SponsorsStore from "./SponsorsStore";
-import PaymentConfigsStore from "./PaymentConfigsStore";
-import NotificationStore from "./NotificationStore";
-import SearchStore from "./SearchStore";
-import PlayDayStore from "./PlayDayStore";
-import SanctionsStore from "./SanctionsStore";
-import AutoSanctionsConfigStore from "./AutoSanctionsConfigStore";
+import TournamentStore from './TournamentsStore';
+import TeamsStore from './TeamsStore';
+import PlayersStore from './PlayersStore';
+import OrganizationStore from './OrganizationStore';
+import TacticsStore from './TacticsStore';
+import FacilitiesStore from './FacilitiesStore';
+import RefereesStore from './RefereesStore';
+import ContentsStore from './ContentStore';
+import MatchesStore from './MatchesStore';
+import UsersStore from './UsersStore';
+import StagesStore from './StagesStore';
+import SeasonsStore from './SeasonsStore';
+import StageGroupsStore from './StageGroupsStore';
+import TeamGroupsStore from './TeamGroupsStore';
+import NotificationTemplatesStore from './NotificationTemplatesStore';
+import SponsorsStore from './SponsorsStore';
+import PaymentConfigsStore from './PaymentConfigsStore';
+import NotificationStore from './NotificationStore';
+import SearchStore from './SearchStore';
+import PlayDayStore from './PlayDayStore';
+import SanctionsStore from './SanctionsStore';
+import AutoSanctionsConfigStore from './AutoSanctionsConfigStore';
 
-export const request = asyncAction(function* (
-  state,
-  operation,
-  okMessage,
-  ...args
-) {
+export const request = asyncAction(function* (state, operation, okMessage, ...args) {
   try {
     state.loading = true;
     const res = yield operation(...args);
@@ -67,6 +63,7 @@ class EntitiesStore {
   // Tournament stores
   @observable teams = new TeamsStore(this);
   @observable stages = new StagesStore(this);
+  @observable seasons = new SeasonsStore(this);
   @observable groups = new StageGroupsStore(this);
   @observable teamGroups = new TeamGroupsStore(this);
   @observable players = new PlayersStore(this);

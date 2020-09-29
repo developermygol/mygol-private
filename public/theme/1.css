@@ -1,246 +1,266 @@
 /* Globals */
 
-body, html, div, p, h1, h2, h3, h4, ul, li, span, ul, ol, li, img, th, td, tr, a, input, textarea {
-	margin: 0;
-	padding: 0;
-	font-weight: normal;
-	font-size: 14px;
-	list-style-type: none;
-	box-sizing: border-box;
+body,
+html,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+span,
+ul,
+ol,
+li,
+img,
+th,
+td,
+tr,
+a,
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
+  list-style-type: none;
+  box-sizing: border-box;
 }
 
 body {
-	background-color: #eef9ff;
+  background-color: #eef9ff;
 }
 
-body, input, select, textarea {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 400;
-	color: #404040;
+body,
+input,
+select,
+textarea {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #404040;
 }
-
 
 a {
-	text-decoration: none;
-	color: #0EBC97;
-	font-weight: 600;
+  text-decoration: none;
+  color: #0ebc97;
+  font-weight: 600;
 }
 
 h1 {
-	color: #43D2B4;
-	font-weight: 600;
-	text-transform: uppercase;
+  color: #43d2b4;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 h2 {
-	text-transform: uppercase;
-	font-weight: 800;
-	font-size: 4em;
-	margin-bottom: 0.5em;
-	line-height: 1em;
-	color: #707070;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 4em;
+  margin-bottom: 0.5em;
+  line-height: 1em;
+  color: #707070;
 }
 h3 {
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 1.5em;
-	margin-bottom: 0.5em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 ::selection {
-	color: white;
-	background: #43D2B4;
-
+  color: white;
+  background: #43d2b4;
 }
 
 /* Layout */
 
 .Root {
-	width: 1240px;
-	margin: 0 auto;
-	background-color: white;
-	border-right: 1px solid #d8d8d8;
+  width: 1240px;
+  margin: 0 auto;
+  background-color: white;
+  border-right: 1px solid #d8d8d8;
 }
 
 .Error {
-	color :#b80101;
+  color: #b80101;
 }
 
 .Errors {
-	margin-top: 10px;
-	margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .ErrorBox {
-	color: white;
-	background-color: #e02828;
-	margin: 20px 0 50px 0;
-	padding: 15px 15px;
+  color: white;
+  background-color: #e02828;
+  margin: 20px 0 50px 0;
+  padding: 15px 15px;
 }
 
 .ErrorBox .Details {
-	margin-top: 5px;
-	font-size: 0.8em;
+  margin-top: 5px;
+  font-size: 0.8em;
 }
 
 .DevWarning {
-	display: block;
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	background: rgb(165, 0, 0);
-	padding: 7px 10px;
-	color: white;
-	border-top-left-radius: 10px;
-	font-size: 12px;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: rgb(165, 0, 0);
+  padding: 7px 10px;
+  color: white;
+  border-top-left-radius: 10px;
+  font-size: 12px;
 }
 
-
 .Spinner {
-	margin: 80px auto;
-	border: 1px solid #f3f3f3;
-	border-left: 1px solid #43D2B4 ;
-	border-radius: 50%;
-	width: 80px;
-	height: 80px;
-	animation: spin 1s linear infinite;
-  }
-  
-  .Spinner.Mini {
-	width: 32px;
-	height: 32px;
-	margin: 0 auto;
-  }
-  
-  @keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
-  }
+  margin: 80px auto;
+  border: 1px solid #f3f3f3;
+  border-left: 1px solid #43d2b4;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
 
+.Spinner.Mini {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .Login {
-	width: 100vw;
-	height: 100vh;
-	background-color: #888;
-	background: url('1/back.jpg') no-repeat center;
-	background-image: url('1/back.jpg');
-	background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background-color: #888;
+  background: url('1/back.jpg') no-repeat center;
+  background-image: url('1/back.jpg');
+  background-size: cover;
 }
 
 .LoginWindow {
-	padding: 50px;
-	text-align: center;
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 400px;
-	height: 630px;
-	background-color: rgba(0, 0, 0, 0.5);
-	color: white;
+  padding: 50px;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 630px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .LoginWindow .Logo {
-	display: block;
-	height: 150px;
-	background: url('1/mygol-logo.png') no-repeat center;
-	background-size: 150px 150px;
-	margin-bottom: 50px;
+  display: block;
+  height: 150px;
+  background: url('1/mygol-logo.png') no-repeat center;
+  background-size: 150px 150px;
+  margin-bottom: 50px;
 }
 
 .LoginWindow p {
-	margin: 20px 0;
+  margin: 20px 0;
 }
 
 .LoginWindow .ModalWindow p {
-	color: #222;
+  color: #222;
 }
 
 .LoginWindow .FormField .Label {
-	text-align: left;
-	color: #ccc;
-	margin-bottom: 10px;
-	font-size: inherit;
+  text-align: left;
+  color: #ccc;
+  margin-bottom: 10px;
+  font-size: inherit;
 }
 
 .LoginWindow .FormField .Text {
-	width: 100%;
-	color: white;
-	background: none;
-	font-size: 1.3em;
-	border: none;
-	border-bottom: 1px solid #ccc;
-	border-radius: 0;
-	padding: 0 0 8px 0;
+  width: 100%;
+  color: white;
+  background: none;
+  font-size: 1.3em;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  padding: 0 0 8px 0;
 }
 
 .LoginError {
-	display: block; 
-	margin-bottom: 10px;
-	color: red;
+  display: block;
+  margin-bottom: 10px;
+  color: red;
 }
 
 .LoginWindow a {
-	display: block;
-	margin-top: 30px;
-	color: white;
-	font-weight: 400;
+  display: block;
+  margin-top: 30px;
+  color: white;
+  font-weight: 400;
 }
 
-
 .NavBar {
-	z-index: 200;
-	position: fixed;
-	color: white;
-	width: 200px;
-	min-width: 200px;
-	background-color: #3a4554;
-	min-height: 100vh;
-	height: 100%;
+  z-index: 200;
+  position: fixed;
+  color: white;
+  width: 200px;
+  min-width: 200px;
+  background-color: #3a4554;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .NavBar .Logo {
-	height: 160px;
-	background: url('1/mygol-logo.png') no-repeat center;
-	background-size: 120px 120px;
+  height: 160px;
+  background: url('1/mygol-logo.png') no-repeat center;
+  background-size: 120px 120px;
 }
 
 .NavBar .SearchBox {
-	padding: 15px 30px;
-	background: #28303b;
-	margin-bottom: 50px;
+  padding: 15px 30px;
+  background: #28303b;
+  margin-bottom: 50px;
 }
 
 .NavBar .Items {
-	margin-top: 22px;
+  margin-top: 22px;
 }
 
 .NavBar .Items li {
-	
 }
 
-
 .NavBarLink {
-	margin: 3px 0;
-	padding: 12px 30px;
-	display: inline-block;
-	width: 100%;
-	color: #c3c9d8;
+  margin: 3px 0;
+  padding: 12px 30px;
+  display: inline-block;
+  width: 100%;
+  color: #c3c9d8;
 }
 
 .NavBarLink.active {
-	border-left: 5px solid #43D2B4;
-	padding-left: 25px;
-	color: white;
-	background-color: #353f4d;
+  border-left: 5px solid #43d2b4;
+  padding-left: 25px;
+  color: white;
+  background-color: #353f4d;
 }
 
 .ContentFrame {
-	width: 100%;
-	min-height: 100vh;
-	padding-left: 200px;
-	padding-top: 70px;
-	/*
+  width: 100%;
+  min-height: 100vh;
+  padding-left: 200px;
+  padding-top: 70px;
+  /*
 	background: url('1/watermark-logo.png') no-repeat center;
 	background-position: 120% 150%;
 	background-attachment: fixed;
@@ -248,2448 +268,2539 @@ h3 {
 }
 
 .Content {
-	padding: 20px;
+  padding: 20px;
 }
 
 .SecNavBar {
-	margin: -20px;
-	position: fixed;
-	background-color: #F2F2F2;
-	border-right: 1px solid #d8d8d8;
-	width: 180px;
-	height: 100%;
+  margin: -20px;
+  position: fixed;
+  background-color: #f2f2f2;
+  border-right: 1px solid #d8d8d8;
+  width: 180px;
+  height: 100%;
 }
 
 .SecNavBar .TournamentLogo {
-	height: 161px;
-	position: relative;
+  height: 161px;
+  position: relative;
 }
 
 .SecNavBar .TournamentLogo .Logo {
-	max-width: 120px;
-	max-height: 120px;
-	margin: auto;
-	position: absolute;
-	left: 0; right: 0;
-	top: 0; bottom: 0;
+  max-width: 120px;
+  max-height: 120px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .SecNavItem {
-	margin: 3px 0;
-	padding: 12px 30px;
-	display: inline-block;
-	width: 100%;
-	color: #555;
+  margin: 3px 0;
+  padding: 12px 30px;
+  display: inline-block;
+  width: 100%;
+  color: #555;
 }
 
 .SecNavItem.active {
-	border-right: 5px solid #43D2B4;
-	
-	background-color: #ebebeb; 
-	color: #0EBC97;
+  border-right: 5px solid #43d2b4;
+
+  background-color: #ebebeb;
+  color: #0ebc97;
 }
 
 .SecContent {
-	margin-left: 180px;
+  margin-left: 180px;
 }
 
-
-
-
-
-
-
-
-
 .TopBar {
-	z-index: 100;
-	padding-left: 200px;
-	position: fixed;
-	width: 1240px;
-	background-color: white;
-	min-height: 70px;
-	max-height: 70px;
-	border-bottom: 1px solid #d8d8d8;
-	border-right: 1px solid #d8d8d8;
-	display: flex;
-	justify-content: space-between;
+  z-index: 100;
+  padding-left: 200px;
+  position: fixed;
+  width: 1240px;
+  background-color: white;
+  min-height: 70px;
+  max-height: 70px;
+  border-bottom: 1px solid #d8d8d8;
+  border-right: 1px solid #d8d8d8;
+  display: flex;
+  justify-content: space-between;
 }
 
 .TopBar .OrgData {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .TopBar .Logo {
-	background-size: 140px;
-	background-position: -35px center ;
-	background-repeat: no-repeat;
-	height: 70px;
-	width: 105px;
+  background-size: 140px;
+  background-position: -35px center;
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 105px;
 }
 
 .TopBar .OrgName {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 .TopBar h1 {
-	color: black;
-	font-weight: 800;
+  color: black;
+  font-weight: 800;
 }
 
 .TopBar h2 {
-	color: black;
-	font-size: 1em;
+  color: black;
+  font-size: 1em;
 }
 
 .TopBar .Account {
-	min-width: 300px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .Account .UserData {
-	text-align: right;
-	margin-right: 10px;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .Account .UserName {
-	font-size: 0.9em;
-	font-weight: 600;
+  font-size: 0.9em;
+  font-weight: 600;
 }
 
 .Account .UserRole {
-	font-size: 0.8em;
-	color: #43D2B4;
-	font-weight: 600;
+  font-size: 0.8em;
+  color: #43d2b4;
+  font-weight: 600;
 }
 
 .Account .UserAvatar {
-	border: 2px solid white;
-	border-radius: 80px;
-	width: 50px;
-	height: 50px;
-	margin-right: 30px;
+  border: 2px solid white;
+  border-radius: 80px;
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
 }
 
-
-/* Pages */ 
+/* Pages */
 
 .Home {
-	
 }
 
 .CardContainer {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  justify-content: space-between;
 }
 
 .Card {
-	width: 49%;
-	background-color: white;
-	border: 1px solid #d8d8d8;
-	margin-bottom: 20px;
-	border-radius: 5px;
+  width: 49%;
+  background-color: white;
+  border: 1px solid #d8d8d8;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .CardImg {
-	margin-bottom: 20px;
-	border-radius: 5px;
-	max-width: 999px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  max-width: 999px;
 }
 
 .Card .NoData {
-	height: 200px;
+  height: 200px;
 }
 
 .Center {
-	text-align: center;
+  text-align: center;
 }
 
 .Card .Logo {
-	margin: 10px auto;
-	max-width: 200px;
-	max-height: 200px;
+  margin: 10px auto;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .W33 {
-	width: 33%;
+  width: 33%;
 }
 
 .W66 {
-	width: 65%;
+  width: 65%;
 }
 
 .Hero {
-	width: 100%;
+  width: 100%;
 }
 
 .Home .Text .UnsortedList li {
-	list-style-type: disc;
-	margin-left: 20px;
-	margin-bottom: 5px;
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 5px;
 }
 
 .Card img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .Card .Hint {
-	font-size: 0.9rem;
-	color: #999;
-	margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 20px;
 }
 
 .Home .Text h4 {
-	font-size: 1.2em;
-	font-weight: 600;
-	margin: 10px 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 10px 0;
 }
 
 .Home .Text p {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-
 .Form {
-	min-width: 700px;
-	width: 100%;
+  min-width: 700px;
+  width: 100%;
 }
 
 .Question {
-	display: inline-block;
-	margin-bottom: 20px;
-	padding: 12px 15px;
-	border: 2px solid #1a85b2;
-	border-radius: 7px;
-	padding-left: 44px;
-	
-	background: url('1/question.png') no-repeat center;
-	background-position-x: 10px;
-	background-size: 24px;
-	background-color: #e6f7ff;
-	font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  border: 2px solid #1a85b2;
+  border-radius: 7px;
+  padding-left: 44px;
+
+  background: url('1/question.png') no-repeat center;
+  background-position-x: 10px;
+  background-size: 24px;
+  background-color: #e6f7ff;
+  font-weight: 600;
 }
 
 .InfoBox {
-	display: block;	
-	border-radius: 5px;
-	padding: 15px 20px;
-	margin-bottom: 20px;
-	background-color: #e6f7ff;
+  display: block;
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  background-color: #e6f7ff;
 }
 
-
 .Card.Warning .Content {
-	background: url('1/warning.png') no-repeat center left;
-	background-size: 32px 32px;
-	background-position-x: 17px;
+  background: url('1/warning.png') no-repeat center left;
+  background-size: 32px 32px;
+  background-position-x: 17px;
 }
 
 .Card.Warning p {
-	padding-left: 50px;
+  padding-left: 50px;
 }
 
 .Card.Warning h3 {
-	background-color: #F44336;
-	color: white;
+  background-color: #f44336;
+  color: white;
 }
 
-.Card.Help h3 { 
-	background-color: rgb(134, 180, 6);
-	color: white;
+.Card.Help h3 {
+  background-color: rgb(134, 180, 6);
+  color: white;
 }
 
-.Card.Actions h3 { 
-	background-color: rgb(134, 180, 6);
-	color: white;
+.Card.Actions h3 {
+  background-color: rgb(134, 180, 6);
+  color: white;
 }
-
-
-
 
 .Hero .Wide {
-	width: 100%;
+  width: 100%;
 }
 
 .SectionHead {
 }
 
 .Card h3 {
-	background-color: #f7f9fb;
-	font-size: 1em;
-	font-weight: 600;
-	padding: 10px 15px;
-	border-radius: 5px 5px 0 0;
-	margin-bottom: 0;
-	width: 100%;
+  background-color: #f7f9fb;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 0;
+  width: 100%;
 }
 
 .Card h3 a {
-	color: #000;
+  color: #000;
 }
 
 .Card h3 .Edit {
-	font-size: 0.8em;
-	color: #0EBC97;
-	float: right;
-	text-transform: none;
+  font-size: 0.8em;
+  color: #0ebc97;
+  float: right;
+  text-transform: none;
 }
 
 .Card .Content {
-	padding: 15px;
+  padding: 15px;
 }
 
 .Card .Content .Logo {
-	
 }
 
 .ActionBar {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .SecondaryActions {
-	display: inline-block;
+  display: inline-block;
 }
 
 .SimpleAction {
-	margin-left: 30px;
+  margin-left: 30px;
 }
 
 .BreadCrumb {
-	display: flex;
+  display: flex;
 }
 
 .BreadCrumbSeparator {
-	margin: 17px 15px 0px 15px;
-	font-size: 1.7em;
-	font-weight: 800;
-	color: #999;
+  margin: 17px 15px 0px 15px;
+  font-size: 1.7em;
+  font-weight: 800;
+  color: #999;
 }
 
-
-/* DataTables */ 
+/* DataTables */
 
 .DataTable {
-	background-color: white;
-	border: 1px solid #c3c9d8;
-	border-radius: 5px;
-	text-align: left;
-	border-spacing: 0;
-	margin-bottom: 20px;
-	width: 100%;
-	max-width: 100%;
+  background-color: white;
+  border: 1px solid #c3c9d8;
+  border-radius: 5px;
+  text-align: left;
+  border-spacing: 0;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .DataTableHeaderRow {
-	border-radius: 5px;
+  border-radius: 5px;
 }
 
 .DataTableRow {
-	
 }
 
 .DataTableCell {
-	padding: 7px 15px;
-	border-top: 1px solid #f1f1f1;
+  padding: 7px 15px;
+  border-top: 1px solid #f1f1f1;
 }
 
 .DataTableCell.OneButton {
-	width: 50px;
+  width: 50px;
 }
 
 .DataTableHeaderCell {
-	/* background-color: #f1f1f1;*/
-	border-top: none;
-	padding: 12px 15px;
-	font-weight: 600;
-	text-transform: uppercase;
+  /* background-color: #f1f1f1;*/
+  border-top: none;
+  padding: 12px 15px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .DataTableHeaderCell:not(:first-child) {
-	border-left: 1px solid #f1f1f1;
+  border-left: 1px solid #f1f1f1;
 }
 
-
 .ListActionButtons {
-	white-space: nowrap;
-	display: flex;
-	justify-content: flex-end;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .DataTable .Logo {
-	max-width: 40px;
-	max-height: 40px;	
+  max-width: 40px;
+  max-height: 40px;
 }
 
-/* Forms */ 
+/* Forms */
 
 .TabBar {
-	display: flex;
-	margin-top: 20px;
-	padding: 20px 10px 5px 0px;
-	flex-wrap: wrap;
+  display: flex;
+  margin-top: 20px;
+  padding: 20px 10px 5px 0px;
+  flex-wrap: wrap;
 }
 
 .TabItem {
-	padding: 0 25px 20px 0;
-	
+  padding: 0 25px 20px 0;
 }
 
 .TabItem a {
-	padding: 6px 2px 5px 2px;
-	color: #999;
-	margin-right: 3px;
-	font-weight: 400;
+  padding: 6px 2px 5px 2px;
+  color: #999;
+  margin-right: 3px;
+  font-weight: 400;
 }
 
 .TabItem .active {
-	color: #222;
-	background-color: white;
-	padding-bottom: 12px;
-	border-bottom: 3px solid #43D2B4;
-	font-weight: 600;
+  color: #222;
+  background-color: white;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #43d2b4;
+  font-weight: 600;
 }
 
 .TabContent {
-	padding: 20px 0;
-	background-color: white;
-	
+  padding: 20px 0;
+  background-color: white;
 }
 
 .TabSection {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
-
-
 .FormField {
-	display: block;
-	
-	margin-bottom: 30px;
-	text-align: left;
+  display: block;
+
+  margin-bottom: 30px;
+  text-align: left;
 }
 
 .FormField .Label {
-	display: block;
-	margin-bottom: 3px;
-	color: #797979;
-	font-weight: 600;
-	text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+  color: #797979;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .FormField .Hint {
-	display: block;
-	margin-bottom: 5px;
-	color: #b6c9c5;
+  display: block;
+  margin-bottom: 5px;
+  color: #b6c9c5;
 }
 
 .Hint {
-	color: #b6c9c5;
+  color: #b6c9c5;
 }
 
 .FormField .Text {
-	width: 100%;
-	max-width: 500px;
-	font-size: 16px;
-	padding: 5px 8px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	outline: none;
-	font-size: 1.5em;
+  width: 100%;
+  max-width: 500px;
+  font-size: 16px;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.5em;
 }
 
 .FormField .ReadOnlyText {
-		width: 100%;
-		max-width: 500px;
-		font-size: 16px;
-		padding: 5px 0px;
-		font-size: 1.5em;
+  width: 100%;
+  max-width: 500px;
+  font-size: 16px;
+  padding: 5px 0px;
+  font-size: 1.5em;
 }
 
 .FormField select {
-	min-width: 250px;
-	max-width: 500px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	padding: 5px 23px 5px 8px;
-	outline: none;
-	font-size: 1.5em;
+  min-width: 250px;
+  max-width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 23px 5px 8px;
+  outline: none;
+  font-size: 1.5em;
 
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23BBBBBB'><polygon points='0,0 100,0 50,80'/></svg>") no-repeat;
-	background-size: 8px;
-	background-position: calc(100% - 5px) center;
-	background-repeat: no-repeat;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23BBBBBB'><polygon points='0,0 100,0 50,80'/></svg>")
+    no-repeat;
+  background-size: 8px;
+  background-position: calc(100% - 5px) center;
+  background-repeat: no-repeat;
 }
 
 .FormField select option {
-	font-size: 0.666em;
+  font-size: 0.666em;
 }
 
 .FormField .Text:focus {
-	border-bottom: 2px solid #43D2B4;
+  border-bottom: 2px solid #43d2b4;
 }
 
 .FormField select:focus {
-	border-bottom: 2px solid #43D2B4;
+  border-bottom: 2px solid #43d2b4;
 }
 
 .FormField .Radio {
-	
 }
 
 .FormField .RadioItem {
-	margin: 10px 0;
-
+  margin: 10px 0;
 }
 
 .FormField .TextArea {
-	width: 100%;
-	
-	min-height: 1.2em;
-	min-height: 200px;
-	font-size: 16px;
-	padding: 5px 8px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	outline: none;
-	font-size: 1em;
+  width: 100%;
+
+  min-height: 1.2em;
+  min-height: 200px;
+  font-size: 16px;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
 }
 
 .FormField .TextArea:focus {
-	border-bottom: 2px solid #43D2B4;
+  border-bottom: 2px solid #43d2b4;
 }
 
 .FormField .RadioContent {
-	margin-left: 5px;
+  margin-left: 5px;
 }
 
 .FormField.Separator {
-	background-color: #91E8D7;
-	margin: 0 -15px 20px -15px;
-	padding: 10px 15px;
-	/* border-bottom: 1px solid #d8d8d8;
+  background-color: #91e8d7;
+  margin: 0 -15px 20px -15px;
+  padding: 10px 15px;
+  /* border-bottom: 1px solid #d8d8d8;
 	border-top: 1px solid #d8d8d8; */
 }
 
 .FormField.Separator .Label {
-	color: #FFF;
+  color: #fff;
 }
 
-
-
 .FormField .DayPickerInput input {
-	width: 200px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23888888'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
-	background-size: 8px;
-	background-position: calc(100% - 5px) center;
-	background-repeat: no-repeat;
+  width: 200px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23888888'><polygon points='0,0 100,0 50,50'/></svg>")
+    no-repeat;
+  background-size: 8px;
+  background-position: calc(100% - 5px) center;
+  background-repeat: no-repeat;
 }
 
 .FormField .HintMessage {
-	font-size: 0.8em;
-	color: #999;
-	margin-bottom: 10px;
+  font-size: 0.8em;
+  color: #999;
+  margin-bottom: 10px;
 }
 
-
-
 .FormField .Unavailable {
-	margin-bottom: 20px;
-	color: #ccc;   
+  margin-bottom: 20px;
+  color: #ccc;
 }
 
 .FormField.Criteria .Selects {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .FormField.Criteria .Option {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 .FormField.Criteria select {
-	display: block;
-	font-size: 1rem;
-	min-width: 200px;
-	width: 200px;
+  display: block;
+  font-size: 1rem;
+  min-width: 200px;
+  width: 200px;
 }
 
 .ShowField {
-	padding: 5px 0;
+  padding: 5px 0;
 }
 
 .ShowField .Field {
-	display: inline-block;
-	font-weight: 600;
-	min-width: 120px;
-	text-transform: uppercase;
-	margin-right: 15px;
+  display: inline-block;
+  font-weight: 600;
+  min-width: 120px;
+  text-transform: uppercase;
+  margin-right: 15px;
 }
 
 .ShowField .Value {
-	font-size: 1.2em;
+  font-size: 1.2em;
 }
 
-h3.ShowField  {
-	display: block;
-	margin: 10px -15px;
-	border-radius: 0;
-	padding: 10px 15px;
-	background-color: #eee;
+h3.ShowField {
+  display: block;
+  margin: 10px -15px;
+  border-radius: 0;
+  padding: 10px 15px;
+  background-color: #eee;
 }
 
 .ShowActions {
-	margin: 20px 0;
+  margin: 20px 0;
 }
 
 .ShowSection {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .ShowSection .Separator {
-	color: white;
-	text-transform: uppercase;
-	font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .ShowImageField {
-	display: inline-block;
+  display: inline-block;
 }
 
 .ShowImageField .Label {
-	margin: 0 0 5px 10px;
-	text-transform: uppercase;
-	font-weight: 600;
+  margin: 0 0 5px 10px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
-
 
 .ValidationError {
-	display: block;
-	color: red;
-	margin-top: 5px;
+  display: block;
+  color: red;
+  margin-top: 5px;
 }
 
-
 .BottomActions {
-	margin: 20px 0;
+  margin: 20px 0;
 }
 
 .InlineTable {
-	width: 500px;
-	margin-top: 10px;
-	margin-bottom: 5px;
-	border-collapse: collapse;
+  width: 500px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-collapse: collapse;
 }
 
 .InlineTable th {
-	font-size: 0.9em;
-	padding-bottom: 5px;
-	padding-left: 7px;
-	padding-right: 20px;
-	text-align: left;
+  font-size: 0.9em;
+  padding-bottom: 5px;
+  padding-left: 7px;
+  padding-right: 20px;
+  text-align: left;
 }
 
 .InlineTable tbody tr {
-	
-	background-color: #EEE;;
+  background-color: #eee;
 }
 
 .InlineTable td {
-	padding: 2px 6px;
-	text-align: left;
+  padding: 2px 6px;
+  text-align: left;
 }
 
-
 .InlineTable select {
-	outline: none;
-	border-radius: 5px;
-	background: #fafafa;
-	border: 0;
-	width: 100%;
-	padding: 5px;
+  outline: none;
+  border-radius: 5px;
+  background: #fafafa;
+  border: 0;
+  width: 100%;
+  padding: 5px;
 }
 
 .InlineTable input {
-	border-radius: 5px;
-	background: #fafafa;
-	border: 0;
-	width: 100%;
-	padding: 5px;
-	outline: none;
-	width: 100px;
+  border-radius: 5px;
+  background: #fafafa;
+  border: 0;
+  width: 100%;
+  padding: 5px;
+  outline: none;
+  width: 100px;
 }
 
-
 .Button {
-	padding: 8px 30px;
-	font: inherit;
-	font-weight: 600;
-	outline: 0;
-	text-decoration: none;
-	text-align: center;
-	cursor: pointer;
-	border: 2px solid #43D2B4;
-	border-radius: 50px;
-	margin-right: 10px;
-	background-color: #fff;
-	transition: background-color .2s ease-out;
-	color: #43D2B4;
+  padding: 8px 30px;
+  font: inherit;
+  font-weight: 600;
+  outline: 0;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #43d2b4;
+  border-radius: 50px;
+  margin-right: 10px;
+  background-color: #fff;
+  transition: background-color 0.2s ease-out;
+  color: #43d2b4;
 }
 
 .Button svg {
-	display: inline-block;
-	height: 12px;
-	margin-right: 3px;
+  display: inline-block;
+  height: 12px;
+  margin-right: 3px;
 }
 
 .Button:hover {
-	background-color: #eafffb;
+  background-color: #eafffb;
 }
 
 .Button:focus {
-	background-color: #d1fff5;
+  background-color: #d1fff5;
 }
 
 .Button:disabled {
-	border-color: #ddd;
-	color: #ddd;
+  border-color: #ddd;
+  color: #ddd;
 }
 
 .Button.Accent {
-	color: #222;
-	font-weight: 600;
+  color: #222;
+  font-weight: 600;
 }
 
 .Button.Active:hover {
-	background-color: #31c4a4;
+  background-color: #31c4a4;
 }
 
-.Button.Active, .Button.Active a {
-	border: 0;
-	background-color: #43D2B4;
-	color: white;
-	font-weight: 600;
+.Button.Active,
+.Button.Active a {
+  border: 0;
+  background-color: #43d2b4;
+  color: white;
+  font-weight: 600;
 }
 
 .IconButton {
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	cursor: pointer;
-	padding: 5px 5px;
-	color: #aaa;
-	border-radius: 5px;
-	transition: background-color .4s ease-out;
-	transition: color .2s ease-out;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  padding: 5px 5px;
+  color: #aaa;
+  border-radius: 5px;
+  transition: background-color 0.4s ease-out;
+  transition: color 0.2s ease-out;
 }
 
 .IconButton svg {
-	
 }
 
 .IconButton:hover {
-	color: #000;
-	background-color: #eee;
+  color: #000;
+  background-color: #eee;
 }
 
 .IconButton.Delete:hover {
-	color: red;
-	background-color: rgb(255, 227, 227);
+  color: red;
+  background-color: rgb(255, 227, 227);
 }
 
 /* Modal */
 
 .BackDrop {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: rgba(0,0,0,0.7);
-	padding: 50px;
-	z-index: 1000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 50px;
+  z-index: 1000;
 }
 
 .ModalWindow {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: white;
-	min-width: 400px;
-	max-width: 100%;
-	max-height: 90%;
-	padding: 20px;
-	border-radius: 5px;
-	text-align: center;
-	overflow-y: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  min-width: 400px;
+  max-width: 100%;
+  max-height: 90%;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  overflow-y: auto;
 }
 
 .ModalHead {
-	font-weight: 600;
-	margin-bottom: 20px;
-	text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .ModalText {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .ModalWindow .SelectionList {
-	overflow-y: auto;
-	max-height: 400px;
+  overflow-y: auto;
+  max-height: 400px;
 }
 
 .ModalFooter {
-	margin-top: 40px;
+  margin-top: 40px;
 }
-
 
 .TeamLogo {
-	max-width: 32px;
-	max-height: 32px;
+  max-width: 32px;
+  max-height: 32px;
 }
 
-
 .Sortable {
-	border-radius: 5px;
-	background-color: #f4f4f4;
-	padding: 8px 10px;
-	margin-bottom: 2px;
-	display: flex;
-	cursor: pointer;
-	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  padding: 8px 10px;
+  margin-bottom: 2px;
+  display: flex;
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
 
 .Sortable .Logo {
-	width: 20px;
-	height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .Sortable .Name {
-	margin-left: 10px;
-	align-self: center;
+  margin-left: 10px;
+  align-self: center;
 }
 
 .Sortable.Selected {
-	background-color: #d1d1d1;
+  background-color: #d1d1d1;
 }
 
 .SortableColumns {
-	display: flex;
-	width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .SortableColumn.Wide {
-	flex-grow: 10;
+  flex-grow: 10;
 }
 
 .SortableColumn.Narrow {
-	
 }
 
 .SortableFixed {
-	margin-bottom: 3px;
-	padding: 8px;
-	border-left: 10px solid #ccc;
+  margin-bottom: 3px;
+  padding: 8px;
+  border-left: 10px solid #ccc;
 }
 
+.SortableFixed.c1 {
+  border-left-color: #fdd835;
+}
+.SortableFixed.c2 {
+  border-left-color: #f4511e;
+}
+.SortableFixed.c3 {
+  border-left-color: #d81b60;
+}
+.SortableFixed.c4 {
+  border-left-color: #1e88e5;
+}
+.SortableFixed.c5 {
+  border-left-color: #43a047;
+}
+.SortableFixed.c6 {
+  border-left-color: #5e35b1;
+}
+.SortableFixed.c7 {
+  border-left-color: #fb8c00;
+}
+.SortableFixed.c8 {
+  border-left-color: #00897b;
+}
+.SortableFixed.c9 {
+  border-left-color: #6d4c41;
+}
+.SortableFixed.c10 {
+  border-left-color: #43a047;
+}
 
-.SortableFixed.c1 { border-left-color: #FDD835; }
-.SortableFixed.c2 { border-left-color: #F4511E; }
-.SortableFixed.c3 { border-left-color: #D81B60; }
-.SortableFixed.c4 { border-left-color: #1E88E5; }
-.SortableFixed.c5 { border-left-color: #43A047; }
-.SortableFixed.c6 { border-left-color: #5E35B1; }
-.SortableFixed.c7 { border-left-color: #FB8C00; }
-.SortableFixed.c8 { border-left-color: #00897B; }
-.SortableFixed.c9 { border-left-color: #6D4C41; }
-.SortableFixed.c10 { border-left-color: #43A047; }
-
-.SortableFixed.c11 { border-left-color: #7CB342; }
-.SortableFixed.c12 { border-left-color: #C0CA33; }
-.SortableFixed.c13 { border-left-color: #FDD835; }
-.SortableFixed.c14 { border-left-color: #FFB300; }
+.SortableFixed.c11 {
+  border-left-color: #7cb342;
+}
+.SortableFixed.c12 {
+  border-left-color: #c0ca33;
+}
+.SortableFixed.c13 {
+  border-left-color: #fdd835;
+}
+.SortableFixed.c14 {
+  border-left-color: #ffb300;
+}
 
 .CalendarView {
-	
-	
 }
 
 .CalendarMessages .Messages {
-	margin: 20px 0;
+  margin: 20px 0;
 }
 
 .CalendarMessages .Messages li {
-	padding: 7px 10px; 
-	margin-bottom: 5px;
-	border-radius: 5px;
-	display: block;
-	width: 100%;
+  padding: 7px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
 }
 
-
-
 .CalendarMessage1 {
-	color: white;
-	font-size: 0.8rem;
-	background-color: green
+  color: white;
+  font-size: 0.8rem;
+  background-color: green;
 }
 
 .CalendarMessage2 {
-	color: white;
-	font-size: 0.8rem;
-	background-color: orange;
+  color: white;
+  font-size: 0.8rem;
+  background-color: orange;
 }
 
 .CalendarMessage3 {
-	color: white;
-	font-weight: 600;
-	font-size: 0.8rem;
-	background-color: red
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background-color: red;
 }
 
 .PlayDay {
-	min-width: 400px;
-	padding: 5px;
-	margin: 0 10px 10px 0;
-	text-align: center;
+  min-width: 400px;
+  padding: 5px;
+  margin: 0 10px 10px 0;
+  text-align: center;
 }
 
 .CalendarView h3 {
-	cursor: pointer;
+  cursor: pointer;
 }
 
-
 .PlayDay table {
-	width: 100%;
-	margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .PlayDay table td {
-	text-align: center;
-	padding: 2px 5px 2px 5px;
+  text-align: center;
+  padding: 2px 5px 2px 5px;
 }
 
 .PlayDay .ScoreCell {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .PlayDay .Score {
-	display: inline-block;
-	color: black;
-	font-size: 1.5rem;
-	font-weight: 800;
-	background-color: rgba(0, 0, 0, 0.1);
-	border-radius: 5px;
-	min-width: 34px;
-	padding: 3px;
-	margin: 0 2px;
+  display: inline-block;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 800;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-width: 34px;
+  padding: 3px;
+  margin: 0 2px;
 }
 
-
-.StatusWarn { color: orange; }
-.StatusStop { color: red; }
-.StatusDisabled { color: darkgray; }
-
+.StatusWarn {
+  color: orange;
+}
+.StatusStop {
+  color: red;
+}
+.StatusDisabled {
+  color: darkgray;
+}
 
 .LogoEdit .Display {
-	display: flex;
+  display: flex;
 }
 
 .LogoEdit .Logo {
-	width: 324px;
-	height: 324px;
-	border: 2px dashed #ccc;
-	padding: 10px;
-	cursor: pointer;
-	margin-right: 20px;
-	display: flex;
-	justify-content: center;
+  width: 324px;
+  height: 324px;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .LogoEdit .Logo:hover {
-	background-color: #eee;
+  background-color: #eee;
 }
 
 .LogoEdit .Logo img {
-	max-width: 300px;
-	max-height: 300px;
-	align-self: center;
+  max-width: 300px;
+  max-height: 300px;
+  align-self: center;
 }
 
 .LogoEdit .NoImage {
-	text-align: center;
+  text-align: center;
 }
 
 .LogoEdit .NoImage h3 {
-	margin-top: 80px;
+  margin-top: 80px;
 }
 
 .LogoEdit .NoImage p {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .GoEditor {
-	width: 300px;
-	border: 2px dashed #ccc;
-	text-align: center;
+  width: 300px;
+  border: 2px dashed #ccc;
+  text-align: center;
 }
 
 .GoEditor h3 {
-	margin-top: 50px;
-	margin-bottom: 40px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 .GoEditor p {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .UploadDrag {
-	background-color: #ffffb1;
+  background-color: #ffffb1;
 }
 
 .UploadAccept {
-	background-color: rgb(198, 255, 243);
+  background-color: rgb(198, 255, 243);
 }
 
 .UploadReject {
-	background-color: #ffa3a3;
+  background-color: #ffa3a3;
 }
 
 .UploadContainer {
-	padding-top: 5px;
-	display: flex;
-	width: 100%;
+  padding-top: 5px;
+  display: flex;
+  width: 100%;
 }
 
 .UploadContainer .Button {
-	margin: 0 10px;
+  margin: 0 10px;
 }
 
 .UploadContainer .Upload {
-	min-width: 250px;
-	min-height: 200px;
-	border: 2px dashed #ccc;
-	padding: 10px;
-	cursor: pointer;
-	margin-right: 20px;
-	text-align: center;
-	position: relative;
-	padding: 2px;
-	overflow: hidden;
+  min-width: 250px;
+  min-height: 200px;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 20px;
+  text-align: center;
+  position: relative;
+  padding: 2px;
+  overflow: hidden;
 }
 
 .UploadContainer .Upload img {
-	display: block;
-	position: absolute;
-	top: 0; 
-	bottom: 0;
-	left: 0; 
-	right: 0;
-	margin: auto;
-	max-width: 180px;
-	max-height: 180px;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 180px;
+  max-height: 180px;
 }
 
 .UploadContainer .Upload.Large {
-	width: 540px;
-	min-height: 300px;
+  width: 540px;
+  min-height: 300px;
 }
 
 .UploadContainer .Upload.Large img {
-	max-width: 500px;
-	max-height: 300px;
+  max-width: 500px;
+  max-height: 300px;
 }
 
 .UploadContainer .Remove {
-	width: 230px;
-	text-align: center;
+  width: 230px;
+  text-align: center;
 }
 
 .UploadContainer h3 {
-	margin: 10px 0;
-	background: none;
-	padding: 0;
+  margin: 10px 0;
+  background: none;
+  padding: 0;
 }
 
 .UploadContainer p {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-
 .EditorContent {
-	
 }
 
 .EditorContent .Logo {
-	border: 1px solid #eee;
-	margin-right: 20px;
-	width: 70%;
+  border: 1px solid #eee;
+  margin-right: 20px;
+  width: 70%;
 }
 
 .EditorContent .Editor {
-	display: flex;
-	align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 
 .EditorContent .Controls {
-	width: 30%;
+  width: 30%;
 }
 
 .EditorContent .Templates {
-	display: flex;
-	margin: 10px 0;
+  display: flex;
+  margin: 10px 0;
 }
 
-
-
 .EditorContent .Templates .MiniLogo {
-	cursor: pointer;
-	width: 100px;
-	height: 100px;
-	padding: 5px;
-	border: 1px solid #eee;
-	margin-right: 10px;
-	overflow: hidden;
-	
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid #eee;
+  margin-right: 10px;
+  overflow: hidden;
 }
 
 .EditorContent .Templates .MiniLogo svg {
-	max-height: 100%;
-	max-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
-
 .Flags {
-	display: flex;
+  display: flex;
 }
 
 .Flags .Flag {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 .Flags .FlagCaption {
-	font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 .Flags .FlagValue {
-	display: none;
+  display: none;
 }
 
 .Flags .FlagTrue {
-	color: #000;
+  color: #000;
 }
 
 .Flags .FlagFalse {
-	color: #ddd;
+  color: #ddd;
 }
 
 .Flags .Editable:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
-
 
 .SelectedTactic {
-	width: 100%;
-	padding-right: 20px;
+  width: 100%;
+  padding-right: 20px;
 }
 
-
 .TacticSelector {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .TacticThumbnail {
-	border: 3px solid white;
-	padding: 10px;
-	margin-right: 20px;
+  border: 3px solid white;
+  padding: 10px;
+  margin-right: 20px;
 }
 
 .TacticThumbnail.Active {
-	border: 3px solid #43D2B4;
+  border: 3px solid #43d2b4;
 }
 
 .TacticThumbnail svg {
-	width: 150px;
+  width: 150px;
 }
 
 .TacticThumbnail .TacticName {
-	text-align: center;
+  text-align: center;
 }
 
 .TacticDetails {
-	display: flex;
-	width: 100%;
-	margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .TacticDetails .Field {
-	margin-right: 20px;
-	padding-left: 12px;
+  margin-right: 20px;
+  padding-left: 12px;
 }
-
 
 .TacticDetails .Field svg {
-	width: 400px;
+  width: 400px;
 }
 
-
 .TacticDetails h3 {
-	color: #43D2B4;
-	font-weight: 800;
+  color: #43d2b4;
+  font-weight: 800;
 }
 
 .TacticDetails h4 {
-	margin-bottom: 10px;
-	font-size: 1.2em;
-	font-weight: 600;
-	text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .TacticDetails p {
 }
 
-
 .PlayerAvatar {
-	border-radius: 50px;
-	border: 1px solid #ddd;
-	margin: 0 10px;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  margin: 0 10px;
 }
 
 .PlayerAvatar.Mini {
-	min-width: 20px;
-	min-height: 20px;
-	max-width: 50px;
-	max-height: 50px;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 50px;
+  max-height: 50px;
 }
 
-
 .PlayerAvatar.Large {
-	border-radius: 5px;
-	max-width: 200px;
-	max-height: 200px;
+  border-radius: 5px;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .IdCard {
-	border: 1px solid #ddd;
-	min-width: 30px !important;
-	min-height: 30px !important;
-	max-width: 150px !important;
-	max-height: 150px !important;
-	margin: 0px 10px;
+  border: 1px solid #ddd;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  max-width: 150px !important;
+  max-height: 150px !important;
+  margin: 0px 10px;
 }
 
-
 .Actions .Action {
-	display: block;
-	text-align: center;
-	margin-right: 20px;
-	height: 100px;
-	padding-top:70px;
+  display: block;
+  text-align: center;
+  margin-right: 20px;
+  height: 100px;
+  padding-top: 70px;
 }
 
 .Actions .Content {
-	display: flex;
+  display: flex;
 }
 
-.Actions .Action.Team { background: url('1/ac/team.png') no-repeat center top; }
-.Actions .Action.Calendar { background: url('1/ac/calendar.png') no-repeat center top; }
+.Actions .Action.Team {
+  background: url('1/ac/team.png') no-repeat center top;
+}
+.Actions .Action.Calendar {
+  background: url('1/ac/calendar.png') no-repeat center top;
+}
 
-.Actions .Action.Organization { background: url('1/ac/generic-1.png') no-repeat center top; }
-.Actions .Action.Seasons { background: url('1/ac/generic-4.png') no-repeat center top; }
-.Actions .Action.Contents { background: url('1/ac/contents.png') no-repeat center top; }
+.Actions .Action.Organization {
+  background: url('1/ac/generic-1.png') no-repeat center top;
+}
+.Actions .Action.Seasons {
+  background: url('1/ac/generic-4.png') no-repeat center top;
+}
+.Actions .Action.Contents {
+  background: url('1/ac/contents.png') no-repeat center top;
+}
 
-.Actions .Action.Tournament { background: url('1/ac/tournament.png') no-repeat center top; }
-.Actions .Action.Field { background: url('1/ac/field.png') no-repeat center top; }
-.Actions .Action.Apparel { background: url('1/ac/apparel.png') no-repeat center top; }
-.Actions .Action.Tactic { background: url('1/ac/tactics.png') no-repeat center top; }
-.Actions .Action.Players { background: url('1/ac/players.png') no-repeat center top; }
-.Actions .Action.Logo { background: url('1/ac/logo.png') no-repeat center top; }
-
-
+.Actions .Action.Tournament {
+  background: url('1/ac/tournament.png') no-repeat center top;
+}
+.Actions .Action.Field {
+  background: url('1/ac/field.png') no-repeat center top;
+}
+.Actions .Action.Apparel {
+  background: url('1/ac/apparel.png') no-repeat center top;
+}
+.Actions .Action.Tactic {
+  background: url('1/ac/tactics.png') no-repeat center top;
+}
+.Actions .Action.Players {
+  background: url('1/ac/players.png') no-repeat center top;
+}
+.Actions .Action.Logo {
+  background: url('1/ac/logo.png') no-repeat center top;
+}
 
 .PlayerGrid {
-	display: flex;
-	flex-wrap: wrap;
-	padding-top: 10px;
-	
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
 }
 
 .PlayerGrid .Item {
-	text-align: center;
-	margin: 6px;
-	width: 100px;
-		
+  text-align: center;
+  margin: 6px;
+  width: 100px;
 }
 
 .PlayerGrid .Item .PlayerAvatar {
-	width: 80px;
-	border: 4px solid #f8f8f8;
+  width: 80px;
+  border: 4px solid #f8f8f8;
 }
 
 .PlayerGrid .Name {
-	width: 100%;
+  width: 100%;
 }
 
 .PlayerGrid .Name a {
-	font-size: 0.8em;
-	font-weight: 600;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 
-
 .PlayerGrid .Position {
-	font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 /* Content Editor */
 
-
 .RichEditor {
-	margin: 10px 10px 10px 36px;
-	min-height: 350px;
-	border: 1px solid #eee;
-	padding: 10px;
-	outline: none;
+  margin: 10px 10px 10px 36px;
+  min-height: 350px;
+  border: 1px solid #eee;
+  padding: 10px;
+  outline: none;
 }
-
 
 .RichEditor:focus {
-	border-bottom: 2px solid #43D2B4;
+  border-bottom: 2px solid #43d2b4;
 }
 
-.RichEditor h1, .RichEditor h2, .RichEditor h3, .RichEditor h4, .RichEditor p {
-	margin: 0;
-	padding: 0;
-	background-color: white;
-	margin-bottom: 10px;
+.RichEditor h1,
+.RichEditor h2,
+.RichEditor h3,
+.RichEditor h4,
+.RichEditor p {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  margin-bottom: 10px;
 }
 
-.RichEditor h1 { color: #000; font-size: 2em; font-weight: 800; }
-.RichEditor h2 { color: #000; font-size: 1.6em; font-weight: 800; }
-.RichEditor h3 { color: #000; font-size: 1.3em; font-weight: 800; }
-.RichEditor h4 { color: #000; font-size: 1.1em; font-weight: 800; }
-
-.ae-container h1, .ae-container h2, .ae-container h3, .ae-container h4, .ae-container p {
-	color: #000 !important;
-	margin: 0;
-	padding: 0;
-	background-color: white;
-	margin-bottom: 10px;
+.RichEditor h1 {
+  color: #000;
+  font-size: 2em;
+  font-weight: 800;
+}
+.RichEditor h2 {
+  color: #000;
+  font-size: 1.6em;
+  font-weight: 800;
+}
+.RichEditor h3 {
+  color: #000;
+  font-size: 1.3em;
+  font-weight: 800;
+}
+.RichEditor h4 {
+  color: #000;
+  font-size: 1.1em;
+  font-weight: 800;
 }
 
-.ae-container h1 { color: #000; font-size: 2rem; font-weight: 800; }
-.ae-container h2 { color: #000; font-size: 1.6rem; font-weight: 800; }
-.ae-container h3 { color: #000; font-size: 1.3rem; font-weight: 800; }
-.ae-container h4 { color: #000; font-size: 1.1rem; font-weight: 800; }
-
-.ae-toolbar-styles, .ae-toolbar {
-	z-index: 300;
+.ae-container h1,
+.ae-container h2,
+.ae-container h3,
+.ae-container h4,
+.ae-container p {
+  color: #000 !important;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  margin-bottom: 10px;
 }
 
+.ae-container h1 {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 800;
+}
+.ae-container h2 {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+.ae-container h3 {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.ae-container h4 {
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.ae-toolbar-styles,
+.ae-toolbar {
+  z-index: 300;
+}
 
 .SearchBox {
-	
 }
 
 .SearchBox .Text.Search {
-	width: 200px;
-	margin-right: 10px;
+  width: 200px;
+  margin-right: 10px;
 }
 
-.ModalWindow .SearchResults  {
-	max-height: 400px;
-	overflow-y: auto;
+.ModalWindow .SearchResults {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .SearchResults {
-	text-align: left;
+  text-align: left;
 }
 
 .SearchResults .Selected {
-	background-color: #eee;
-	border-radius: 5px;
-	padding: 0 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 0 10px;
 }
 
 .Wizard {
-	width: 500px;
-	border-radius: 5px;
-	border: 1px solid #eee;
+  width: 500px;
+  border-radius: 5px;
+  border: 1px solid #eee;
 }
 
 .Wizard .Title {
-	background-color: #eee;
-	text-align: center;
-	padding: 10px;
+  background-color: #eee;
+  text-align: center;
+  padding: 10px;
 }
 
 .Wizard .Content {
-
 }
 
 .Wizard .Buttons {
-	padding: 10px;
+  padding: 10px;
 }
 
 .PullRight {
-	float: right;
+  float: right;
 }
-
 
 .PlayerSearchResult.Selected {
-	background-color: #ccc;
+  background-color: #ccc;
 }
 
-
 .Notifications .Unread {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .Notifications .Read {
-	color: #999;
+  color: #999;
 }
 
 .NotificationDetails {
-	overflow-y: auto;
+  overflow-y: auto;
 }
 
 .NotificationDetails .Title {
-	margin: 10px 0;
-	font-weight: 600;
-	font-size: 1.2em;
-
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 1.2em;
 }
 
 .Clickable {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .TimeStamp {
-	font-size: 0.8em;
-	white-space: nowrap;
+  font-size: 0.8em;
+  white-space: nowrap;
 }
 
 /* Match details */
 
 .MatchDetails {
-
 }
 
 .MatchDetails h4 {
-	background-color: #fafafa;
-	color: #444;
-	padding: 10px 0;
-	text-align: center;
-	font-size: 1.5em;
-	font-weight: 600;
-	text-transform: uppercase;
-	margin: 0 -20px 20px -20px;
+  background-color: #fafafa;
+  color: #444;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0 -20px 20px -20px;
 }
 
-
 .MatchTeams {
-	display: flex;
+  display: flex;
 }
 
 .MatchTeams .Team {
-	text-align: center;
-	padding: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 1 1 0;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 0;
 }
 
 .MatchStatus {
-	flex: 2 2 0;
-	text-align: center;
-	margin-bottom: 20px;
+  flex: 2 2 0;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .MatchStatus .Details {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .MatchStatus .Details .K {
-	display: block;
-	font-size: 0.8em;
-	color: #999;
+  display: block;
+  font-size: 0.8em;
+  color: #999;
 }
 
 .MatchStatus .Details .V {
-	display: block;
-	font-size: 1.2em;
-	font-weight: 600;
-	margin-bottom: 5px;
+  display: block;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .MatchStatus .Details .Day {
-	font-size: 1.5em;
-	font-weight: 600;
-	margin-bottom: 5px;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
-
 .LargeTeamInfo img {
-	max-width: 200px;
-	max-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .MatchStatus .Score {
-	font-size: 10em;
-	font-weight: 600;
-	margin: 0 20px;
-	line-height: 1em;
+  font-size: 10em;
+  font-weight: 600;
+  margin: 0 20px;
+  line-height: 1em;
 }
 
 .MatchRefers {
-	text-align: center;
-	margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .MatchRefers .Horizontal {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .MatchRefers .Refer {
-	text-align: center;
-	margin: 0 10px 10px 10px;
-	flex: 1 1 0;
+  text-align: center;
+  margin: 0 10px 10px 10px;
+  flex: 1 1 0;
 }
 
-
 .MatchPlayersTop {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .MatchPlayersContainer {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .MatchPlayers {
-	width: 370px;
+  width: 370px;
 }
 
 .MatchPlayers h3 {
-	text-align: center;
+  text-align: center;
 }
 
 .ApparelNumber {
-	font-weight: 600;
-	font-size: 1.2em;
-	background-color: #eee;
-	border: 1px solid #ccc;
-	padding: 4px 10px;
-	border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.2em;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+  border-radius: 50px;
 }
 
 .ApparelNumber.AttendsTrue {
-	background-color: #1ca539;
-	color: #FFF;
-	border: none;
+  background-color: #1ca539;
+  color: #fff;
+  border: none;
 }
 
 .ApparelNumber.AttendsFalse {
-	background-color: #e02828;
-	color: #FFF;
-	border: none;
+  background-color: #e02828;
+  color: #fff;
+  border: none;
 }
 
 .Legend {
-	margin: 20px 0;
-	text-align: center;
+  margin: 20px 0;
+  text-align: center;
 }
 
 .Legend .ApparelNumber {
-	margin-left: 10px;
+  margin-left: 10px;
 }
-
 
 /* Match event */
 
 .MatchEventsTable {
-	width: 100%;
+  width: 100%;
 }
-
 
 button.Center {
-	display: block;
-	margin: 0 auto 20px auto;
+  display: block;
+  margin: 0 auto 20px auto;
 }
 
-
 .MatchEventsTable .Entry {
-	display: flex;
-	flex-wrap: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .MatchEventsTable .Entry:before {
-	content: '';
-	width: 3px;
-	background-color: aliceblue;
-	position: relative;
-	left: 50%;
-	z-index: -1;
+  content: '';
+  width: 3px;
+  background-color: aliceblue;
+  position: relative;
+  left: 50%;
+  z-index: -1;
 }
 
 .MatchEventsTable .Time {
-	margin-bottom: 10px;
-	border: 2px solid aliceblue;
-	border-radius: 100px;
-	background-color: white;
-	padding: 5px 12px;
+  margin-bottom: 10px;
+  border: 2px solid aliceblue;
+  border-radius: 100px;
+  background-color: white;
+  padding: 5px 12px;
 }
 
 .MatchEventsTable .Hour {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .MatchEventsTable .Left {
-	
 }
-
 
 .MatchEventsTable .Right {
-	
-	text-align: right;
+  text-align: right;
 }
-
 
 .MatchEventsTable .Central {
-	text-align: center;
-	flex: 1 1 0;
-	margin: 0 20px;
+  text-align: center;
+  flex: 1 1 0;
+  margin: 0 20px;
 }
 
-
 .MatchEventsTable .Player {
-	flex: 1.7 1.7 0;
+  flex: 1.7 1.7 0;
 }
 
 .MatchEventsTable .Type {
-	flex: 1 1 0;
+  flex: 1 1 0;
 }
 
 .MatchEventsTable .Delete {
-	flex: 0.3 0.3 0;
-	margin: 0;
+  flex: 0.3 0.3 0;
+  margin: 0;
 }
 
 .MatchEvents .Wide {
-	display: block;
-	margin: 0 auto;
-	text-align: center;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .MatchEvents .Wide .EventType {
-	display: block;
+  display: block;
 }
 
 .MatchEvents .Wide .EventType.Single {
-	display: inline-block;
-	padding: 6px 15px;
-	margin: 0 2px 15px 0;
+  display: inline-block;
+  padding: 6px 15px;
+  margin: 0 2px 15px 0;
 }
 
 .MatchEvents .Wide .Time {
-	border: none;
+  border: none;
 }
 
-
-
 .MatchEventsTable .EntryBox {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
 }
 
 .MatchEventsTable .Entry .PlayerAvatar {
-	margin: 0 10px;
+  margin: 0 10px;
 }
 
 .MatchEventsTable .EntryBox .ApparelNumber {
-	margin: 0 10px;
+  margin: 0 10px;
 }
-
 
 .MatchEventsTable .EventType {
-	display: inline-block;
-	font-weight: 600;
-	border-radius: 50px;
-	background-color: #f1f1f1;
-	padding: 3px 20px;
-	text-align: center;
-	font-size: 0.9em;
+  display: inline-block;
+  font-weight: 600;
+  border-radius: 50px;
+  background-color: #f1f1f1;
+  padding: 3px 20px;
+  text-align: center;
+  font-size: 0.9em;
 }
 
-
 .MatchEventTypeField .RadioItems {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .MatchEventTypeField .RadioContent {
-	font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 .MatchEventTypeField .RadioItem {
-	padding: 5px;
-	width: 210px;
-	background-color: #DDD;
-	border-radius: 5px;
+  padding: 5px;
+  width: 210px;
+  background-color: #ddd;
+  border-radius: 5px;
 }
 
-
 .MatchEventTeamField .RadioItems {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .MatchEventTeamField .RadioItem {
-	width: 48%;
+  width: 48%;
 }
 
 .MatchEventPlayerField .RadioItems {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .MatchEventPlayerField .RadioItem {
-	width: 250px;
+  width: 250px;
 }
 
 .MatchEventPlayerField .RadioItem {
-	width: 250px;
+  width: 250px;
 }
 
-
-.EventType.Type1 { background-color: orange; color: white; }
-.EventType.Type10 { background-color: orange; color: white; }
-.EventType.Type11 { background-color: orange; color: white; }
-.EventType.Type12 { background-color: orange; color: white; }
-.EventType.Type13 { background-color: #1E88E5; color: white; }
-.EventType.Type15 { background-color: orange; color: white; }
-.EventType.Type16 { background-color: orange; color: white; }
-.EventType.Type17 { background-color: orange; color: white; }
-.EventType.Type18 { background-color: orange; color: white; }
-.EventType.Type31 { background-color: yellowgreen; color: white; font-size: 1.2em; text-transform: uppercase; }
-.EventType.Type61 { background-color: #ffee00; }
-.EventType.Type62 { background-color: red; color: white; }
-.EventType.Type100 { background-color: #1E88E5; color: white; }
+.EventType.Type1 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type10 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type11 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type12 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type13 {
+  background-color: #1e88e5;
+  color: white;
+}
+.EventType.Type15 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type16 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type17 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type18 {
+  background-color: orange;
+  color: white;
+}
+.EventType.Type31 {
+  background-color: yellowgreen;
+  color: white;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+.EventType.Type61 {
+  background-color: #ffee00;
+}
+.EventType.Type62 {
+  background-color: red;
+  color: white;
+}
+.EventType.Type100 {
+  background-color: #1e88e5;
+  color: white;
+}
 
 .PlayerList td .Button {
-	display: inline;
-	margin: 0;
-	margin-left: 20px;
+  display: inline;
+  margin: 0;
+  margin-left: 20px;
 }
 
 .PlayerList .SanctionedPlayer {
-	padding-left: 8px;
-	font-size: 0.9rem;
-	font-weight: 800;
-	color: red;
+  padding-left: 8px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: red;
 }
 
 .PlayerEvent {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .PlayerEvent .Type {
-	padding: 0 10px;
+  padding: 0 10px;
 }
 
 .PlayerEvent .Data1 {
-	margin-left: 20px;
+  margin-left: 20px;
 }
 
 .BottomSep20 {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .BottomSep10 {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .Left {
-	text-align: left;
+  text-align: left;
 }
 
 .Right {
-	text-align: right;
+  text-align: right;
 }
 
 .Button.Right {
-	float: right;
+  float: right;
 }
 
 .ListHint {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-
 .Flex h3 {
-	border-bottom: 1px solid #F1F1F1;
-	padding-bottom: 10px;
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 10px;
 }
 
 .Flex {
-	display: flex;
+  display: flex;
 }
 
 .Flex .Teams {
-	width: 300px;
-	height: 80%;
-	overflow: auto;
+  width: 300px;
+  height: 80%;
+  overflow: auto;
 }
 
 .Flex .Teams ul {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .Flex .Stages {
-	width: 640px;
-	margin-right: 20px;
+  width: 640px;
+  margin-right: 20px;
 }
 
 .StageName {
-	display: inline-block;
-	font-weight: 600;
-	padding: 4px 0;
-	white-space: nowrap;
+  display: inline-block;
+  font-weight: 600;
+  padding: 4px 0;
+  white-space: nowrap;
 }
 
 .StageDescription {
-	overflow: hidden;
-	text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .GroupName {
-	display: inline-block;
-	font-weight: 600;
-	padding: 4px 0;
-	white-space: nowrap;
+  display: inline-block;
+  font-weight: 600;
+  padding: 4px 0;
+  white-space: nowrap;
 }
 
 .StageStatus {
-	font-size: 0.8rem;
-	margin-left: 5px;
-	border-radius: 3px;
-	color: white;
-	padding: 2px 6px;
+  font-size: 0.8rem;
+  margin-left: 5px;
+  border-radius: 3px;
+  color: white;
+  padding: 2px 6px;
 }
 
-
 .StageStatus1 {
-	background-color: #eff1ea;
-	color: #333;
+  background-color: #eff1ea;
+  color: #333;
 }
 
 .StageStatus2 {
-	background-color: #98D800;
+  background-color: #98d800;
 }
 
 .StageStatus3 {
-	background-color: #bdbdbd;
+  background-color: #bdbdbd;
 }
 
 .Button.Second {
-	padding: 0;
-	margin: 0 10px 20px 0;
-	background: none;
-	border: none;
-	color: #567DFF;
-	text-decoration: underline;
+  padding: 0;
+  margin: 0 10px 20px 0;
+  background: none;
+  border: none;
+  color: #567dff;
+  text-decoration: underline;
 }
 
 .ToggleButton.Right {
-	margin-top: 5px;
-	margin-right: 10px;
-	float: right;
-	font-size: 0.9rem;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: right;
+  font-size: 0.9rem;
 }
 
 .Button.Third {
-	padding: 0;
-	margin: 0;
-	margin-left: 10px;
-	margin-right: 5px;
-	background: none;
-	border: none;
-	color: #567DFF;
-	text-decoration: underline;
-	font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  margin-right: 5px;
+  background: none;
+  border: none;
+  color: #567dff;
+  text-decoration: underline;
+  font-size: 0.9rem;
 }
 
 .Button.Link {
-	padding: 0;
-	margin: 0 0 10px 0;
-	margin-right: 10px;
-	background: none;
-	border: none;
-	color: #567DFF;
-	text-decoration: underline;
-	font-size: 0.9rem;
+  padding: 0;
+  margin: 0 0 10px 0;
+  margin-right: 10px;
+  background: none;
+  border: none;
+  color: #567dff;
+  text-decoration: underline;
+  font-size: 0.9rem;
 }
 
 .Button.Dangerous {
-	border-color: #e02828;
-	color: rgb(224, 40, 40);
+  border-color: #e02828;
+  color: rgb(224, 40, 40);
 }
 
 .Button.Dangerous:hover {
-	background-color: rgba(224, 40, 40, 1);
-	color: white;
+  background-color: rgba(224, 40, 40, 1);
+  color: white;
 }
 
 .Button.Dangerous:focus {
-	background-color: rgba(224, 40, 40, 0.9);
-	color: white;
+  background-color: rgba(224, 40, 40, 0.9);
+  color: white;
 }
 
-
-
-.GamesWon  		{ color: #4DAEA1; }
-.GamesDraw 		{ color: #F9CC14; }
-.GamesLost 		{ color: #DF6D52; }
-.Points    		{ }
-.PointsAgainst 	{ }
+.GamesWon {
+  color: #4daea1;
+}
+.GamesDraw {
+  color: #f9cc14;
+}
+.GamesLost {
+  color: #df6d52;
+}
+.Points {
+}
+.PointsAgainst {
+}
 
 .TreeTable {
-	width: 100%;
-	max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 }
 
 .TreeTable .Number {
-	text-align: center;
-	padding-left: 5px;
-	padding-right: 5px;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .TreeTable td {
-	padding-top: 2px;
-	padding-bottom: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .TreeTable .Actions {
-	display: inline-flex;
-	float: right;
-	white-space: nowrap;
+  display: inline-flex;
+  float: right;
+  white-space: nowrap;
 }
 
 .Level2 {
-	padding-left: 20px;
+  padding-left: 20px;
 }
 
 .Level3 {
-	padding-left: 40px;
-	display: inline-flex;
+  padding-left: 40px;
+  display: inline-flex;
 }
 
 .DataTable .Level2 {
-	padding-left: 40px;
+  padding-left: 40px;
 }
 
 .Draggable {
-	display: inline-block;
-	padding: 4px 10px;
-	width: 250px;
-	max-width: 300px;
-	background-color: #ebe9e9;
-	font-weight: 600;
-	color: #565656;
-	border-radius: 5px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	margin-right: 5px;
+  display: inline-block;
+  padding: 4px 10px;
+  width: 250px;
+  max-width: 300px;
+  background-color: #ebe9e9;
+  font-weight: 600;
+  color: #565656;
+  border-radius: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-right: 5px;
 }
 
 .Draggable .Logo {
-	max-width: 16px;
-	max-height: 16px;
+  max-width: 16px;
+  max-height: 16px;
 }
 
 .DraggableTeam {
-	margin: 0 5px 5px 0;
-	width: 150px;
+  margin: 0 5px 5px 0;
+  width: 150px;
 }
 
 .DropTarget {
-	display: inline-block;
-	width: 250px;
-	max-width: 300px;
-	padding: 4px 10px;
-	font-weight: 400;
-	color: #ccc;
-	border: 2px solid #eee;
-	border-radius: 5px;
+  display: inline-block;
+  width: 250px;
+  max-width: 300px;
+  padding: 4px 10px;
+  font-weight: 400;
+  color: #ccc;
+  border: 2px solid #eee;
+  border-radius: 5px;
 }
 
 .DropTarget.Hover {
-	border: 2px dashed #1ca539;
+  border: 2px dashed #1ca539;
 }
 
-
 .NoTeam {
-	color: #CCC;
-	font-size: 8rem;
+  color: #ccc;
+  font-size: 8rem;
 }
 
 .MatchTeamDesc {
-	color: #ccc;
+  color: #ccc;
 }
 
-
 .Grid {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
 
 .GridItem {
-    padding-right: 10px;
-    margin-bottom: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
 }
 
-.Grid2 .GridItem { width: 50%; }
-.Grid3 .GridItem { width: 33%; }
-.Grid4 .GridItem { width: 25%; }
-.Grid5 .GridItem { width: 20%; }
-.Grid6 .GridItem { width: 16%; }
-.Grid7 .GridItem { width: 14%; }
+.Grid2 .GridItem {
+  width: 50%;
+}
+.Grid3 .GridItem {
+  width: 33%;
+}
+.Grid4 .GridItem {
+  width: 25%;
+}
+.Grid5 .GridItem {
+  width: 20%;
+}
+.Grid6 .GridItem {
+  width: 16%;
+}
+.Grid7 .GridItem {
+  width: 14%;
+}
 
 .TeamsGridItem {
-    padding: 10px;
-    text-align: center;
+  padding: 10px;
+  text-align: center;
 }
 
 .TeamsGridItem a {
-	display: block;
+  display: block;
 }
 
 .TeamsGridItem .TeamLogo {
-	max-width: 100px;
-	max-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
-
 .PlayerTeam {
-	display: flex;
-	border-bottom: 1px solid #CCC;
-	padding: 10px 0;
-	margin-bottom: 10px;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 .PlayerTeam .TeamName {
-	font-weight: 800;
-	font-size: 2rem;
-	text-transform: uppercase;
-	
+  font-weight: 800;
+  font-size: 2rem;
+  text-transform: uppercase;
 }
 
 .PlayerTeam .TournamentName {
-	font-weight: 800;
-	text-transform: uppercase;
-	margin-bottom: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .PlayerTeam .TeamName a {
-	font-weight: 800;
-	font-size: 2rem;
+  font-weight: 800;
+  font-size: 2rem;
 }
 
 .PlayerTeam .TeamLogo {
-	max-width: 140px;
-	max-height: 140px;
-	margin-right: 20px;
+  max-width: 140px;
+  max-height: 140px;
+  margin-right: 20px;
 }
 
 .PlayerTeam .Details {
-	flex-grow: 3;
+  flex-grow: 3;
 }
 
 .PlayerTeam .Apparel {
-	
 }
 
 .PlayerTeam .Apparel svg {
-	height: 130px;
-	margin: 0 20px;
+  height: 130px;
+  margin: 0 20px;
 }
 
 .PlayerTeam .TeamPhoto {
-	background-size: cover;
-	width: 400px;
+  background-size: cover;
+  width: 400px;
 }
 
 .PlayerTeam .NoEnroll {
-	padding: 10px;
-	color: white;
-	background-color: #e02828;
-	border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #e02828;
+  border-radius: 5px;
 }
 
 .PlayerTeam .Actions {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .Badge {
-	display: inline-block;
-	font-size: 0.8em;
-	font-weight: 600;
-	text-transform: uppercase;
-	margin-bottom: 10px;
-	border-radius: 5px;
-	border: 1px solid #00b7ff;
-	color: #00b7ff;
-	padding: 2px 5px;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #00b7ff;
+  color: #00b7ff;
+  padding: 2px 5px;
 }
 
-
-
 .NotFound {
-	width: 100%;
-	height: 600px;
-	background: url('1/notfound.svg') no-repeat;
-	background-position: center 50px;
-	background-size: 300px 300px;
-	padding-top: 400px;
-	text-align: center;
+  width: 100%;
+  height: 600px;
+  background: url('1/notfound.svg') no-repeat;
+  background-position: center 50px;
+  background-size: 300px 300px;
+  padding-top: 400px;
+  text-align: center;
 }
 
 .NotFound .Error {
-	font-size: 2em;
-	color: #777;
+  font-size: 2em;
+  color: #777;
 }
 
-
 .TeamAdmin {
-	margin-left: 5px;
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	border-radius: 10px;
-	background-color: #0EBC97;
+  margin-left: 5px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #0ebc97;
 }
 
 .PlayerSearchResult {
-	
 }
 
 .UserEventImage {
-	display: block;
-	max-height: 200px;
-	max-width: 100%;
-	border: 1px solid #555;
-	margin: 10px 0;
+  display: block;
+  max-height: 200px;
+  max-width: 100%;
+  border: 1px solid #555;
+  margin: 10px 0;
 }
 
-
 .NotificationInfo {
-	font-size: 1.2em;
-	margin: 10px 0 20px 0;
+  font-size: 1.2em;
+  margin: 10px 0 20px 0;
 }
 
 .NotificationWarning {
-	font-size: 1.2em;
-	margin: 0 0 20px 0;
-	color: red;
+  font-size: 1.2em;
+  margin: 0 0 20px 0;
+  color: red;
 }
 
 td.Currency {
-	text-align: right;
+  text-align: right;
 }
 
-
 .P {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .InviteStep .TextArea {
-	border: 1px solid #ccc;
-	padding: 10px;
-	height: 200px;
-	margin-top: 20px;
-	width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 200px;
+  margin-top: 20px;
+  width: 100%;
 }
 
-
 .GlobalSearchBox {
-	margin-top: 0px;
-	padding: 20px;
-	width: 100%;
-	max-width: 400px;
+  margin-top: 0px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .GlobalSearchBox form {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .GlobalSearchBox input {
-	flex: 1 6 0;
-	font-weight: 600;
-	padding: 5px 20px;
-	font-size: 1rem;
-	color: #000;
-	border-radius: 50px;
-	border: none;
-	background-color: rgba(0, 0, 0, 0.05);
-	width: 140px;
+  flex: 1 6 0;
+  font-weight: 600;
+  padding: 5px 20px;
+  font-size: 1rem;
+  color: #000;
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 140px;
 }
 
 .GlobalSearchBox input:focus {
-	border: none;
-	border-bottom: none;
-	outline: none;
+  border: none;
+  border-bottom: none;
+  outline: none;
 }
 
 .GlobalSearchBox button {
-	width: 30px;
-	flex: 1;
+  width: 30px;
+  flex: 1;
 }
 
 .GlobalSearchResult .Query {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .GlobalSearchResult .ResultSet {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	width: 100%;
-	margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .GlobalSearchResult .Result {
-	text-align: center;
-	
-	width: 180px;
-	margin: 0 18px 18px 0;
+  text-align: center;
+
+  width: 180px;
+  margin: 0 18px 18px 0;
 }
 
 .GlobalSearchResult .Result .Image {
-	width: 180px;
-	height: 180px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .GlobalSearchResult .Result img {
-	max-width: 150px;
-	max-height: 150px;
+  max-width: 150px;
+  max-height: 150px;
 }
 
 .GlobalSearchResult .Result.Player img {
-	border-radius: 100px;
-	border: 2px solid #DDD;
+  border-radius: 100px;
+  border: 2px solid #ddd;
 }
 
-
 .GlobalSearchResult .Result .Info {
-	padding: 10px 20px 5px 20px;
-	
+  padding: 10px 20px 5px 20px;
 }
 
 .GlobalSearchResult .Result .Info .Line1 {
-	font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 .GlobalSearchResult .Result .Info p {
-	margin-bottom: 5px;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .AnimatedTick {
-	width: 100%;
-	height: 96px;
-	background: url('1/tick.gif') no-repeat center center;
+  width: 100%;
+  height: 96px;
+  background: url('1/tick.gif') no-repeat center center;
 }
 
 input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0 30px #111 inset;
-	-webkit-text-fill-color: #888 !important;
+  -webkit-box-shadow: 0 0 0 30px #111 inset;
+  -webkit-text-fill-color: #888 !important;
 }
 
-
 .YesNoPicker {
-
 }
 
 .YesNoPicker button {
-	padding: 3px 5px;
-	font: inherit;
-	outline: 0;
-	border: none;
-	text-decoration: none;
-	text-align: center;
-	cursor: pointer;
-	background: none;
-	color: #BBB;
+  padding: 3px 5px;
+  font: inherit;
+  outline: 0;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  color: #bbb;
 }
 
 .YesNoPicker button:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .YesNoPicker button.Active {
-	color: #000;
-	font-weight: 600;
+  color: #000;
+  font-weight: 600;
 }
 
 .DatePickerBottom {
-	min-height: 300px;
+  min-height: 300px;
 }
 
 .Sanctions .Content .Details {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.Sanctions .Content .Details .Field  {
-	margin: 0 20px 20px 0;
-	width: 240px;
+.Sanctions .Content .Details .Field {
+  margin: 0 20px 20px 0;
+  width: 240px;
 }
 
 .Sanctions .Content .Details .Header {
-	font-weight: 600;
-	text-transform: uppercase;
-	margin-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 .SanctionMatchDone {
-	border-radius: 50px;
-	display: inline-block;
-	width: 12px;
-	height: 12px;
-	background-color: #98D800;
-	margin-right: 10px;
+  border-radius: 50px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #98d800;
+  margin-right: 10px;
 }
 
 .SanctionMatchPending {
-	border-radius: 50px;
-	display: inline-block;
-	width: 12px;
-	height: 12px;
-	background-color: #F44336;
-	margin-right: 10px;
+  border-radius: 50px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #f44336;
+  margin-right: 10px;
 }
 
-
 .SubDetail {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .SubDetail .Horizontal {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
 }
 
 .SubDetail .Header {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .SubDetail .Date {
-	margin-left: 30px;
+  margin-left: 30px;
 }
 
 .SubDetail .Title {
-	margin-bottom: 5px;
-	font-weight: 600;
-	font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .SubDetail .Text {
-	white-space: pre-wrap;
-	font-size: 0.9rem;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
 }
 
-
 .Content .Horizontal .Actions {
-	flex-grow: 10;
-	text-align: right;
-	font-size: 0.9rem;
+  flex-grow: 10;
+  text-align: right;
+  font-size: 0.9rem;
 }
 
 .Content .Actions .Second {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
-
 
 .CardView.CC {
-	display: inline-block;
-	width: 11px;
-	height: 11px;
-	border-radius: 2px;
-	margin: 0 5px;
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  margin: 0 5px;
 }
 
-.CardView.CardType1 { background-color: #ffd800; }
-.CardView.CardType2 { background-color: #fc3b0e; }
-.CardView.CardType3 { background-color: #1E88E5; }
-.CardView.CardType4 { background-color: #43A047; }
-.CardView.CardType5 { background-color: #FB8C00; }
+.CardView.CardType1 {
+  background-color: #ffd800;
+}
+.CardView.CardType2 {
+  background-color: #fc3b0e;
+}
+.CardView.CardType3 {
+  background-color: #1e88e5;
+}
+.CardView.CardType4 {
+  background-color: #43a047;
+}
+.CardView.CardType5 {
+  background-color: #fb8c00;
+}
 
 .CardCombo {
-	text-align: center;
+  text-align: center;
 }
 
 .CardRadioLabel {
-	margin-right: 50px;
+  margin-right: 50px;
 }
 
 .CardRadioLabel .Radio {
-	margin-right: 5px;
+  margin-right: 5px;
 }
 
 .FormFieldGroup.Horizontal {
-	display: flex; 
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .FormFieldGroup.Horizontal .FormField {
-	flex: 1 1 0;
-	margin-right: 30px;
+  flex: 1 1 0;
+  margin-right: 30px;
 }
-
 
 .SanctionList .ActionBar {
-	display: flex;
-	justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
+/* REact Day Picker */
+.Selectable
+  .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #f0f8ff !important;
+  color: #4a90e2;
+}
+.Selectable .DayPicker-Day {
+  border-radius: 0 !important;
+}
+
+/* .Selectable .DayPicker-Day--today,
+.Simple .DayPicker-Day--today {
+  color: #0ebc97;
+} */
+
+.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside),
+.Simple .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  background-color: #0ebc97;
+}
+
+.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover,
+.Simple .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
+  background-color: #6be8cd;
+}
+
+.Selectable .DayPicker-Day--start {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+.Selectable .DayPicker-Day--end {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+}

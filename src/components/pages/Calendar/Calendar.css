@@ -1,0 +1,85 @@
+.CalndarScreen {
+  padding: 20px;
+}
+
+.CalndarScreen .Row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.CalndarScreen .Left {
+  flex: 1;
+}
+
+.CalndarScreen .Rigth {
+  flex: 1;
+}
+
+.CalndarScreen .CalendarFilter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.CalndarScreen .CalendarFilter .Select {
+  flex: 1;
+}
+
+.CalndarScreen .PlayDay .MatchStatusRecordClosed {
+  border-radius: 50px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #98d800;
+  margin-right: 7px;
+}
+
+.CalendarFilter .Label {
+  width: 150px;
+  display: block;
+  margin-left: 2rem;
+  margin-bottom: 3px;
+  color: #797979;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* REACT DAY PICKER */
+
+.Selectable .DayPicker-Month {
+  margin: 0.75rem 0.75rem 0 0.75rem;
+}
+
+.Selectable
+  .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #f0f8ff !important;
+  color: #4a90e2;
+}
+.Selectable .DayPicker-Day {
+  border-radius: 0 !important;
+}
+
+/* .Selectable .DayPicker-Day--today,
+.Simple .DayPicker-Day--today {
+  color: #0ebc97;
+} */
+
+.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside),
+.Simple .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  background-color: #0ebc97;
+}
+
+.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover,
+.Simple .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
+  background-color: #6be8cd;
+}
+
+.Selectable .DayPicker-Day--start {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+.Selectable .DayPicker-Day--end {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+}

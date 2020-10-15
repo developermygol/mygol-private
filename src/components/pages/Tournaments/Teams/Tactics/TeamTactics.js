@@ -7,67 +7,87 @@ import { findByIdInArray } from '../../../../helpers/Data';
 import { observable, observe } from 'mobx';
 import InfoBox from '../../../../common/InfoBox';
 
-@inject('store') @observer
+@inject('store')
+@observer
 export default class TeamTactics extends Component {
-    
-    @observable selectedTacticId = 0;
+  @observable selectedTacticId = 0;
 
-    disposer = null;
+  disposer = null;
 
-    saveChanges = () => {
-        const team = this.props.store.teams.current;
-        team.idTactic = this.selectedTacticId;
-        this.props.store.teams.actions.edit(team);
-    }
+  saveChanges = () => {
+    const team = this.props.store.teams.current;
+    const { idTournament, idTeam } = this.props.match.params;
 
-    handleTacticSelected = (tactic) => {
-        this.setTactic(tactic.id);
-    }
+    team.idTactic = this.selectedTacticId;
+    this.props.store.teams.actions.edit(team);
+    this.props.history.push(`/tournaments/${idTournament}/teams/${idTeam}`);
+  };
 
-    setTactic = (idTactic) => {
-        this.selectedTacticId = idTactic;
-    }
+  handleTacticSelected = tactic => {
+    this.setTactic(tactic.id);
+  };
 
-    componentDidMount() {
-        this.props.store.tactics.fetchOnce();
+  setTactic = idTactic => {
+    this.selectedTacticId = idTactic;
+  };
 
-        const { teams } = this.props.store;
-        if (teams.current) this.setTactic(teams.current.idTactic);
-        
-        this.disposer = observe(teams, "current", ({oldValue, newValue}) => {
-            if (!newValue) return;
-            this.setTactic(newValue.idTactic);
-        })
-    }
+  componentDidMount() {
+    this.props.store.tactics.fetchOnce();
 
-    componentWillUnmount() {
-        if (this.disposer) this.disposer();
-    }
+    const { teams } = this.props.store;
+    if (teams.current) this.setTactic(teams.current.idTactic);
 
-    render() {
-        const numPlayers = this.props.store.tournaments.teamSize;
-        if (!numPlayers) return <InfoBox><Loc>Tactic.NoForNumPlayers</Loc></InfoBox>;
+    this.disposer = observe(teams, 'current', ({ oldValue, newValue }) => {
+      if (!newValue) return;
+      this.setTactic(newValue.idTactic);
+    });
+  }
 
-        const team = this.props.store.teams.current;
-        if (!team) return <InfoBox><Loc>Error.TeamData</Loc></InfoBox>;
-        
-        const data = this.props.store.tactics.data;
-        if (!data) return <InfoBox><Loc>Error.TacticData</Loc></InfoBox>;
+  componentWillUnmount() {
+    if (this.disposer) this.disposer();
+  }
 
-        const allTactics = data.tactics;
-        const selectedTactic = findByIdInArray(allTactics, this.selectedTacticId);
-        const tactics = allTactics.filter(t => t.numPlayers === numPlayers);
-        
-        return (
-            <Fragment>
-                <div className='SelectedTactic'>
-                    <DetailedTacticViewer value={selectedTactic} />
-                    <TacticSelector data={tactics} value={this.selectedTacticId} onChange={this.handleTacticSelected}/>
-                </div>
-                <div className='BottomActions'>
-                    <button className='Button Active' onClick={this.saveChanges}><Loc>Save</Loc></button>
-                </div>
-            </Fragment>
-        )
-    }
+  render() {
+    const numPlayers = this.props.store.tournaments.teamSize;
+    if (!numPlayers)
+      return (
+        <InfoBox>
+          <Loc>Tactic.NoForNumPlayers</Loc>
+        </InfoBox>
+      );
+
+    const team = this.props.store.teams.current;
+    if (!team)
+      return (
+        <InfoBox>
+          <Loc>Error.TeamData</Loc>
+        </InfoBox>
+      );
+
+    const data = this.props.store.tactics.data;
+    if (!data)
+      return (
+        <InfoBox>
+          <Loc>Error.TacticData</Loc>
+        </InfoBox>
+      );
+
+    const allTactics = data.tactics;
+    const selectedTactic = findByIdInArray(allTactics, this.selectedTacticId);
+    const tactics = allTactics.filter(t => t.numPlayers === numPlayers);
+
+    return (
+      <Fragment>
+        <div className="SelectedTactic">
+          <DetailedTacticViewer value={selectedTactic} />
+          <TacticSelector data={tactics} value={this.selectedTacticId} onChange={this.handleTacticSelected} />
+        </div>
+        <div className="BottomActions">
+          <button className="Button Active" onClick={this.saveChanges}>
+            <Loc>Save</Loc>
+          </button>
+        </div>
+      </Fragment>
+    );
+  }
 }

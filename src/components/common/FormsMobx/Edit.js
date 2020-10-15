@@ -1,38 +1,39 @@
-import React, { Component } from "react";
-import Loc, { Localize } from "../Locale/Loc";
-import BackButton from "../BackButton";
-import InfoBox from "../InfoBox";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import Loc, { Localize } from '../Locale/Loc';
+import BackButton from '../BackButton';
+import InfoBox from '../InfoBox';
+import { withRouter } from 'react-router-dom';
 
-import { inject, observer } from "mobx-react";
-import { observable, action } from "mobx";
-import MobxReactForm from "mobx-react-form";
-import validatorjs from "validatorjs";
+import { inject, observer } from 'mobx-react';
+import { observable, action } from 'mobx';
+import MobxReactForm from 'mobx-react-form';
+import validatorjs from 'validatorjs';
 
-import { setNestedValue } from "./ListRenderHandlers";
+import { setNestedValue } from './ListRenderHandlers';
 
-import Text from "../FormFields/Text";
-import UploadComponent from "../FormFields/Upload";
-import SelectComponent from "../FormFields/Select";
-import RadioComponent from "../FormFields/Radio";
-import DatePickerComponent from "../FormFields/DatePicker";
-import ContentField from "../FormFields/ContentField";
-import Separator from "../FormFields/Separator";
-import TeamPlayerStatus from "../FormFields/TeamPlayerStatus";
-import TextArea from "../FormFields/TextArea";
-import Spinner from "../Spinner/Spinner";
-import ReadOnlyText from "../FormFields/ReadOnlyText";
-import ErrorBox from "../ErrorBox";
-import SpinnerButton from "../SpinnerButton";
-import FacilitySelector from "../FormFields/FacilitySelector";
-import Time from "../FormFields/Time";
-import ForbiddenDays from "../FormFields/ForbiddenDays";
-import ClassificationCriteria from "../FormFields/ClassificationCriteria";
-import BooleanComponent from "../FormFields/BooleanComponent";
-import ColoredCardSelector from "../FormFields/ColoredCardSelector";
-import CycleCardSelector from "../FormFields/CycleCardSelector";
-import GoalkeeperSelector from "../FormFields/GoalkeeperSelector";
-import { extractGroupFromArray } from "../../helpers/Data";
+import Text from '../FormFields/Text';
+import UploadComponent from '../FormFields/Upload';
+import SelectComponent from '../FormFields/Select';
+import RadioComponent from '../FormFields/Radio';
+import DatePickerComponent from '../FormFields/DatePicker';
+import ContentField from '../FormFields/ContentField';
+import Separator from '../FormFields/Separator';
+import TeamPlayerStatus from '../FormFields/TeamPlayerStatus';
+import TextArea from '../FormFields/TextArea';
+import Spinner from '../Spinner/Spinner';
+import ReadOnlyText from '../FormFields/ReadOnlyText';
+import ErrorBox from '../ErrorBox';
+import SpinnerButton from '../SpinnerButton';
+import FacilitySelector from '../FormFields/FacilitySelector';
+import Time from '../FormFields/Time';
+import DateTimePicker from '../FormFields/DateTimePicker';
+import ForbiddenDays from '../FormFields/ForbiddenDays';
+import ClassificationCriteria from '../FormFields/ClassificationCriteria';
+import BooleanComponent from '../FormFields/BooleanComponent';
+import ColoredCardSelector from '../FormFields/ColoredCardSelector';
+import CycleCardSelector from '../FormFields/CycleCardSelector';
+import GoalkeeperSelector from '../FormFields/GoalkeeperSelector';
+import { extractGroupFromArray } from '../../helpers/Data';
 
 const defaultProps = {
   title: null,
@@ -49,15 +50,10 @@ const defaultProps = {
   data: null,
 };
 
-function getFieldsHierarchy(
-  fields,
-  targetField,
-  isEditing,
-  transformCallback = null
-) {
+function getFieldsHierarchy(fields, targetField, isEditing, transformCallback = null) {
   const result = {};
 
-  fields.forEach((f) => {
+  fields.forEach(f => {
     if (isEditing) {
       if (f.hideInEdit) return;
     } else {
@@ -76,7 +72,7 @@ function getFieldsHierarchy(
 function getFieldNames(fields, isEditing) {
   const result = [];
 
-  fields.forEach((f) => {
+  fields.forEach(f => {
     if (isEditing) {
       if (f.hideInEdit) return;
     } else {
@@ -89,7 +85,7 @@ function getFieldNames(fields, isEditing) {
   return result;
 }
 
-@inject("ui")
+@inject('ui')
 @observer
 class Edit extends Component {
   form = null;
@@ -104,12 +100,12 @@ class Edit extends Component {
     this.loadData();
   };
 
-  @action createForm = (values) => {
+  @action createForm = values => {
     validatorjs.useLang(this.props.ui.lang);
 
     const hooks = {
-      onSuccess: (form) => this.onSubmit(form),
-      onError: (form) => this.onError(form),
+      onSuccess: form => this.onSubmit(form),
+      onError: form => this.onError(form),
     };
 
     const plugins = { dvr: validatorjs };
@@ -117,10 +113,8 @@ class Edit extends Component {
     const isEdit = this.isEditing();
     const fd = this.props.fieldDefinition;
     const fields = getFieldNames(fd, isEdit);
-    const labels = getFieldsHierarchy(fd, "localizedLabel", isEdit, (v) =>
-      Localize(v)
-    );
-    const rules = getFieldsHierarchy(fd, "rules", isEdit);
+    const labels = getFieldsHierarchy(fd, 'localizedLabel', isEdit, v => Localize(v));
+    const rules = getFieldsHierarchy(fd, 'rules', isEdit);
     //const inputConverters = getFieldsHierarchy(fd, 'inputConverter', isEdit);
     //const outputConverters = getFieldsHierarchy(fd, 'outputConverter', isEdit);
 
@@ -150,30 +144,34 @@ class Edit extends Component {
     }
 
     if (!p.getByIdAction || !p.routeIdParamName) {
-      this.error = Localize("No data to edit");
+      this.error = Localize('No data to edit');
       this.ready = true;
       return;
     }
 
     const id = p.match.params[p.routeIdParamName];
-    p.getByIdAction(id).then((res) => {
+    p.getByIdAction(id).then(res => {
       this.createForm(res);
     });
   };
 
   isEditing = () => this.props.isEditing;
 
-  onSubmit = (form) => {
-    this.props.saveButtonHandler(form.values());
+  onSubmit = form => {
+    const values = form.values();
+    // console.log(values);
+    // if (values.startTime) values.startTime = new Date(values.startTime).toISOString();
+    // console.log(values);
+    this.props.saveButtonHandler(values);
   };
 
-  @action onError = (form) => {
+  @action onError = form => {
     const errs = form.errors();
     this.errorSummary.clear();
 
     Object.keys(errs).forEach((k, i) => {
       const val = errs[k];
-      if (typeof val === "string") {
+      if (typeof val === 'string') {
         this.errorSummary.push(val);
       }
     });
@@ -181,13 +179,13 @@ class Edit extends Component {
     this.setState({});
   };
 
-  getValue = (fieldName) => {
+  getValue = fieldName => {
     const entity = this.data;
 
-    return entity ? entity[fieldName] : "";
+    return entity ? entity[fieldName] : '';
   };
 
-  getField = (f) => {
+  getField = f => {
     if (!f.editRenderType) return null;
 
     if (f.hideInEdit && this.isEditing()) return null;
@@ -205,84 +203,86 @@ class Edit extends Component {
     };
 
     switch (f.editRenderType) {
-      case "radio":
+      case 'radio':
         if (!f.selectOptions) return null;
         control.target = RadioComponent;
         args.options = f.selectOptions;
         break;
-      case "localizedradio":
+      case 'localizedradio':
         control.target = RadioComponent;
         args.options = f.selectOptions;
         args.passProps.localize = true;
         break;
-      case "select":
+      case 'select':
         control.target = SelectComponent;
         args.options = f.selectOptions;
         break;
-      case "localizedselect":
+      case 'localizedselect':
         control.target = SelectComponent;
         args.options = f.selectOptions;
         args.passProps.localize = true;
         break;
-      case "upload":
+      case 'upload':
         control.target = UploadComponent;
-        const idFieldName = f.passProps["idField"];
-        if (!idFieldName)
-          throw new Error("Upload field requires an idField passProp.");
+        const idFieldName = f.passProps['idField'];
+        if (!idFieldName) throw new Error('Upload field requires an idField passProp.');
         args.passProps = {
           idObject: this.getValue(idFieldName),
           ...f.passProps,
           isEditing: this.isEditing(),
-          onUploadSuccess: (ud) => {
+          onUploadSuccess: ud => {
             const data = this.data;
             const c = f.passProps.onUploadSuccess;
             if (c) c(data, ud);
           },
         };
         break;
-      case "date":
+      case 'date':
         control.target = DatePickerComponent;
         break;
-      case "content":
+      case 'content':
         control.target = ContentField;
         break;
-      case "textarea":
+      case 'textarea':
         control.target = TextArea;
         break;
-      case "separator":
+      case 'separator':
         control.target = Separator;
         break;
-      case "teamplayerstatus":
+      case 'teamplayerstatus':
         control.target = TeamPlayerStatus;
         break;
-      case "boolean":
+      case 'boolean':
         control.target = BooleanComponent;
         break;
-      case "readonlytext":
+      case 'readonlytext':
         control.target = ReadOnlyText;
         break;
-      case "facilitySelector":
+      case 'facilitySelector':
         control.target = FacilitySelector;
         args.passProps = { wantsEmptyRow: true };
         break;
-      case "goalkeeperSelector":
+      case 'goalkeeperSelector':
         control.target = GoalkeeperSelector;
         args.passProps = { teamId: this.data.id, wantsEmptyRow: true };
         break;
-      case "time":
+      case 'time':
         control.target = Time;
         break;
-      case "fobiddendays":
+      case 'datetimepicker':
+        control.target = DateTimePicker;
+        break;
+      case 'fobiddendays':
         control.target = ForbiddenDays;
         break;
-      case "classificationCriteria":
+      case 'classificationCriteria':
         control.target = ClassificationCriteria;
         break;
-      case "cardselect":
+      case 'cardselect':
         control.target = ColoredCardSelector;
         args.options = f.selectOptions;
         break;
-      case "cyclecards":
+      case 'cyclecards':
         control.target = CycleCardSelector;
         break;
       default:
@@ -299,25 +299,18 @@ class Edit extends Component {
     return this.props.fieldDefinition.map(this.getField);
   };
 
-  getGroups = (fieldComponents) => {
+  getGroups = fieldComponents => {
     if (!fieldComponents || fieldComponents.length === 0) return null;
 
     const { groups } = this.props;
     if (!groups) return fieldComponents;
 
     groups.forEach(({ fields, containerClassName }) => {
-      const { objects, index } = extractGroupFromArray(
-        fieldComponents,
-        "key",
-        fields
-      );
+      const { objects, index } = extractGroupFromArray(fieldComponents, 'key', fields);
       if (index === -1) return;
 
       const groupComponent = (
-        <div
-          key={"FormGroup" + index}
-          className={"FormFieldGroup " + containerClassName}
-        >
+        <div key={'FormGroup' + index} className={'FormFieldGroup ' + containerClassName}>
           {objects}
         </div>
       );
@@ -352,7 +345,7 @@ class Edit extends Component {
                 <form>{this.getGroups(this.getFields())}</form>
 
                 <div className="Errors">
-                  {this.errorSummary.map((e) => (
+                  {this.errorSummary.map(e => (
                     <p key={e} className="Error">
                       {e}
                     </p>
@@ -361,11 +354,7 @@ class Edit extends Component {
 
                 <div className="EditButtons">
                   {p.backButton ? <BackButton onClick={p.onBackClick} /> : null}
-                  <SpinnerButton
-                    loading={p.loading}
-                    className="Button Active"
-                    onClick={form.onSubmit}
-                  >
+                  <SpinnerButton loading={p.loading} className="Button Active" onClick={form.onSubmit}>
                     <Loc>Save</Loc>
                   </SpinnerButton>
                 </div>

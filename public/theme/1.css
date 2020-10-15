@@ -702,6 +702,10 @@ h3 {
   font-size: 1.5em;
 }
 
+.FormField .Text.Invalid {
+  color: red;
+}
+
 .FormField .ReadOnlyText {
   width: 100%;
   max-width: 500px;
@@ -791,6 +795,35 @@ h3 {
   background-size: 8px;
   background-position: calc(100% - 5px) center;
   background-repeat: no-repeat;
+}
+
+.FormField .DatTimeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.FormField .DatTimeContainer .Text-Time {
+  max-width: 100px;
+}
+
+.FormField .DatTimeContainer .DayPickerInput {
+  margin-right: 1rem;
+  max-width: 200px;
+}
+
+.FormField .DatTimeContainer .DayPickerInput input {
+  width: 100%;
+  max-width: 500px;
+  font-size: 16px;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.5em;
+}
+
+.FormField .DatTimeContainer .DayPickerInput input:focus {
+  border-bottom: 2px solid #43d2b4;
 }
 
 .FormField .HintMessage {

@@ -1,19 +1,16 @@
-import React, { Component, Fragment } from "react";
-import { inject, observer } from "mobx-react";
-import { withRouter } from "react-router-dom";
-import Spinner from "../../common/Spinner/Spinner";
-import { observable, action } from "mobx";
-import Loc, { Localize } from "../../common/Locale/Loc";
-import {
-  getFormattedDate,
-  getFormattedDateTime,
-} from "../../common/FormsMobx/Utils";
-import EditSanctionAllegationDialog from "./EditSanctionAllegationDialog";
-import EditDialog from "../Tournaments/Stages/EditDialog";
-import AccessLimit from "../../common/AccessLimit";
-import MessageBox from "../../common/Dialogs/MessageBox";
-import { getPlayerLink, getTeamLink, getMatchLink } from "../../helpers/Utils";
-import MatchView from "../Tournaments/Calendar/MatchView";
+import React, { Component, Fragment } from 'react';
+import { inject, observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
+import Spinner from '../../common/Spinner/Spinner';
+import { observable, action } from 'mobx';
+import Loc, { Localize } from '../../common/Locale/Loc';
+import { getFormattedDate, getFormattedDateTime } from '../../common/FormsMobx/Utils';
+import EditSanctionAllegationDialog from './EditSanctionAllegationDialog';
+import EditDialog from '../Tournaments/Stages/EditDialog';
+import AccessLimit from '../../common/AccessLimit';
+import MessageBox from '../../common/Dialogs/MessageBox';
+import { getPlayerLink, getTeamLink, getMatchLink } from '../../helpers/Utils';
+import MatchView from '../Tournaments/Calendar/MatchView';
 
 class DetailField extends Component {
   render() {
@@ -38,16 +35,9 @@ class SanctionDetailsCard extends Component {
     return (
       <div className="Sanctions Card Hero">
         <h3>
-          <Loc>
-            {sanction.type === 2
-              ? "Sanctions.Type.Team"
-              : "Sanctions.Type.Player"}
-          </Loc>
+          <Loc>{sanction.type === 2 ? 'Sanctions.Type.Team' : 'Sanctions.Type.Player'}</Loc>
           <AccessLimit allowOrgAdmin>
-            <button
-              className="Button Second Right"
-              onClick={() => p.editButtonHandler(sanction)}
-            >
+            <button className="Button Second Right" onClick={() => p.editButtonHandler(sanction)}>
               <Loc>Edit</Loc>
             </button>
           </AccessLimit>
@@ -64,24 +54,15 @@ class SanctionDetailsCard extends Component {
                     sanction.team && sanction.team.name
                   )}
                 />
-                <DetailField
-                  label="Tournament"
-                  value={sanction.tournament && sanction.tournament.name}
-                />
-                <DetailField
-                  label="Start date"
-                  value={getFormattedDate(sanction.startDate)}
-                />
-                <DetailField
-                  label="Sanctions.Status"
-                  value={Localize("SanctionStatus" + sanction.status)}
-                />
+                <DetailField label="Tournament" value={sanction.tournament && sanction.tournament.name} />
+                <DetailField label="Start date" value={getFormattedDate(sanction.startDate)} />
+                <DetailField label="Sanctions.Status" value={Localize('SanctionStatus' + sanction.status)} />
                 <DetailField
                   label="Sanctions.Match"
                   value={getMatchLink(
                     sanction.idTournament,
                     sanction.idMatch,
-                    Localize("Sanctions.Match.Click")
+                    Localize('Sanctions.Match.Click')
                   )}
                 />
                 {/* <DetailField label='Sanctions.Match' value={sanction.idMatch} /> */}
@@ -91,11 +72,7 @@ class SanctionDetailsCard extends Component {
               <Fragment>
                 <DetailField
                   label="Player"
-                  value={getPlayerLink(
-                    sanction.idTournament,
-                    sanction.idTeam,
-                    sanction.player
-                  )}
+                  value={getPlayerLink(sanction.idTournament, sanction.idTeam, sanction.player)}
                 />
                 <DetailField
                   label="Team"
@@ -105,28 +82,16 @@ class SanctionDetailsCard extends Component {
                     sanction.team && sanction.team.name
                   )}
                 />
-                <DetailField
-                  label="Tournament"
-                  value={sanction.tournament && sanction.tournament.name}
-                />
-                <DetailField
-                  label="Start date"
-                  value={getFormattedDate(sanction.startDate)}
-                />
-                <DetailField
-                  label="Sanctions.NumMatches"
-                  value={sanction.numMatches}
-                />
-                <DetailField
-                  label="Sanctions.Status"
-                  value={Localize("SanctionStatus" + sanction.status)}
-                />
+                <DetailField label="Tournament" value={sanction.tournament && sanction.tournament.name} />
+                <DetailField label="Start date" value={getFormattedDate(sanction.startDate)} />
+                <DetailField label="Sanctions.NumMatches" value={sanction.numMatches} />
+                <DetailField label="Sanctions.Status" value={Localize('SanctionStatus' + sanction.status)} />
                 <DetailField
                   label="Sanctions.Match"
                   value={getMatchLink(
                     sanction.idTournament,
                     sanction.idMatch,
-                    Localize("Sanctions.Match.Click")
+                    Localize('Sanctions.Match.Click')
                   )}
                 />
                 {/* <DetailField label='Sanctions.Match' value={sanction.idMatch} /> */}
@@ -139,13 +104,13 @@ class SanctionDetailsCard extends Component {
   }
 }
 
-@inject("ui")
+@inject('ui')
 class SanctionAllegation extends Component {
   render() {
     const p = this.props;
     const al = p.allegation;
 
-    const user = al.user || { level: al.idUser >= 10000000 ? 5 : 1, name: "" };
+    // const user = al.user || { level: al.idUser >= 10000000 ? 5 : 1, name: '' };
 
     const isOrgAdmin = p.ui.auth.isOrgAdmin();
 
@@ -156,13 +121,12 @@ class SanctionAllegation extends Component {
       <div className="SubDetail">
         <div className="Title">{al.title}</div>
         <div className="Horizontal">
-          <p className="Header">{user.name}</p>
-          <p className="Header">{" - " + Localize("UserLevel" + user.level)}</p>
+          <p className="Header">- {p.typeName}</p>
+          {/* <p className="Header">{user.name}</p>
+          <p className="Header">{' - ' + Localize('UserLevel' + user.level)}</p> */}
           <p className="Date">{getFormattedDateTime(al.date)}</p>
           <AccessLimit allowOrgAdmin>
-            <p className="Date">
-              {al.visible ? Localize("Visible") : Localize("NotVisible")}
-            </p>
+            <p className="Date">{al.visible ? Localize('Visible') : Localize('NotVisible')}</p>
           </AccessLimit>
           <div className="Actions">
             {canEdit ? (
@@ -194,9 +158,10 @@ class SanctionAllegations extends Component {
         </h3>
         <div className="Content">
           {p.allegations &&
-            p.allegations.map((al) => (
+            p.allegations.map(al => (
               <SanctionAllegation
                 key={al.id}
+                typeName={p.typeName}
                 allegation={al}
                 onAllegationEdited={() => p.onAllegationEdited(al)}
                 onAllegationRemoved={() => p.onAllegationRemoved(al)}
@@ -230,14 +195,9 @@ class SanctionMatches extends Component {
           <table className="">
             <tbody>
               {matches &&
-                matches.map((m) => {
+                matches.map(m => {
                   return (
-                    <MatchView
-                      key={m.id}
-                      match={m}
-                      idTournament={sanction.idTournament}
-                      displaySanctioned
-                    />
+                    <MatchView key={m.id} match={m} idTournament={sanction.idTournament} displaySanctioned />
                   );
                 })}
             </tbody>
@@ -248,7 +208,7 @@ class SanctionMatches extends Component {
   }
 }
 
-@inject("store")
+@inject('store')
 @observer
 class SanctionDetails extends Component {
   @observable showAllegationDialog = false;
@@ -266,13 +226,13 @@ class SanctionDetails extends Component {
     this.dialogProps = {
       action: this.allegationAddedHandler,
       data: {
-        content: "",
+        content: '',
       },
       isEditing: false,
     };
   };
 
-  @action editAllegationHandler = (allegation) => {
+  @action editAllegationHandler = allegation => {
     this.showAllegationDialog = true;
     this.dialogProps = {
       action: this.allegationEditedHandler,
@@ -281,7 +241,7 @@ class SanctionDetails extends Component {
     };
   };
 
-  @action removeAllegationHandler = (allegation) => {
+  @action removeAllegationHandler = allegation => {
     const msg = (
       <p>
         <Loc>Really delete?</Loc>?
@@ -292,30 +252,24 @@ class SanctionDetails extends Component {
 
   // __ Event handlers ______________________________________________________
 
-  allegationAddedHandler = (allegation) => {
+  allegationAddedHandler = allegation => {
     this.showAllegationDialog = false;
     if (!allegation) return;
 
-    this.props.store.sanctions
-      .addAllegation(allegation)
-      .then((res) => this.setState({}));
+    this.props.store.sanctions.addAllegation(allegation).then(res => this.setState({}));
   };
 
-  allegationEditedHandler = (allegation) => {
+  allegationEditedHandler = allegation => {
     this.showAllegationDialog = false;
     if (!allegation) return;
 
-    this.props.store.sanctions
-      .editAllegation(allegation)
-      .then((res) => this.setState({}));
+    this.props.store.sanctions.editAllegation(allegation).then(res => this.setState({}));
   };
 
-  allegationDeletedHandler = (allegation) => {
+  allegationDeletedHandler = allegation => {
     if (!allegation) return;
 
-    this.props.store.sanctions
-      .removeAllegation(allegation)
-      .then((res) => this.setState({}));
+    this.props.store.sanctions.removeAllegation(allegation).then(res => this.setState({}));
   };
 
   // __ Confirm dialog _______________________________________________________
@@ -328,9 +282,8 @@ class SanctionDetails extends Component {
     this.showConfirmDialog = true;
   }
 
-  @action confirmDialogCloseHandler = (button) => {
-    if (button === "Yes")
-      this.confirmDialogProps.onAccept(this.confirmDialogProps.data);
+  @action confirmDialogCloseHandler = button => {
+    if (button === 'Yes') this.confirmDialogProps.onAccept(this.confirmDialogProps.data);
 
     this.showConfirmDialog = false;
   };
@@ -340,17 +293,20 @@ class SanctionDetails extends Component {
     const store = p.store.sanctions;
     const sanction = store.current;
     const isPlayerSanction = sanction && sanction.type !== 2;
+    const sanctionTypeName = sanction ? (
+      <Loc>{sanction.type === 2 ? 'Sanctions.Type.Team' : 'Sanctions.Type.Player'}</Loc>
+    ) : (
+      ''
+    );
 
     return (
       <Spinner loading={store.loading}>
         {sanction ? (
           <Fragment>
-            <SanctionDetailsCard
-              sanction={sanction}
-              editButtonHandler={p.editButtonHandler}
-            />
+            <SanctionDetailsCard sanction={sanction} editButtonHandler={p.editButtonHandler} />
             {isPlayerSanction && <SanctionMatches sanction={sanction} />}
             <SanctionAllegations
+              typeName={sanctionTypeName}
               allegations={sanction.allegations}
               onAllegationAdded={this.addAllegationHandler}
               onAllegationEdited={this.editAllegationHandler}

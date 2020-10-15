@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DayPicker, { DateUtils } from 'react-day-picker';
-import MomentLocateUtils from 'react-day-picker/moment';
+import MomentLocaleUtils from 'react-day-picker/moment';
 
-const CalendarDayPiker = ({ numberOfMonths, onChange, disabledDays }) => {
+const CalendarDayPiker = ({ numberOfMonths, onChange, disabledDays, locale: lang }) => {
   const isOneMonth = numberOfMonths === 1;
   const [from, setFrom] = useState();
   const [to, setTo] = useState();
@@ -38,7 +38,8 @@ const CalendarDayPiker = ({ numberOfMonths, onChange, disabledDays }) => {
           numberOfMonths={numberOfMonths}
           selectedDays={from}
           onDayClick={handleDayClick}
-          localeUtils={MomentLocateUtils}
+          localeUtils={MomentLocaleUtils}
+          locale={lang}
         />
       ) : (
         <DayPicker
@@ -47,7 +48,8 @@ const CalendarDayPiker = ({ numberOfMonths, onChange, disabledDays }) => {
           selectedDays={[from, { from, to }]}
           modifiers={modifiers}
           onDayClick={handleDayRangeClick}
-          localeUtils={MomentLocateUtils}
+          localeUtils={MomentLocaleUtils}
+          locale={lang}
         />
       )}
     </div>

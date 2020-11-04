@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SoccerFieldMarker from './SoccerFieldMarker';
-//import MarkerDropTarget from './MarkerDropTarget';
+import MarkerDropTarget from './MarkerDropTarget';
 
 export default class SoccerField extends Component {
   unscaleCoords = evt => {
@@ -15,8 +15,19 @@ export default class SoccerField extends Component {
 
   getPoints() {
     const { positions, players, callbacks } = this.props;
-    if (!positions || !players) return null;
+    if (!positions && !players) return null;
 
+    // Select Tactics
+    if (!players)
+      return (
+        <g>
+          {positions.map((p, i) => (
+            <MarkerDropTarget key={i} marker={{ idx: i, ...p }} />
+          ))}
+        </g>
+      );
+
+    // Assign Players
     const getPlayerFromPosition = positionIndex =>
       players.find(p => p.teamData.idTacticPosition === positionIndex);
 

@@ -6,24 +6,23 @@ import { observable } from 'mobx';
 
 @observer
 class AddTeamDialog extends Component {
-    
-    @observable selected = null;
+  @observable selected = null;
 
-    onClose = (button) => {
-        const p = this.props;
+  onClose = button => {
+    const p = this.props;
 
-        if (button === 'Ok') p.onClose(this.selected);
+    if (button === 'Ok') p.onClose(this.selected);
 
-        p.onClose(null);
-    }
+    p.onClose(null);
+  };
 
-    render() {
-        return (
-            <MessageBox onClose={this.onClose} show={this.props.show} buttons='OkCancel'>
-                <TeamSearch onItemSelected={s => this.selected = s} />
-            </MessageBox>
-        )
-    }
+  render() {
+    return (
+      <MessageBox onClose={this.onClose} show={this.props.show} buttons="OkCancel">
+        <TeamSearch onItemSelected={s => (this.selected = s)} />
+      </MessageBox>
+    );
+  }
 }
 
 export default AddTeamDialog;

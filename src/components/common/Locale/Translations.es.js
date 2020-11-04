@@ -620,6 +620,10 @@ export default {
     "Tactic": "Táctica",
     "Team stats": "Estadísticas del equipo",
     "Add existing team": "Añadir equipo existente",
+    "Import team": "Importar equipo", 
+    "Export team": "Exportar equipo", 
+    "TeamExport.ErrorDownloading": "Error exporting team", 
+    "TeamExport.DefaultFileName": "team.zip", 
 
     "Team name": "Nombre del equipo",
     "Short name": "Nombre corto",

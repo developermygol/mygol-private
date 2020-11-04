@@ -57,6 +57,10 @@ class TeamsStore {
     return requestAsync(null, axios.post, null, '/tournaments/teamfilterbytournaments', filterData);
   };
 
+  getTeamExport = (idTeam, idTournament) => {
+    return requestAsync(null, axios.get, null, `/teams/export/${idTeam}/${idTournament}`);
+  };
+
   @action
   addTeamToTournament(idTournament, idTeam) {
     return requestAsync(null, axios.post, null, '/tournaments/' + idTournament + '/addteam/' + idTeam);

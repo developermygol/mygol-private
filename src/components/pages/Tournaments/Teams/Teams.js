@@ -24,6 +24,35 @@ class CompetitionTeams extends Component {
     return <Link to={url + '/' + t.id}>{content}</Link>;
   }
 
+  handlePictureUpload = () => {
+    document.querySelector('#fileSelector').click();
+  };
+
+  handleFileChange = event => {
+    const file = event.target.files[0];
+    if (file) this.uploadFile(file, this.props.match.params.idTournament);
+  };
+
+  uploadFile = async (file, idTournament) => {
+    // Create an object of formData
+    const formData = new FormData();
+    const store = this.props.store.teams;
+
+    // Update the formData object
+    formData.append('idTournament', idTournament);
+    formData.append('file', file, file.name);
+
+    const response = await this.props.store.teams.uploadTeam(formData);
+
+    if (response.data === true) {
+      const getUpdatedTeamByTournament = await store.getTeamsFilteredByTournament(idTournament);
+      toast.success('✔ Team Added');
+      store.all = getUpdatedTeamByTournament;
+    } else {
+      if (response.data.Message) toast.error(`❌ ${response.data.Message}`);
+    }
+  };
+
   @action handleAddTeam = () => {
     this.showAddTeamDialog = true;
   };
@@ -66,9 +95,20 @@ class CompetitionTeams extends Component {
           addMessage="Create new team"
           editMessage="Edit team"
           listAdditionalButtons={
-            <button className="Button" onClick={this.handleAddTeam}>
-              <Loc>Add existing team</Loc>
-            </button>
+            <React.Fragment>
+              <button className="Button" onClick={this.handleAddTeam}>
+                <Loc>Add existing team</Loc>
+              </button>
+              <button className="Button" onClick={this.handlePictureUpload}>
+                <Loc>Import team</Loc>
+              </button>
+              <input
+                id="fileSelector"
+                style={{ display: 'none' }}
+                type="file"
+                onChange={this.handleFileChange}
+              />
+            </React.Fragment>
           }
           deleteDialogTitle="Unlink team?"
           deleteDialogMessage="Confirm team unlink"

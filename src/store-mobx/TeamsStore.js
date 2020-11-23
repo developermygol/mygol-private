@@ -58,7 +58,27 @@ class TeamsStore {
   };
 
   getTeamExport = (idTeam, idTournament) => {
-    return requestAsync(null, axios.get, null, `/teams/export/${idTeam}/${idTournament}`);
+    return axios.get(`/teams/export/${idTeam}/${idTournament}`, { responseType: 'blob' }).then(res => {
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'team.json');
+      document.body.appendChild(link);
+      link.click();
+      window.URL.revokeObjectURL(url);
+    });
+
+    //return requestAsync(null, axios.get, null, `/teams/export/${idTeam}/${idTournament}`);
+  };
+
+  uploadTeam = async formData => {
+    try {
+      return await axios.post(`/teams/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   @action

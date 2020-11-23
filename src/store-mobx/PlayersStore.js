@@ -1,15 +1,15 @@
-import { observable } from "mobx";
-import { createCrudActions } from "./CrudActions";
-import { asyncAction } from "mobx-utils";
+import { observable } from 'mobx';
+import { createCrudActions } from './CrudActions';
+import { asyncAction } from 'mobx-utils';
 import {
   removeByIdInArray,
   updateByIdInArray,
   booleanToString,
   sortArrayById,
   findByIdInArray,
-} from "../components/helpers/Data";
-import { request } from "./Store";
-import axios from "../axios";
+} from '../components/helpers/Data';
+import { request } from './Store';
+import axios from '../axios';
 
 class PlayersStore {
   @observable current = null;
@@ -22,16 +22,16 @@ class PlayersStore {
 
   constructor(rootStore) {
     this.rootStore = rootStore;
-    this.actions = createCrudActions(this, "/players", null, null, null, {
+    this.actions = createCrudActions(this, '/players', null, null, null, {
       afterGet: this.adaptPlayer,
-      afterGetAll: (players) => {
+      afterGetAll: players => {
         return sortArrayById(players.map(this.adaptPlayer));
       },
     });
     this.actions.create = null;
   }
 
-  adaptPlayer = (player) => {
+  adaptPlayer = player => {
     // Needed for mobx react forms. See Issue #3
     const td = player.teamData;
     if (td) td.isTeamAdmin = booleanToString(td.isTeamAdmin);
@@ -41,12 +41,7 @@ class PlayersStore {
   };
 
   getUser = asyncAction(function* (idUser) {
-    const result = yield request(
-      this,
-      axios.get,
-      null,
-      "/players/user/" + idUser
-    );
+    const result = yield request(this, axios.get, null, '/players/user/' + idUser);
 
     this.current = result;
 
@@ -62,13 +57,7 @@ class PlayersStore {
     // created as part this call, as well as other player data that may be
     // initalized in the server (for instance, the status)
 
-    const result = yield request(
-      this,
-      axios.post,
-      okMessage || "Item created ok",
-      url || "/players",
-      data
-    );
+    const result = yield request(this, axios.post, okMessage || 'Item created ok', url || '/players', data);
     if (!result) return;
 
     if (this.all) this.all.push(result);
@@ -84,8 +73,8 @@ class PlayersStore {
     const result = yield request(
       this,
       axios.post,
-      "PlayerRemovedFromTeamOk",
-      "/players/unlink/" + idPlayer + "/" + idTeam
+      'PlayerRemovedFromTeamOk',
+      '/players/unlink/' + idPlayer + '/' + idTeam
     );
 
     if (!result) return;
@@ -93,53 +82,26 @@ class PlayersStore {
     removeByIdInArray(this.all, data.id);
   });
 
-  invitePlayer = asyncAction(function* (
-    idPlayer,
-    idTeam,
-    idTournament,
-    inviteText
-  ) {
+  invitePlayer = asyncAction(function* (idPlayer, idTeam, idTournament, inviteText) {
     const data = { idPlayer, idTeam, idTournament, inviteText };
 
-    yield request(
-      this,
-      axios.post,
-      "PlayerInvitationSentOk",
-      "/players/invite",
-      data
-    );
+    yield request(this, axios.post, 'PlayerInvitationSentOk', '/players/invite', data);
   });
 
-  resendInvite = asyncAction(function* (
-    idPlayer,
-    idTeam,
-    idTournament,
-    inviteText
-  ) {
+  resendInvite = asyncAction(function* (idPlayer, idTeam, idTournament, inviteText) {
     const data = { idPlayer, idTeam, idTournament, inviteText };
 
-    yield request(
-      this,
-      axios.post,
-      "PlayerInvitationSentOk",
-      "/players/resendemail",
-      data
-    );
+    yield request(this, axios.post, 'PlayerInvitationSentOk', '/players/resendemail', data);
   });
 
-  setTeamPlayerFlags = asyncAction(function* (
-    idPlayer,
-    idTeam,
-    idTournament,
-    status
-  ) {
+  setTeamPlayerFlags = asyncAction(function* (idPlayer, idTeam, idTournament, status) {
     const data = { idPlayer, idTeam, idTournament, status };
 
     const res = yield request(
       this,
       axios.post,
-      "TeamPlayer.StatusUpdatedOk",
-      "/teams/updateplayerstatus",
+      'TeamPlayer.StatusUpdatedOk',
+      '/teams/updateplayerstatus',
       data
     );
     if (!res) return null;
@@ -158,8 +120,8 @@ class PlayersStore {
     const res = yield request(
       this,
       axios.post,
-      "Player.ApprovedStatusUpdatedOk",
-      "/players/updateplayerapproved",
+      'Player.ApprovedStatusUpdatedOk',
+      '/players/updateplayerapproved',
       data
     );
     if (!res) return null;
@@ -172,18 +134,14 @@ class PlayersStore {
     return true;
   });
 
-  updatePlayerTacticPosition = asyncAction(function* (
-    idPlayer,
-    idTeam,
-    idTacticPosition
-  ) {
+  updatePlayerTacticPosition = asyncAction(function* (idPlayer, idTeam, idTacticPosition) {
     const data = { idPlayer, idTeam, idTacticPosition };
 
     const res = yield request(
       this,
       axios.put,
-      "Player.tacticPositionUpdatedOk",
-      "/players/updateplayertacticposition",
+      'Player.tacticPositionUpdatedOk',
+      '/players/updateplayertacticposition',
       data
     );
     if (!res) return null;
@@ -195,6 +153,30 @@ class PlayersStore {
 
     return true;
   });
+
+  getPlayerExport = (idPlayer, idTeam, idTournament) => {
+    return axios
+      .get(`/players/export/${idPlayer}/${idTeam}/${idTournament}`, { responseType: 'blob' })
+      .then(res => {
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'player.json');
+        document.body.appendChild(link);
+        link.click();
+        window.URL.revokeObjectURL(url);
+      });
+  };
+
+  uploadPalyer = async formData => {
+    try {
+      return await axios.post(`/players/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 }
 
 export default PlayersStore;

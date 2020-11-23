@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 const defProps = {
-  color1: {type: 'color', caption: 'Logo.PrimaryColor', value: '#FF0000'},
+  color1: {type: 'color', caption: 'Logo.PrimaryColor', value: '#BA3E39'},
+  color2: {type: 'color', caption: 'Logo.SecondaryColor', value: '#212121'},
   line1: { type: 'text', caption: 'Logo.Text1', value: 'CLUB'},
   line2: { type: 'text', caption: 'Logo.Text2', value: 'RECREATIVO'},
   line3: { type: 'text', caption: 'Logo.Text3', value: 'FÚTBOL' }
@@ -16,25 +17,25 @@ class Logo1 extends Component {
     ref={c => {this.props.refContainer.target = c}}
     {...this.props.passProps}>
       <g>
-        <circle fill="#201F1F" stroke="#BA3E39" strokeWidth="3.6385" strokeMiterlimit={10} cx="156.615" cy="129.145" r="120.344" />
+        <circle fill={this.props.color2.value} stroke={this.props.color1.value} strokeWidth="3.6385" strokeMiterlimit={10} cx="156.615" cy="129.145" r="120.344" />
         <path id="SVGID_x5F_1_x5F_" fill="none" d="M250.76,129.145c0,51.996-42.15,94.146-94.146,94.146
         		c-51.996,0-94.146-42.15-94.146-94.146c0-51.995,42.15-94.146,94.146-94.146C208.61,34.999,250.76,77.15,250.76,129.145z" />
         <text>
-          <textPath xlinkHref="#SVGID_x5F_1_x5F_" startOffset="1000%">
-            <tspan fill="#F5F5F5" fontFamily="'Arial'" fontSize="21.1358">college league</tspan>
+          <textPath xlinkHref="#SVGID_x5F_1_x5F_" startOffset="62.5%">
+            <tspan fill="#F5F5F5" fontFamily="'Arial'" fontSize="21.1358">{this.props.line2.value}</tspan>
           </textPath>
         </text>
         <g>
           <path id="SVGID_x5F_2_x5F_" fill="none" d="M268.954,129.145c0-62.042-50.296-112.338-112.339-112.338
           			c-62.042,0-112.338,50.296-112.338,112.338s50.296,112.337,112.338,112.337C218.658,241.482,268.954,191.188,268.954,129.145z" />
           <text>
-            <textPath xlinkHref="#SVGID_x5F_2_x5F_" startOffset="75.0327%">
-              <tspan fill="#F5F5F5" fontFamily="'Arial'" fontSize="21.0124">asd</tspan>
+            <textPath xlinkHref="#SVGID_x5F_2_x5F_" startOffset="65%">
+          <tspan fill="#F5F5F5" fontFamily="'Arial'" fontSize="21.0124">{this.props.line3.value} {this.props.line1.value}</tspan>
             </textPath>
           </text>
         </g>
-        <rect x="7.495" y="97.895" fill="#BA3E39" stroke="#201F1F" strokeWidth="3.6385" strokeMiterlimit={10} width="298.24" height="62.5" />
-        <circle fill="#C4403D" stroke="#E0E0E0" strokeWidth="3.8204" strokeMiterlimit={10} cx="156.614" cy="129.145" r="86.362" />
+        <rect x="7.495" y="97.895" fill={this.props.color1.value} stroke={this.props.color2.value} strokeWidth="3.6385" strokeMiterlimit={10} width="298.24" height="62.5" />
+        <circle fill={this.props.color1.value} stroke="#E0E0E0" strokeWidth="3.8204" strokeMiterlimit={10} cx="156.614" cy="129.145" r="86.362" />
         <g>
           <defs>
             <circle id="SVGID_3_" cx="156.614" cy="129.145" r="86.362" />
@@ -68,7 +69,7 @@ class Logo1 extends Component {
           </g>
         </g>
         <g>
-          <circle fill="#E0E0E0" stroke="#BA3E39" strokeWidth="3.7922" strokeMiterlimit={10} cx="156.615" cy="129.145" r="67.312" />
+          <circle fill="#E0E0E0" stroke={this.props.color1.value} strokeWidth="3.7922" strokeMiterlimit={10} cx="156.615" cy="129.145" r="67.312" />
           <g>
             <circle fill="#F5F5F5" stroke="#272424" strokeWidth="3.6385" strokeMiterlimit={10} cx="156.673" cy="129.124" r="55.249" />
             <polygon fill="#272424" stroke="#272424" strokeWidth="0.9096" strokeMiterlimit={10} points="152.919,149.972

@@ -5,6 +5,8 @@ import Slider from '../../shared/Slider/Slider';
 import CalendarDayPiker from './CalendarDayPicker';
 import CalendarFilter from './CalendarFilter';
 import CalendarMatches from './CalendarMatches';
+
+import { isSameDay } from '../../helpers/Dates';
 import Loc from '../../common/Locale/Loc';
 
 import './Calendar.css';
@@ -20,6 +22,7 @@ class Calendar extends Component {
     isLoading: false,
     currentTournaments: null,
     currentTeams: null,
+    disabledDays: [],
     selectedSeason: null,
     selectedTournament: null,
     selectedTeam: null,
@@ -38,12 +41,15 @@ class Calendar extends Component {
     store.teams.all = await store.teams.actions.getAll();
     store.facilities.all = await store.facilities.actions.getAll();
     store.referees.all = await store.referees.actions.getAll();
-    // store.matches.getPlayDays
-    // 🚧🚧🚧
+    store.matches.getPlayDays = await store.matches.getPlayDays({
+      start: '0001-01-01 00:00:00',
+      end: '9999-01-01 00:00:00',
+    });
 
     this.setState({
       currentTournaments: store.tournaments.all,
       currentTeams: store.teams.all,
+      disabledDays: store.matches.getPlayDays.map(date => new Date(date.startTime)),
     });
   };
 
@@ -121,6 +127,32 @@ class Calendar extends Component {
     return options;
   };
 
+  handleDownloadCSV = () => {
+    const store = this.props.store;
+    const {
+      selectedSeason,
+      selectedTournament,
+      selectedTeam,
+      selectedStatus,
+      selectedField,
+      selectedReferee,
+      filterByDay,
+      startDate,
+      endDate,
+    } = this.state;
+    store.matches.downloadMatchesExport({
+      idSeason: selectedSeason,
+      idTournament: selectedTournament,
+      idTeam: selectedTeam,
+      status: selectedStatus,
+      idField: selectedField,
+      idReferee: selectedReferee,
+      useDates: filterByDay,
+      startDate,
+      endDate,
+    });
+  };
+
   handleOnSubmit = async () => {
     const store = this.props.store;
     const {
@@ -178,6 +210,11 @@ class Calendar extends Component {
                 numberOfMonths={this.state.numberOfMonths}
                 onChange={this.handleSelectedDays}
                 locale={this.props.ui.lang}
+                disabledDays={
+                  this.state.filterByDay
+                    ? date => !this.state.disabledDays.find(disabledDate => isSameDay(date, disabledDate))
+                    : []
+                }
               />
               <button className="Button Second" onClick={this.handleMonthRangeTogggle}>
                 <Loc>{isSimpleMonth ? 'GlobalCalendar.DayMode1' : 'GlobalCalendar.DayMode2'}</Loc>
@@ -238,7 +275,14 @@ class Calendar extends Component {
             </button>
           </div>
         </div>
-        <CalendarMatches matches={this.state.fileredMatches} />
+        <CalendarMatches
+          matches={this.state.fileredMatches}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+        />
+        <button className="Button Center SpinnerButtonIdle" onClick={this.handleDownloadCSV}>
+          <Loc>GlobalCalendar.Filter.Csv</Loc>
+        </button>
       </div>
     );
   }

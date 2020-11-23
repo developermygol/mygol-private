@@ -64,6 +64,18 @@ export default class MatchesStore {
     });
   };
 
+  downloadMatchesExport = data => {
+    return axios.post('matches/export', data, { responseType: 'blob' }).then(res => {
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'matches.csv');
+      document.body.appendChild(link);
+      link.click();
+      window.URL.revokeObjectURL(url);
+    });
+  };
+
   adaptFormData = data => {
     data.idGroup = getInt(data.idGroup);
     data.idStage = getInt(data.idStage);

@@ -13,6 +13,10 @@
   text-transform: uppercase;
 }
 
+.Slider.no-label .Label {
+  width: initial;
+}
+
 /* The switch - the box around the slider */
 .Slider .switch {
   position: relative;

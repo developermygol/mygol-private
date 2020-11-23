@@ -1,2 +1,4 @@
 # Ignore Translation Files
 src/components/common/Locale/*
+LogoEditor.js
+src/components/pages/Tournaments/Teams/Logo/Templates/*

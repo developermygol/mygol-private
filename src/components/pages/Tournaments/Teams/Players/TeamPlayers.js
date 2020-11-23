@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import CrudForm from '../../../../common/FormsMobx/CrudForm';
 import { inject, observer } from 'mobx-react';
 import { withRouter, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { getPlayerIdPicture } from '../../../../helpers/Utils';
 import PlayerDetails from '../../../Players/PlayerDetails';
 import Loc, { Localize } from '../../../../common/Locale/Loc';
@@ -10,7 +11,9 @@ import { observable } from 'mobx';
 import { getSelectOptionsFromFixedValues } from '../../../../common/FormsMobx/EditRenderHandlers';
 import PlayerFlagsViewComponent from './PlayerFlagsViewComponent';
 import { isTeamInAdmins } from '../../../../../RouteValidation';
-import YesNoPicker from '../../../../common/FormFields/YesNoPicker';
+import YesNoPickerSlider from '../../../../common/FormFields/YesNoPickerSlider';
+// import YesNoPicker from '../../../../common/FormFields/YesNoPicker';
+// import Slider from '../../../../shared/Slider/Slider';
 
 const PlayerEnrollmentOptions = [
   { value: 0, label: Localize('PlayerEnrollStatus0') },
@@ -134,12 +137,49 @@ class TeamPlayers extends Component {
 
   approvedStatusRender = r => {
     //return r.approved.toString();
-    return <YesNoPicker value={r.approved} onChange={v => this.approvedStatusChanged(r, v)} />;
+    return (
+      <YesNoPickerSlider
+        label=""
+        className="no-label"
+        value={r.approved}
+        onChange={v => this.approvedStatusChanged(r, v)}
+      />
+    );
+    // return <YesNoPickerSlider value={r.approved} onChange={v => this.approvedStatusChanged(r, v)} />;
   };
 
-  approvedStatusChanged = (player, newValue) => {
+  approvedStatusChanged = async (player, newValue) => {
     const store = this.props.store.players;
-    store.setPlayerApprovedStatus(player.id, newValue);
+    await store.setPlayerApprovedStatus(player.id, newValue);
+  };
+
+  handlePictureUpload = () => {
+    document.querySelector('#fileSelector').click();
+  };
+
+  handleFileChange = event => {
+    const file = event.target.files[0];
+    if (file) this.uploadFile(file, this.props.match.params.idTeam, this.props.match.params.idTournament);
+  };
+
+  uploadFile = async (file, idTeam, idTournament) => {
+    // Create an object of formData
+    const formData = new FormData();
+    const store = this.props.store.players;
+
+    // Update the formData object
+    formData.append('idTeam', idTeam);
+    formData.append('idTournament', idTournament);
+    formData.append('file', file, file.name);
+
+    const response = await store.uploadPalyer(formData);
+
+    if (response.data) {
+      toast.success('✔ Player Added');
+      store.actions.getAll('/players/forteam/' + idTeam);
+    } else {
+      if (response.data.Message) toast.error(`❌ ${response.data.Message}`);
+    }
   };
 
   isTeamAdmin = () => {
@@ -170,7 +210,7 @@ class TeamPlayers extends Component {
       {
         fieldName: 'name',
         localizedLabel: 'Name',
-        listRenderHandler: r => this.getPlayerLink(r, r.name),
+        listRenderHandler: r => this.getPlayerLink(r, `${r.name} ${r.surname}`),
         editRenderType: 'text',
         rules: 'required|string|between:3,100',
         hint: 'Hint.Required',
@@ -178,6 +218,7 @@ class TeamPlayers extends Component {
       {
         fieldName: 'surname',
         localizedLabel: 'Surname',
+        hideInList: true,
         listRenderHandler: r => this.getPlayerLink(r, r.surname),
         editRenderType: 'text',
         rules: 'required|string|between:3,100',
@@ -189,7 +230,7 @@ class TeamPlayers extends Component {
         hint: 'IsApproved.Hint',
         hideInList: false,
         hideInAdd: true,
-        listRenderHandler: this.approvedStatusRender,
+        listRenderHandler: r => this.approvedStatusRender(r),
         editRenderType: 'localizedradio',
         selectOptions: [
           { value: 'false', label: 'No' },
@@ -497,9 +538,20 @@ class TeamPlayers extends Component {
           routeIdParamName="idPlayer"
           listBackButton={false}
           listAdditionalButtons={
-            <button className="Button" onClick={this.handleInvitePlayer}>
-              <Loc>Invite player</Loc>
-            </button>
+            <React.Fragment>
+              <button className="Button" onClick={this.handleInvitePlayer}>
+                <Loc>Invite player</Loc>
+              </button>
+              <button className="Button" onClick={this.handlePictureUpload}>
+                <Loc>Import player</Loc>
+              </button>
+              <input
+                id="fileSelector"
+                style={{ display: 'none' }}
+                type="file"
+                onChange={this.handleFileChange}
+              />
+            </React.Fragment>
           }
           addData={{
             name: null,

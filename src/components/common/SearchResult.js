@@ -7,6 +7,7 @@ import Loc from './Locale/Loc';
 import { getPlayerIdPicture } from '../helpers/Utils';
 
 const PlayerSearchResult = ({ item, onClick, selected }) => {
+  const { team, tournament, season } = item;
   return (
     <tr>
       <td>{getPlayerIdPicture(item.idPhotoImgUrl, 'PlayerAvatar Mini')}</td>
@@ -16,7 +17,10 @@ const PlayerSearchResult = ({ item, onClick, selected }) => {
             if (onClick) onClick(item);
           }}
         >
-          {item.name + ' ' + item.surname}
+          <div>
+            <b>{item.name + ' ' + item.surname}</b>
+          </div>
+          {team && tournament && season && <div>{`${team.name} - ${tournament.name} (${season.name})`}</div>}
         </span>
       </td>
     </tr>
@@ -60,7 +64,13 @@ class SearchResult extends Component {
                   key={uuidv4()}
                   item={item}
                   onClick={this.clickHandler}
-                  selected={s && s.id === item.id}
+                  selected={
+                    s &&
+                    s.id === item.id &&
+                    s.tournament.id === item.tournament.id &&
+                    s.season.id === item.season.id &&
+                    (!s.team || s.team.id === item.team.id)
+                  }
                 />
               );
             })}

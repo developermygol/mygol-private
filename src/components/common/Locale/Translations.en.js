@@ -589,6 +589,7 @@ export default {
     "PlayDay.ConfirmDelete": "Do you really want to delete the day ", 
     "SequenceOrder": "#", 
     "Stage": "Stage", 
+    "Matches.On": "Matches on",
     "Last updated": "Last updated:", 
     "Never": "Never", 
     "CalendarPlanner": "Calendar planning algorithm", 

@@ -8,7 +8,7 @@ import { observable } from 'mobx';
 import { getUploadsImg, requestAsync } from '../../../helpers/Utils';
 
 const TeamSearchResult = ({ item, onClick, selected }) => {
-  console.log('TeamSearchResult: ', item);
+  // console.log('TeamSearchResult: ', item);
   return (
     <tr>
       <td>{getUploadsImg(item.logoImgUrl, item.id, 'team', 'TeamLogo')}</td>

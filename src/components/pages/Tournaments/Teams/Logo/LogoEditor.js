@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-//import Logo1 from './Templates/Logo1';
+import Logo1 from './Templates/Logo1';
 import Logo2 from './Templates/Logo2';
 import Loc, { Localize } from '../../../../common/Locale/Loc';
 import BackButton from '../../../../common/BackButton';
@@ -138,7 +138,7 @@ export default withRouter(class LogoEditor extends Component {
 class LogoTemplateChooser extends Component {
 
     availableLogos = [
-        //Logo1,
+        Logo1,
         Logo2
     ]
 

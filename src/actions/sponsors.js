@@ -1,4 +1,4 @@
-import axios from '../../axios';
+import axios from '../axios';
 import types from '../types/types';
 
 export const startLoadingSponsorsByidOrganization = idOrganization => {

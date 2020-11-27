@@ -682,6 +682,7 @@ h3 {
 }
 
 .FormField .Hint {
+  font-size: 0.9rem;
   display: block;
   margin-bottom: 5px;
   color: #b6c9c5;
@@ -735,6 +736,16 @@ h3 {
 
 .FormField select option {
   font-size: 0.666em;
+}
+
+.FormField.no-number-arrows input::-webkit-outer-spin-button,
+.FormField.no-number-arrows input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.FormField.no-number-arrows input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 .FormField .Text:focus {
@@ -2231,6 +2242,7 @@ button.Center {
   border: none;
   color: #567dff;
   text-decoration: underline;
+  font-size: 1rem;
 }
 
 .ToggleButton.Right {

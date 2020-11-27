@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { DndProvider } from 'react-dnd';
+import { Provider } from 'react-redux';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import store from './components/store/store';
 import App from './App';
 import { unregister } from './registerServiceWorker';
 
@@ -19,7 +21,9 @@ body.className = 'loaded';
 
 ReactDOM.render(
   <DndProvider backend={HTML5Backend}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </DndProvider>,
   root
 );

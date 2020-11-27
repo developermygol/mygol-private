@@ -61,7 +61,9 @@ export default {
 
     // Sponsors
     "Sponsors": "Sponsors",
+    "Sponsors.Hint": "Aquí se definen los anuncios de sponsors que aparecen en cada sección de espacios publicitarios en la web pública.", 
     "Create new sponsor": "Crear nuevo sponsor",
+    "Edit sponsor": "Editar sponsor",
     "Sponsor.Image": "Imagen del Sponsor",
     "Sponsor.Image.Hint": "Dependiendo de la posición en la que aparece, se admiten diferentes tamaños. Esta imagen aparecerá tal cual se sube aquí, mismo tamaño y transparencia.",
     "Sponsor.Name.Hint": "Este nombre sólo se usa en el panel de control para ver los sponsors.",
@@ -74,11 +76,25 @@ export default {
     "Sponsor.Position.Hint": "La posición en la que aparece el anuncio en la zona pública.", 
     "Sponsor.Sequence": "Orden de secuencia", 
     "Sponsor.Sequence.Hint": "Orden en el que aparece este sponsor en relación con los demás que hay en su misma posición.", 
+    "Sponsors.SectionsUpdatedOk": "Sponsor configuration updated Ok", 
+    "Sponsors.EditSectionConfig": "Editar comportamiento sección", 
+    "Sponsors.EmptySection": "No hay sponsors definidos en esta sección.", 
 
-    "SponsorPosition1": "Siempre visible, arriba (organización)",
-    "SponsorPosition2": "Despues de contenido primario (organización / equipo)",
-    "SponsorPosition3": "Abajo (organización / equipo)", 
-    "SponsorPosition4": "Lateral (organización)",
+    "SponsorsSection.Title": "Editar configuración de sección de sponsors", 
+    "SponsorsSection.Type": "Comportamiento anuncios", 
+    "SponsorsSection.Type.Hint": "Cómo se muestran los anuncios asignados a esta sección", 
+    "SponsorsSection.Hide": "Ocultar esta sección", 
+    "SponsorsSection.Hide.Hint": "Ocultar esta sección de anuncios.", 
+    "SponsorsSection.Inherit": "Heredar configuración de organización", 
+    "SponsorsSection.Inherit.Hint": "Ignorar configuración de competición y usar la de la organización", 
+
+    "SponsorSectionType0": "Se muestran todos a la vez", 
+    "SponsorSectionType1": "Animación, uno cada 7 segundos (slider)", 
+
+    "SponsorPosition1": "Arriba",
+    "SponsorPosition2": "Centro",
+    "SponsorPosition3": "Abajo", 
+    "SponsorPosition4": "Lateral",
 
     // Player
     "Player.Details": "Jugador", 

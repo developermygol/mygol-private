@@ -50,7 +50,6 @@ export function LocalizeI(key, ...args) {
         const translated = translations[key];
         if (translated) return interpolateString(translated, ...args);
     }
-
     return '__' + key + '__';
 }
 

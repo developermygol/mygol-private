@@ -280,6 +280,16 @@ class Calendar extends Component {
           matches={this.state.fileredMatches}
           startDate={this.state.startDate}
           endDate={this.state.endDate}
+          season={
+            this.state.selectedSeason
+              ? this.props.store.seasons.all.find(s => s.id === this.state.selectedSeason)
+              : ''
+          }
+          tournament={
+            this.state.selectedTournament
+              ? this.props.store.tournaments.all.find(t => t.id === this.state.selectedTournament)
+              : ''
+          }
         />
         <button className="Button Center SpinnerButtonIdle" onClick={this.handleDownloadCSV}>
           <Loc>GlobalCalendar.Filter.Csv</Loc>

@@ -3,13 +3,35 @@ import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import InfoBox from '../../common/InfoBox';
-import Loc from '../../common/Locale/Loc';
+import Loc, { LocalizeI } from '../../common/Locale/Loc';
 import { getUploadsImg } from '../../helpers/Utils';
 
-const CalendarMatches = ({ matches, startDate, endDate }) => {
+const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) => {
   const matchHasResult = match => {
     const s = match.status;
     return s === 3 || s === 4 || s === 5;
+  };
+
+  const handleMatchTimeFormat = dateString => {
+    if (!dateString || dateString === '') return '';
+    const date = new Date(dateString);
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+  };
+
+  const handleInfoText = () => {
+    let finaltext = '';
+    if (startDate && endDate)
+      finaltext += LocalizeI(
+        'GlobalCalendar.MatchesOnRange',
+        startDate.toLocaleDateString(),
+        endDate.toLocaleDateString()
+      );
+    else if (startDate) finaltext += LocalizeI('GlobalCalendar.MatchesOn', startDate.toLocaleDateString());
+
+    if (tournament) finaltext += LocalizeI('GlobalCalendar.MatchesOfTournament', tournament.name);
+    if (season) finaltext += LocalizeI('GlobalCalendar.MatchesOfSeason', season.name);
+
+    return finaltext;
   };
 
   return (
@@ -17,12 +39,7 @@ const CalendarMatches = ({ matches, startDate, endDate }) => {
       <div className="PlayDay Content">
         {matches && matches.length > 0 ? (
           <React.Fragment>
-            <h3>
-              <Loc>Matches.On</Loc>
-              {` ${startDate ? startDate.toLocaleDateString() : ''} ${
-                endDate ? ' - ' + endDate.toLocaleDateString() : ''
-              }`}
-            </h3>
+            <h3>{handleInfoText()}</h3>
             <table>
               <tbody>
                 {matches.map((match, i) => {
@@ -39,7 +56,7 @@ const CalendarMatches = ({ matches, startDate, endDate }) => {
                       )}
                       <td>
                         <Link to={'/tournaments/' + match.idTournament + '/matches/' + match.id}>
-                          {match.startTime}
+                          {handleMatchTimeFormat(match.startTime)}
                         </Link>
                       </td>
                       <td className="Right">

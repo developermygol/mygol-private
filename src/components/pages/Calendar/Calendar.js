@@ -41,7 +41,8 @@ class Calendar extends Component {
     store.teams.all = await store.teams.actions.getAll();
     store.facilities.all = await store.facilities.actions.getAll();
     store.referees.all = await store.referees.actions.getAll();
-    store.matches.getPlayDays = await store.matches.getPlayDays({
+
+    const playDays = await store.matches.getPlayDays({
       start: '0001-01-01 00:00:00',
       end: '9999-01-01 00:00:00',
     });
@@ -49,7 +50,7 @@ class Calendar extends Component {
     this.setState({
       currentTournaments: store.tournaments.all,
       currentTeams: store.teams.all,
-      disabledDays: store.matches.getPlayDays.map(date => new Date(date.startTime)),
+      disabledDays: playDays.map(date => new Date(date.startTime)),
     });
   };
 

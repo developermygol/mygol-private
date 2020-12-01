@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import organizationReducer from '../reducers/organizaionReducer';
-import tournamentsReducer from '../reducers/tournamnetsReducer';
-import sponsorsReducer from '../reducers/sponsorsReducer';
+import organizationReducer from './reducers/organizationReducer';
+import tournamentsReducer from './reducers/tournamentsReducer';
+import sponsorsReducer from './reducers/sponsorsReducer';
 
 const rootReducer = combineReducers({
   organizations: organizationReducer,

@@ -1,7 +1,7 @@
-import axios from '../axios';
+import axios from '../../axios';
 
-import types from '../types/types';
-import { createDefaultSectionSponsorData } from '../components/helpers/Sponsors';
+import types from './actionTypes';
+import { createDefaultSectionSponsorData } from '../../components/helpers/Sponsors';
 
 export const startLoadTournaments = () => {
   return async (dispatch, getState) => {

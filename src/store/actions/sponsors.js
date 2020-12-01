@@ -1,5 +1,5 @@
-import axios from '../axios';
-import types from '../types/types';
+import axios from '../../axios';
+import types from './actionTypes';
 
 export const startLoadingSponsorsByidOrganization = idOrganization => {
   return async (dispatch, getState) => {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { startLoadOrganization, startUpdateOrgSponsorsData } from '../../../../actions/organizations';
+import { startLoadOrganization, startUpdateOrgSponsorsData } from '../../../../store/actions/organizations';
 import {
   setActiveTournament,
   startLoadTournaments,
   startUpdateTorunamnetSponsorsData,
-} from '../../../../actions/tournaments';
+} from '../../../../store/actions/tournaments';
 import {
   startDeleteSponsor,
   startLoadingSponsorsByidTournament,
@@ -15,7 +15,7 @@ import {
   updateImage,
   removeImage,
   startLoadingSponsorsByidOrganization,
-} from '../../../../actions/sponsors';
+} from '../../../../store/actions/sponsors';
 
 import SponsorsGroups from './SponsorsGroups';
 import SponsorForm from './SponsorForm';

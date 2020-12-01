@@ -148,7 +148,8 @@ class CalendarView extends Component {
         canDelete={true}
         readOnly={false}
         normalTeams={lookups.normalTeams}
-        normalGroups={lookups.normalGroups}
+        normalGroups={null}
+        // normalGroups={lookups.normalGroups}
         stage={lookups.normalStages[day.idStage]}
         onDayDelete={this.deleteDayHandler}
       />

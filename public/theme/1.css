@@ -1241,6 +1241,16 @@ h3.ShowField {
   padding: 2px 5px 2px 5px;
 }
 
+.PlayDay .First {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PlayDay .First a {
+  font-size: 0.85rem;
+}
+
 .PlayDay .ScoreCell {
   white-space: nowrap;
 }
@@ -1255,6 +1265,15 @@ h3.ShowField {
   min-width: 34px;
   padding: 3px;
   margin: 0 2px;
+}
+
+.PlayDay .MatchStatusRecordClosed {
+  border-radius: 50px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #98d800;
+  margin-right: 5px;
 }
 
 .StatusWarn {

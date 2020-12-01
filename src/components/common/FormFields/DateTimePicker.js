@@ -21,7 +21,7 @@ class DateTimePiker extends Component {
       day.setHours(hours);
       day.setMinutes(minutes);
     }
-    debugger;
+
     this.setState({ value: day.toJSON() });
     this.props.field.value = day.toJSON();
   };

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import MatchView from "./MatchView";
-import { withRouter } from "react-router-dom";
-import { observable } from "mobx";
-import InfoBox from "../../../common/InfoBox";
-import Loc from "../../../common/Locale/Loc";
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
+import MatchView from './MatchView';
+import { withRouter } from 'react-router-dom';
+import { observable } from 'mobx';
+import InfoBox from '../../../common/InfoBox';
+import Loc from '../../../common/Locale/Loc';
 
 const defaultProps = {
   idTournament: -1,
@@ -14,7 +14,7 @@ const defaultProps = {
   collapsed: false,
 };
 
-@inject("store")
+@inject('store')
 @observer
 class DayView extends Component {
   @observable collapsed = this.props.collapsed;
@@ -47,15 +47,11 @@ class DayView extends Component {
     return (
       <div className="Card Hero">
         <h3 onClick={this.toggleCollapse}>
-          {playDay.name} -{" "}
-          <span className="Stage">{p.stage && p.stage.name}</span> -{" "}
+          {playDay.name} - <span className="Stage">{p.stage && p.stage.name}</span> -{' '}
           <span className="Position">
             <Loc>SequenceOrder</Loc> {playDay.sequenceOrder}
           </span>
-          <button
-            className="Button Second Right"
-            onClick={(e) => p.onDayDelete(playDay, e)}
-          >
+          <button className="Button Second Right" onClick={e => p.onDayDelete(playDay, e)}>
             <Loc>PlayDay.Delete</Loc>
           </button>
         </h3>

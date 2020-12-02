@@ -79,7 +79,46 @@ class OrgData extends Component {
               editRenderType: 'text',
               rules: 'string|between:0,100',
             },
-
+            {
+              fieldName: 's2',
+              localizedLabel: 'Org.DataProtection',
+              hideInList: true,
+              hideInAdd: true,
+              editRenderType: 'separator',
+            },
+            {
+              fieldName: 'dpCompanyName',
+              localizedLabel: 'Org.DpCompanyName',
+              hint: 'Org.DpCompanyName.Hint',
+              editRenderType: 'text',
+              rules: 'required',
+            },
+            {
+              fieldName: 'dpCompanyId',
+              localizedLabel: 'Org.DpCompanyId',
+              editRenderType: 'text',
+              rules: 'required',
+            },
+            {
+              fieldName: 'dpCompanyAddress',
+              localizedLabel: 'Org.DpCompanyAddress',
+              editRenderType: 'textarea',
+              rules: 'required',
+            },
+            {
+              fieldName: 'dpCompanyEmail',
+              localizedLabel: 'Org.DpCompanyEmail',
+              hint: 'Org.DpCompanyEmail.Hint',
+              editRenderType: 'text',
+              rules: 'required',
+            },
+            {
+              fieldName: 'dpCompanyPhone',
+              localizedLabel: 'Org.DpCompanyPhone',
+              hint: 'Org.DpCompanyPhone.Hint',
+              editRenderType: 'text',
+              rules: 'required',
+            },
             {
               fieldName: 's1',
               localizedLabel: 'Org.Social',

@@ -894,7 +894,7 @@ export default {
     "Org.Lang": "Language", 
     "Org.Lang.Hint": "Default language of the dashboard and public site", 
     
-    "Org.DataProtection": "Data protection:", 
+    "Org.DataProtection": "Protección de datos", 
     "Org.DpCompanyName": "Legal name", 
     "Org.DpCompanyName.Hint": "", 
     "Org.DpCompanyId": "CIF", 

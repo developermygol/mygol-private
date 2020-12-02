@@ -843,6 +843,18 @@ export default {
     "Org.Address3": "Dirección línea 3",
     "Org.Lang": "Idioma",
     "Org.Lang.Hint": "Idioma por defecto de la web pública",
+
+    "Org.DataProtection": "Data protection", 
+    "Org.DpCompanyName": "Legal name", 
+    "Org.DpCompanyName.Hint": "Denominación social de la empresa, como está en el registro mercantil", 
+    "Org.DpCompanyId": "CIF", 
+    "Org.DpCompanyId.Hint": "", 
+    "Org.DpCompanyAddress": "Legal address", 
+    "Org.DpCompanyAddress.Hint": "", 
+    "Org.DpCompanyEmail": "Contact email", 
+    "Org.DpCompanyEmail.Hint": "Para consultas relacionadas con protección de datos y compras a través de la app.", 
+    "Org.DpCompanyPhone": "Contact phone number", 
+    "Org.DpCompanyPhone.Hint": "Para consultas relacionadas con protección de datos y compras a través de la app.", 
     
     "Org.Social": "Redes sociales", 
 

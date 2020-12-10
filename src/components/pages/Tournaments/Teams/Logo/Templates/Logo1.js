@@ -21,7 +21,7 @@ class Logo1 extends Component {
         <path id="SVGID_x5F_1_x5F_" fill="none" d="M250.76,129.145c0,51.996-42.15,94.146-94.146,94.146
         		c-51.996,0-94.146-42.15-94.146-94.146c0-51.995,42.15-94.146,94.146-94.146C208.61,34.999,250.76,77.15,250.76,129.145z" />
         <text>
-          <textPath xlinkHref="#SVGID_x5F_1_x5F_" startOffset="62.5%">
+          <textPath xlinkHref="#SVGID_x5F_1_x5F_" startOffset="75%" textAnchor="middle">
             <tspan fill="#F5F5F5" fontFamily="'Arial'" fontSize="21.1358">{this.props.line2.value}</tspan>
           </textPath>
         </text>
@@ -29,7 +29,7 @@ class Logo1 extends Component {
           <path id="SVGID_x5F_2_x5F_" fill="none" d="M268.954,129.145c0-62.042-50.296-112.338-112.339-112.338
           			c-62.042,0-112.338,50.296-112.338,112.338s50.296,112.337,112.338,112.337C218.658,241.482,268.954,191.188,268.954,129.145z" />
           <text>
-            <textPath xlinkHref="#SVGID_x5F_2_x5F_" startOffset="65%">
+            <textPath xlinkHref="#SVGID_x5F_2_x5F_" startOffset="75%" textAnchor="middle">
           <tspan fill="#F5F5F5" fontFamily="'Arial'" fontSize="21.0124">{this.props.line3.value} {this.props.line1.value}</tspan>
             </textPath>
           </text>

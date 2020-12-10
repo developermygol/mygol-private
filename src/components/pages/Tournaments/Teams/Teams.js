@@ -9,8 +9,9 @@ import TeamDetails from './TeamDetails';
 import { inject, observer } from 'mobx-react';
 import { observable, action } from 'mobx';
 import AddTeamDialog from './AddTeamDialog';
+import { isMasterAdmin } from '../../../common/AccessLimit';
 
-@inject('store')
+@inject('store', 'ui')
 @observer
 class CompetitionTeams extends Component {
   @observable showAddTeamDialog = false;
@@ -87,6 +88,9 @@ class CompetitionTeams extends Component {
 
     const teams = this.props.store.teams;
     const listData = teams.all ? teams.all.slice() : null;
+    const { auth } = this.props.ui;
+
+    const isAllowed = isMasterAdmin(parseInt(auth.level, 10));
 
     return (
       <div>
@@ -95,20 +99,22 @@ class CompetitionTeams extends Component {
           addMessage="Create new team"
           editMessage="Edit team"
           listAdditionalButtons={
-            <React.Fragment>
-              <button className="Button" onClick={this.handleAddTeam}>
-                <Loc>Add existing team</Loc>
-              </button>
-              <button className="Button" onClick={this.handlePictureUpload}>
-                <Loc>Import team</Loc>
-              </button>
-              <input
-                id="fileSelector"
-                style={{ display: 'none' }}
-                type="file"
-                onChange={this.handleFileChange}
-              />
-            </React.Fragment>
+            isAllowed && (
+              <React.Fragment>
+                <button className="Button" onClick={this.handleAddTeam}>
+                  <Loc>Add existing team</Loc>
+                </button>
+                <button className="Button" onClick={this.handlePictureUpload}>
+                  <Loc>Import team</Loc>
+                </button>
+                <input
+                  id="fileSelector"
+                  style={{ display: 'none' }}
+                  type="file"
+                  onChange={this.handleFileChange}
+                />
+              </React.Fragment>
+            )
           }
           deleteDialogTitle="Unlink team?"
           deleteDialogMessage="Confirm team unlink"

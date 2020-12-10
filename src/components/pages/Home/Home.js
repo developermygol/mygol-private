@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
-import { Levels } from "../../common/AccessLimit";
-import OrgAdminHome from "../../common/HomeComponents/OrgAdminHome";
-import RefereeHome from "../../common/HomeComponents/RefereeHome";
-import PlayerHome from "../../common/HomeComponents/PlayerHome";
+import { Levels } from '../../common/AccessLimit';
+import OrgAdminHome from '../../common/HomeComponents/OrgAdminHome';
+import RefereeHome from '../../common/HomeComponents/RefereeHome';
+import PlayerHome from '../../common/HomeComponents/PlayerHome';
 
-@inject("ui")
+@inject('ui')
 @observer
 class Home extends Component {
   getHomeComponent = () => {
@@ -14,6 +14,7 @@ class Home extends Component {
     if (!auth) return null;
 
     switch (parseInt(auth.level, 10)) {
+      case Levels.MasterAdmin:
       case Levels.OrgAdmin:
         return <OrgAdminHome />;
       case Levels.Referee:

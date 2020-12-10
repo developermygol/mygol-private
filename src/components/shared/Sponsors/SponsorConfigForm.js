@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Loc from '../../../common/Locale/Loc';
-import Slider from '../../../shared/Slider/Slider';
+import Loc from '../../common/Locale/Loc';
+import Slider from '../Slider/Slider';
 
 const radioOptions = [
   { label: 'No', value: 0 },

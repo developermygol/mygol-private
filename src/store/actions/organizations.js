@@ -1,6 +1,10 @@
 import axios from '../../axios';
 import types from './actionTypes';
+import { toast } from 'react-toastify';
+
 import { createDefaultSectionSponsorData } from '../../components/helpers/Sponsors';
+import { getOpErrorText } from '../../components/common/FormsMobx/Utils';
+import { Localize } from '../../components/common/Locale/Loc';
 
 export const startLoadOrganization = () => {
   return async (dispatch, getState) => {
@@ -10,8 +14,33 @@ export const startLoadOrganization = () => {
 
       // return error or swal
     } catch (err) {
+      console.error(err);
+      toast.error(getOpErrorText(err));
+    }
+  };
+};
+
+export const startUpdateOrgAppearanceData = appearanceJsonString => {
+  return async (dispatch, getState) => {
+    const {
+      organizations: { activeOrganization },
+    } = getState();
+
+    try {
+      const { data } = await axios.put('/organization/appearance', {
+        idOrganization: activeOrganization.id,
+        appearanceJsonString,
+      });
+      if (data) {
+        toast.success(Localize('Appearance.UpdatedOk'));
+        dispatch(updateActiveOrgAppearanceJSON(appearanceJsonString));
+      }
+
+      // return error or swal
+    } catch (err) {
       // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -44,7 +73,7 @@ export const startUpdateOrgSponsorsData = (type, sectionConfig) => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
+      toast.error(getOpErrorText(err));
       console.error(err);
     }
   };
@@ -63,4 +92,9 @@ export const setActiveOrganization = organization => ({
 export const updateActiveOrgSectionJSON = sectionsJson => ({
   type: types.organizationSetSponsorData,
   payload: sectionsJson,
+});
+
+export const updateActiveOrgAppearanceJSON = appearnaceJson => ({
+  type: types.organizationSetAppearanceData,
+  payload: appearnaceJson,
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Loc from '../../../common/Locale/Loc';
+import Loc from '../../common/Locale/Loc';
 import SponsorsList from './SponsorsList';
 
 const TopPosition = 1;

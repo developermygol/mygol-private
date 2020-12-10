@@ -1,8 +1,8 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import InfoBox from '../../../common/InfoBox';
-import Loc from '../../../common/Locale/Loc';
+import InfoBox from '../../common/InfoBox';
+import Loc from '../../common/Locale/Loc';
 import SponsorItem from './SponsorItem';
 
 const SponsorsList = ({ sponsors, onEdit, onDelete }) => {

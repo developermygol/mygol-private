@@ -13,17 +13,23 @@ import TournamentIndex from './TournamentIndex';
 import AccessLimit from '../../common/AccessLimit';
 import PaymentsIndex from '../PaymentConfig/PaymentsIndex';
 import TournamentSanctions from './Sanctions/TournamentSanctions';
-import Sponsors from './Sponsors/Sponsors';
+import Sponsors from '../../shared/Sponsors/Sponsors';
+import AppearanceScreen from '../Config/Appearance';
+import { connect } from 'react-redux';
+import { startLoadTournaments, setActiveTournament } from '../../../store/actions/tournaments';
 
 const asyncTeams = asyncComponent(() => import('./Teams/Teams'));
 
 @inject('store')
 @observer
 class TournamentDetails extends Component {
-  componentDidMount = () => {
+  componentDidMount = async () => {
     // Set the current tournament
     const id = this.props.match.params.idTournament;
     this.props.store.tournaments.setCurrent(id);
+
+    await this.props.onLoadTournaments();
+    this.props.onSetActiveTournament(this.props.tournaments.tournaments.find(t => t.id === parseInt(id, 10)));
   };
 
   linkClick = () => {
@@ -96,6 +102,13 @@ class TournamentDetails extends Component {
               </NavLink>
             </li>
           </AccessLimit>
+          <AccessLimit allowOrgAdmin>
+            <li>
+              <NavLink className="SecNavItem" onClick={this.linkClick} to={baseUrl + '/appearance'}>
+                <Loc>Appearance</Loc>
+              </NavLink>
+            </li>
+          </AccessLimit>
           {/* <li><NavLink className='SecNavItem' onClick={this.linkClick} to={baseUrl + '/content'}><Loc>Content management</Loc></NavLink></li> */}
         </ul>
 
@@ -121,6 +134,9 @@ class TournamentDetails extends Component {
             <Route path={basePath + '/sponsors'} component={Sponsors} />
           </AccessLimit>
           <AccessLimit allowOrgAdmin>
+            <Route path={basePath + '/appearance'} component={AppearanceScreen} />
+          </AccessLimit>
+          <AccessLimit allowOrgAdmin>
             <Route path={basePath} exact component={TournamentIndex} />
           </AccessLimit>
         </div>
@@ -129,4 +145,13 @@ class TournamentDetails extends Component {
   }
 }
 
-export default withRouter(TournamentDetails);
+const mapStateToProps = state => ({
+  tournaments: state.tournaments,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onLoadTournaments: () => dispatch(startLoadTournaments()),
+  onSetActiveTournament: torunament => dispatch(setActiveTournament(torunament)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TournamentDetails));

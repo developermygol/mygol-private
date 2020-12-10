@@ -13,6 +13,11 @@ const organizationReducer = (state = initalState, action) => {
       return { ...state, activeOrganization: action.payload };
     case types.organizationSetSponsorData:
       return { ...state, activeOrganization: { ...state.activeOrganization, sponsorData: action.payload } };
+    case types.organizationSetAppearanceData:
+      return {
+        ...state,
+        activeOrganization: { ...state.activeOrganization, appearanceData: action.payload },
+      };
     default:
       return state;
   }

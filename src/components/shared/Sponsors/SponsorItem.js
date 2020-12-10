@@ -2,7 +2,7 @@ import React from 'react';
 import XCircle from 'react-feather/dist/icons/x-circle';
 import Edit3 from 'react-feather/dist/icons/edit-3';
 
-import IconButton from '../../../../formFields/IconButton';
+import IconButton from '../../../formFields/IconButton';
 
 const SponsorItem = ({ sponsor, onEdit, onDelete }) => {
   const { name, altText } = sponsor;

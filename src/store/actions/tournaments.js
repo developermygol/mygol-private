@@ -1,7 +1,10 @@
 import axios from '../../axios';
+import { toast } from 'react-toastify';
 
 import types from './actionTypes';
 import { createDefaultSectionSponsorData } from '../../components/helpers/Sponsors';
+import { Localize } from '../../components/common/Locale/Loc';
+import { getOpErrorText } from '../../components/common/FormsMobx/Utils';
 
 export const startLoadTournaments = () => {
   return async (dispatch, getState) => {
@@ -13,6 +16,31 @@ export const startLoadTournaments = () => {
     } catch (err) {
       // return error or swal
       console.error(err);
+    }
+  };
+};
+
+export const startUpdateTournamentAppearanceData = appearanceJsonString => {
+  return async (dispatch, getState) => {
+    const {
+      tournaments: { activeTournament },
+    } = getState();
+
+    try {
+      const { data } = await axios.put('/tournaments/appearance', {
+        idTournament: activeTournament.id,
+        appearanceJsonString,
+      });
+      if (data) {
+        toast.success(Localize('Appearance.UpdatedOk'));
+        dispatch(updateActiveTournamentAppearanceJSON(appearanceJsonString));
+      }
+
+      // return error or swal
+    } catch (err) {
+      // return error or swal
+      console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -64,4 +92,9 @@ export const setActiveTournament = tournament => ({
 export const updateActiveTournamentSectionJSON = sectionsJson => ({
   type: types.tournamentSetSponsorData,
   payload: sectionsJson,
+});
+
+export const updateActiveTournamentAppearanceJSON = appearnaceJson => ({
+  type: types.tournamentSetAppearanceData,
+  payload: appearnaceJson,
 });

@@ -20,6 +20,11 @@ const tournamentsReducer = (state = initialState, action) => {
         }),
         activeTournament: { ...state.activeTournament, sponsorData: action.payload },
       };
+    case types.tournamentSetAppearanceData:
+      return {
+        ...state,
+        activeTournament: { ...state.activeTournament, appearanceData: action.payload },
+      };
     default:
       return state;
   }

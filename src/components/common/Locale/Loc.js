@@ -1,7 +1,8 @@
 import { Component } from 'react';
-import Translations from './Translations';
 import { inject, observer } from 'mobx-react';
-import { interpolateString } from '../../helpers/Utils';
+
+import Translations from './Translations';
+import { interpolateString, interpolateStringMultiple } from '../../helpers/Utils';
 
 
 const DefaultLanguage = 'es';       // Should match initial value set in Store
@@ -49,6 +50,17 @@ export function LocalizeI(key, ...args) {
     if (translations) {
         const translated = translations[key];
         if (translated) return interpolateString(translated, ...args);
+    }
+    return '__' + key + '__';
+}
+
+export function LocalizeIMultyple(key, ...args) {
+    if (!key) return '';
+
+    const translations = Translations[globalLang];
+    if (translations) {
+        const translated = translations[key];
+        if (translated) return interpolateStringMultiple(translated, ...args);
     }
     return '__' + key + '__';
 }

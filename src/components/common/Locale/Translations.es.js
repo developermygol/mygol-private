@@ -990,6 +990,42 @@ export default {
     "SanctionStatus3": "En trámite - alegaciones abiertas",
     "SanctionStatus4": "Cumplida",
 
+    // Appearance
+    "Appearance": "Apariencia", 
+    "Appearance.DescTitle.Organization": "Configuracion de apariencia de la organización", 
+    "Appearance.DescTitle.Tournament": "Configuración de apariencia de la competición", 
+    "Appearance.Hint.Organization": "Aquí se configura la apariencia global de la web pública de la organización. Este formato será utilizado para las páginas comunes de la organización, como portada, noticias, o contacto, así como en todas las competiciones en las que no se cree un formato específico.", 
+    "Appearance.Hint.Tournament": "Aquí se configura la apariencia de esta competición. Si no se especifica una configuración de formato, se utilizará la fijada a nivel de la organización.", 
+    "Appearance.Background": "Background configuration", 
+    "Appearance.Fonts": "Typography configuration", 
+    "Appearance.Json": "Appearance JSON", 
+    "Appearance.EditJson": "Editar JSON configuración (avanzado)", 
+    "Appearance.ResetToDefault": "Volver a valores por defecto", 
+    "Appearance.Reset.AreYouSure": "Estás seguro de que quires eliminar la configuración y volver a los valores por defecto?", 
+    "Appearance.Json.NotValid": "Invalid JSON code", 
+    "Appearance.UpdatedOk": "Appearance updated OK", 
+
+    "Appearance.BackgroundColor": "Color de fondo", 
+    "Appearance.BackgroundColor.Hint": "Aquí se configura la apariencia global de la web pública de la organización. Este formato será utilizado para las páginas comunes de la organización, como portada, noticias, o contacto, así como en todas las competiciones en las que no se cree un formato específico.", 
+    "Appearance.Color1": "Color principal", 
+    "Appearance.Color1.Hint": "Es el color de títulos y elementos activos (enlaces)", 
+    "Appearance.Color2": "Color secundario", 
+    "Appearance.Color2.Hint": "Es el color de de títulos y elementos activos secundarios", 
+    "Appearance.Color3": "Color de texto", 
+    "Appearance.Color3.Hint": "El color del texto normal", 
+
+    "Appearance.BackgroundImage": "Imagen de fondo", 
+    "Appearance.BackgroundImage.Hint": "Opcional. Si se adjunta una imagen, se usará como fondo fijo que cubrirá la pantalla. Se recomienda que sea un fichero de pocos KB, ya que puede afectar al tiempo de carga de la web pública.", 
+    "Appearance.FontName": "Nombre de la fuente", 
+    "Appearance.FontName.Hint": "Opcional. El nombre de la fuente como se escribiría en las reglas CSS.", 
+    "Appearance.FontUrl": "URL de la fuente (hoja de estilos)", 
+    "Appearance.FontUrl.Hint": "Opcional. Sólo necesario si se debe cargar desde un sitio externo.", 
+
+    "AppearancePreview": "Preview", 
+    "AppearancePreview.Text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore", 
+    "Contact": "Contact", 
+
+    "DateTimePicker.DateNoSet": "Date and time not set", 
 
     // Dates
     "months": [

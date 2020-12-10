@@ -159,6 +159,13 @@ export const interpolateString = (str, ...args) => {
   return result;
 };
 
+export const interpolateStringMultiple = (str, ...args) => {
+  let result = str;
+  for (let i = 0; i < args.length; ++i) result = result.replaceAll('{' + i + '}', args[i]);
+
+  return result;
+};
+
 export const getFormattedCurrency = (value, currency = 'eur') => {
   const pv = parseFloat(value);
   if (!isNaN(pv)) value = pv;

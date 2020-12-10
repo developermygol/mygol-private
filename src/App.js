@@ -40,7 +40,7 @@ class App extends Component {
           <Router history={history}>
             <Switch>
               <Route path="/login" component={Login} />
-              <Route component={Root} />
+              <Route component={props => <Root {...props} />} />
             </Switch>
           </Router>
         </Fragment>

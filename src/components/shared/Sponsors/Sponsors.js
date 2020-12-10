@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { startLoadOrganization, startUpdateOrgSponsorsData } from '../../../../store/actions/organizations';
-import {
-  setActiveTournament,
-  startLoadTournaments,
-  startUpdateTorunamnetSponsorsData,
-} from '../../../../store/actions/tournaments';
+import { startUpdateOrgSponsorsData } from '../../../store/actions/organizations';
+import { setActiveTournament, startUpdateTorunamnetSponsorsData } from '../../../store/actions/tournaments';
 import {
   startDeleteSponsor,
   startLoadingSponsorsByidTournament,
@@ -15,13 +11,13 @@ import {
   updateImage,
   removeImage,
   startLoadingSponsorsByidOrganization,
-} from '../../../../store/actions/sponsors';
+} from '../../../store/actions/sponsors';
 
 import SponsorsGroups from './SponsorsGroups';
 import SponsorForm from './SponsorForm';
 import SponsorConfigForm from './SponsorConfigForm';
-import Loc from '../../../common/Locale/Loc';
-import { useForm } from '../../../../hooks/useForm';
+import Loc from '../../common/Locale/Loc';
+import { useForm } from '../../../hooks/useForm';
 
 const initialForm = {
   name: '',
@@ -66,14 +62,8 @@ const Sponsors = ({ match, idOrganization = 0 }) => {
   const [formValues, handleInputChange, reset] = useForm(initialForm);
 
   useEffect(() => {
-    if (isOrganizationSponsor) {
-      dispatch(startLoadOrganization());
-      dispatch(startLoadingSponsorsByidOrganization(idOrganization));
-    }
-    if (isTournamentSponsor) {
-      dispatch(startLoadTournaments());
-      dispatch(startLoadingSponsorsByidTournament(idTournament));
-    }
+    if (isOrganizationSponsor) dispatch(startLoadingSponsorsByidOrganization(idOrganization));
+    if (isTournamentSponsor) dispatch(startLoadingSponsorsByidTournament(idTournament));
   }, [dispatch, idOrganization, idTournament]);
 
   useEffect(() => {

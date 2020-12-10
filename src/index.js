@@ -20,11 +20,11 @@ const body = document.getElementsByTagName('body')[0];
 body.className = 'loaded';
 
 ReactDOM.render(
-  <DndProvider backend={HTML5Backend}>
-    <Provider store={store}>
+  <Provider store={store}>
+    <DndProvider backend={HTML5Backend}>
       <App />
-    </Provider>
-  </DndProvider>,
+    </DndProvider>
+  </Provider>,
   root
 );
 //    registerServiceWorker();

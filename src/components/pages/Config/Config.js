@@ -13,6 +13,7 @@ import AccessLimit from '../../common/AccessLimit';
 import OrgSponsors from './OrgSponsors';
 import OrgReports from './OrgReports';
 import PaymentsIndex from '../PaymentConfig/PaymentsIndex';
+import Appearance from './Appearance';
 
 @inject('ui')
 @observer
@@ -72,6 +73,11 @@ class Config extends Component {
                 <Loc>OrgReports</Loc>
               </NavLink>
             </li>
+            <li className="TabItem">
+              <NavLink to={baseUrl + '/appearance'}>
+                <Loc>Appearance</Loc>
+              </NavLink>
+            </li>
           </AccessLimit>
           {/* <li className='TabItem'><NavLink to={baseUrl + '/user'}><Loc>Config.User</Loc></NavLink></li> */}
         </ul>
@@ -89,6 +95,7 @@ class Config extends Component {
               <Route path={basePath + '/notiftemplates'} component={NotificationTemplates} />
               <Route path={basePath + '/payments'} component={PaymentsIndex} />
               <Route path={basePath + '/reports'} component={OrgReports} />
+              <Route path={basePath + '/appearance'} component={Appearance} />
               {/* <Route path={basePath} exact component={ConfigIndex} /> */}
             </AccessLimit>
           </Switch>

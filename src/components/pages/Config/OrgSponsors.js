@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Sponsors from '../Tournaments/Sponsors/Sponsors';
+import Sponsors from '../../shared/Sponsors/Sponsors';
 // import Sponsors from '../Sponsors/Sponsors';
 
 class OrgSponsors extends Component {

@@ -3,9 +3,9 @@ import Select from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-import Loc from '../../../common/Locale/Loc';
-import Upload from '../../../common/Upload';
-import { getUploadUrl } from '../../../helpers/Utils';
+import Loc from '../../common/Locale/Loc';
+import Upload from '../../common/Upload';
+import { getUploadUrl } from '../../helpers/Utils';
 
 const positionOptions = [
   { value: 1, label: <Loc>SponsorPosition1</Loc>, name: 'position' },
@@ -184,7 +184,7 @@ const SponsorForm = ({
         <small className="ValidationError"></small>
       </div>
       <button className="Button" onClick={cancel}>
-        <FontAwesomeIcon icon={faArrowLeft} /> Back
+        <FontAwesomeIcon icon={faArrowLeft} /> <Loc>Back</Loc>
       </button>
       <button
         className="Button Active SpinnerButtonIdle"

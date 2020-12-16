@@ -7,7 +7,7 @@ import {
   getSelectOptionsFromFixedValues,
   getSelectOptionsFromTable,
 } from '../../../common/FormsMobx/EditRenderHandlers';
-import { getISOStringWithoutSecsAndMillisecs } from '../../../helpers/Utils';
+// import { getISOStringWithoutSecsAndMillisecs } from '../../../helpers/Utils';
 import { goBack } from '../../../common/FormsMobx/Utils';
 import { normalize } from '../../../helpers/Data';
 import DayView from './DayView';
@@ -71,7 +71,7 @@ class CalendarView extends Component {
 
   editSaveHandler = data => {
     data = this.adaptMatchFormToStore(data);
-
+    debugger;
     return this.props.store.matches.editMatch(data).then(res => {
       if (res) goBack(this);
     });
@@ -216,7 +216,8 @@ class CalendarView extends Component {
             comments: '',
             status: 1,
             duration: 30,
-            startTime: getISOStringWithoutSecsAndMillisecs(new Date()),
+            // startTime: getISOStringWithoutSecsAndMillisecs(new Date()),
+            startTime: null,
             idField: -1,
             idHomeTeam: -2,
             idVisitorTeam: -2,
@@ -227,8 +228,7 @@ class CalendarView extends Component {
               fieldName: 'startTime',
               localizedLabel: 'Match.StartTime',
               hint: 'Match.StartTime.Hint',
-              editRenderType: 'datetimepicker',
-              rules: 'required|string',
+              editRenderType: 'datetimepickeradio',
             },
             {
               fieldName: 'duration',

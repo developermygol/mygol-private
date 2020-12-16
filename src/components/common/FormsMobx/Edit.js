@@ -27,12 +27,14 @@ import SpinnerButton from '../SpinnerButton';
 import FacilitySelector from '../FormFields/FacilitySelector';
 import Time from '../FormFields/Time';
 import DateTimePicker from '../FormFields/DateTimePicker';
+import DateTimePickerRadio from '../FormFields/DateTimePickerRadio';
 import ForbiddenDays from '../FormFields/ForbiddenDays';
 import ClassificationCriteria from '../FormFields/ClassificationCriteria';
 import BooleanComponent from '../FormFields/BooleanComponent';
 import ColoredCardSelector from '../FormFields/ColoredCardSelector';
 import CycleCardSelector from '../FormFields/CycleCardSelector';
 import GoalkeeperSelector from '../FormFields/GoalkeeperSelector';
+import ColorClassificationConfig from '../FormFields/ColorClassificationConfig';
 import { extractGroupFromArray } from '../../helpers/Data';
 
 const defaultProps = {
@@ -272,11 +274,17 @@ class Edit extends Component {
       case 'datetimepicker':
         control.target = DateTimePicker;
         break;
+      case 'datetimepickeradio':
+        control.target = DateTimePickerRadio;
+        break;
       case 'fobiddendays':
         control.target = ForbiddenDays;
         break;
       case 'classificationCriteria':
         control.target = ClassificationCriteria;
+        break;
+      case 'colorclassificationconfig':
+        control.target = ColorClassificationConfig;
         break;
       case 'cardselect':
         control.target = ColoredCardSelector;

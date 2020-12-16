@@ -7,13 +7,19 @@ export const useForm = (initialState = {}) => {
     setValues(newFormState);
   };
 
-  const handleInputChange = ({ target, value, name }) => {
+  const handleInputChange = ({ target, value, name, hex }) => {
+    const isColorPicker = !target && hex;
     const isSelect = !target && name && value;
 
     if (isSelect) {
       setValues({
         ...values,
         [name]: value,
+      });
+    } else if (isColorPicker) {
+      setValues({
+        ...values,
+        color: hex, //💥
       });
     } else {
       setValues({

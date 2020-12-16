@@ -92,7 +92,7 @@ const SponsorConfigForm = ({ isOrg, type, config, show, onClose, cancel, save })
           <div className="Errors"></div>
           <div className="EditButtons">
             <button className="Button" onClick={cancel}>
-              <FontAwesomeIcon icon={faArrowLeft} /> Back
+              <FontAwesomeIcon icon={faArrowLeft} /> <Loc>Back</Loc>
             </button>
             <button
               className="Button Active SpinnerButtonIdle"

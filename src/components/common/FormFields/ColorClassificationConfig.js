@@ -66,15 +66,16 @@ const ColorClassificationConfig = props => {
 
   const handleSaveForm = e => {
     e.preventDefault();
+    const currentConfig = config ? config : [];
     const isNewItem = !selectedItem;
     const id = selectedItem ? selectedItem.id : uuidV4();
     const colorRange = { id, start, end, title, description, color };
 
     let colorConfig;
 
-    if (isNewItem) colorConfig = [...config, colorRange];
+    if (isNewItem) colorConfig = [...currentConfig, colorRange];
     else
-      colorConfig = config.map(e => {
+      colorConfig = currentConfig.map(e => {
         if (e.id === colorRange.id) return colorRange;
         return e;
       });

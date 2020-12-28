@@ -99,22 +99,22 @@ class CompetitionTeams extends Component {
           addMessage="Create new team"
           editMessage="Edit team"
           listAdditionalButtons={
-            isAllowed && (
-              <React.Fragment>
+            <React.Fragment>
+              {isAllowed && (
                 <button className="Button" onClick={this.handleAddTeam}>
                   <Loc>Add existing team</Loc>
                 </button>
-                <button className="Button" onClick={this.handlePictureUpload}>
-                  <Loc>Import team</Loc>
-                </button>
-                <input
-                  id="fileSelector"
-                  style={{ display: 'none' }}
-                  type="file"
-                  onChange={this.handleFileChange}
-                />
-              </React.Fragment>
-            )
+              )}
+              <button className="Button" onClick={this.handlePictureUpload}>
+                <Loc>Import team</Loc>
+              </button>
+              <input
+                id="fileSelector"
+                style={{ display: 'none' }}
+                type="file"
+                onChange={this.handleFileChange}
+              />
+            </React.Fragment>
           }
           deleteDialogTitle="Unlink team?"
           deleteDialogMessage="Confirm team unlink"

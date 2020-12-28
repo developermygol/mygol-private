@@ -48,7 +48,7 @@ class MatchView extends Component {
     if (isFillerMatch(match)) {
       return (
         <tr>
-          <td colSpan={7}>
+          <td colSpan={8}>
             {match.idHomeTeam === -1 ? (
               visitor ? (
                 <Link to={'/tournaments/' + tId + '/teams/' + visitor.id}>
@@ -125,8 +125,13 @@ class MatchView extends Component {
         </td>
 
         <td>{group && group.name}</td>
-        {p.normalizedFacilities ? <td className="Left">{this.getFieldLink(match.idField)}</td> : null}
-        {match.field ? <td className="Left">{match.field.name}</td> : null}
+        <td className="Left">
+          {`${p.normalizedFacilities ? this.getFieldLink(match.idField) : ''} ${
+            match.field ? match.field.name : ''
+          }`}
+        </td>
+        {/* {p.normalizedFacilities ? <td className="Left">{this.getFieldLink(match.idField)}</td> : null}
+        {match.field ? <td className="Left">{match.field.name}</td> : null} */}
         {/* <td>{match.videoUrl ? <a className='MatchVideo' href={match.videoUrl} target='_blank'>Vid</a> : null}</td> */}
 
         {editable && !readOnly ? (

@@ -71,7 +71,7 @@ class CalendarView extends Component {
 
   editSaveHandler = data => {
     data = this.adaptMatchFormToStore(data);
-    debugger;
+
     return this.props.store.matches.editMatch(data).then(res => {
       if (res) goBack(this);
     });

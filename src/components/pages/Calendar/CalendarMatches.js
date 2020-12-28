@@ -1,9 +1,10 @@
+import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import InfoBox from '../../common/InfoBox';
-import Loc, { LocalizeI } from '../../common/Locale/Loc';
+import Loc, { Localize, LocalizeI } from '../../common/Locale/Loc';
 import { getUploadsImg } from '../../helpers/Utils';
 
 const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) => {
@@ -13,9 +14,11 @@ const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) =>
   };
 
   const handleMatchTimeFormat = dateString => {
+    // TODO: 🔎 English format uses am/pm others do NOT
     if (!dateString || dateString === '') return '';
     const date = new Date(dateString);
-    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+    // return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+    return moment(date).format('DD/MM/YYYY HH:mm');
   };
 
   const handleInfoText = () => {
@@ -49,12 +52,13 @@ const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) =>
 
                   return (
                     <tr key={uuidv4()}>
-                      {isClosedAct && (
-                        <td class="First">
-                          <span class="MatchStatusRecordClosed" title="Acta cerrada"></span>
-                        </td>
-                      )}
-                      <td>
+                      <td className="First">
+                        {isClosedAct && (
+                          <span
+                            className="MatchStatusRecordClosed"
+                            title={Localize('MatchEventType100')}
+                          ></span>
+                        )}
                         <Link to={'/tournaments/' + match.idTournament + '/matches/' + match.id}>
                           {handleMatchTimeFormat(match.startTime)}
                         </Link>

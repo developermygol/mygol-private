@@ -15,146 +15,153 @@ import { redirect } from '../../../common/FormsMobx/Utils';
 import MatchSanctions from './MatchSanctions';
 import Loc from '../../../common/Locale/Loc';
 
-
-
-@inject('store') @observer
+@inject('store')
+@observer
 class MatchDetails extends Component {
+  @observable showSelectReferee = false;
 
-    @observable showSelectReferee = false;
-    
-    updateMatch = () => {
-        const idMatch = this.props.match.params.idMatch;
+  updateMatch = () => {
+    const idMatch = this.props.match.params.idMatch;
 
-        const store = this.props.store.matches;
-        store.actions.get(idMatch)
-            .then(res => store.setCurrent(res));
-    }
+    const store = this.props.store.matches;
+    store.actions.get(idMatch).then(res => store.setCurrent(res));
+  };
 
-    componentDidMount = () => {
-        this.updateMatch();
-    }
+  componentDidMount = () => {
+    this.updateMatch();
+  };
 
-    handleDeleteMatch = (data) => {
+  handleDeleteMatch = data => {};
 
-    }
+  handleEditMatch = () => {
+    const { idTournament, idMatch } = this.props.match.params;
+    redirect(this, `/tournaments/${idTournament}/matches/edit/${idMatch}`);
+  };
 
-    handleEditMatch = () => {
-        const { idTournament, idMatch } = this.props.match.params;
-        redirect(this, `/tournaments/${idTournament}/matches/edit/${idMatch}`);
-    }
+  // handleSummonPlayers = () => {
+  //     const match = this.props.store.matches.current;
+  //     if (!match) return;
 
-    // handleSummonPlayers = () => {
-    //     const match = this.props.store.matches.current;
-    //     if (!match) return;
+  //     const hp = match.homePlayers;
+  //     if (hp && hp.length > 0) return; // Already scheduled
 
-    //     const hp = match.homePlayers;
-    //     if (hp && hp.length > 0) return; // Already scheduled
+  //     requestAsync(null, axios.post, null, '/matches/schedule', match)
+  //         .then(this.updateMatch());
+  // }
 
-    //     requestAsync(null, axios.post, null, '/matches/schedule', match)
-    //         .then(this.updateMatch());
-    // }
+  handleAddRefereeClick = () => {
+    this.showSelectReferee = true;
+  };
 
-    handleAddRefereeClick = () => {
-        this.showSelectReferee = true;
-    }
+  handleAddReferee = data => {
+    this.showSelectReferee = false;
+    if (!data) return;
 
-    handleAddReferee = (data) => {
-        this.showSelectReferee = false;
-        if (!data) return;
+    const match = this.props.store.matches.current;
 
-        const match = this.props.store.matches.current;
+    const matchReferee = {
+      idUser: data.referee.id,
+      idMatch: match.id,
+      role: data.role,
+      referee: { ...data.referee },
+    };
 
-        const matchReferee = {
-            idUser: data.referee.id,
-            idMatch: match.id,
-            role: data.role,
-            referee: {...data.referee}
-        };
+    const refers = match.referees;
+    requestAsync(null, axios.post, 'Match.RefereeLinkedOk', '/matches/linkreferee', matchReferee).then(_ =>
+      refers.push(matchReferee)
+    );
+  };
 
-        const refers = match.referees;
-        requestAsync(null, axios.post, 'Match.RefereeLinkedOk', '/matches/linkreferee', matchReferee)
-            .then(_ => refers.push(matchReferee));
-    }
+  handleDeleteReferee = data => {
+    // confirmation needed?
 
-    handleDeleteReferee = (data) => {
-        // confirmation needed?
+    const match = this.props.store.matches.current;
 
-        const match = this.props.store.matches.current;
+    const matchReferee = {
+      idUser: data.idUser,
+      idMatch: match.id,
+    };
 
-        const matchReferee = {
-            idUser: data.idUser,
-            idMatch: match.id
-        };
+    const refers = match.referees;
+    requestAsync(null, axios.post, 'Match.RefereeUnlinkedOk', '/matches/unlinkreferee', matchReferee).then(
+      _ => {
+        const idx = refers.findIndex(r => r.idUser === matchReferee.idUser);
+        if (idx > -1) refers.splice(idx, 1);
+        this.forceUpdate();
+      }
+    );
+  };
 
-        const refers = match.referees;
-        requestAsync(null, axios.post, 'Match.RefereeUnlinkedOk', '/matches/unlinkreferee', matchReferee)
-            .then(_ => {
-                const idx = refers.findIndex(r => r.idUser === matchReferee.idUser);
-                if (idx > -1) refers.splice(idx, 1);
-                this.forceUpdate();
-            });
-    }
+  handleAddEvent = data => {
+    return this.props.store.matches.createEvent(data).then(res => {
+      if (!res) return;
 
-    handleAddEvent = (data) => {
-        return this.props.store.matches.createEvent(data)
-            .then(res => {
-                if (!res) return;
+      redirect(this, this.props.match.url);
+    });
+  };
 
-                redirect(this, this.props.match.url);
-            })
-    }
+  handleEditEvent = data => {};
 
-    handleEditEvent = (data) => {
+  handleDeleteEvent = data => {
+    this.props.store.matches.deleteEvent(data);
+  };
 
-    }
+  handleChangePlayerAttendance = (match, player, attends) => {
+    const store = this.props.store.matches;
+    store.setPlayerAttendance(match, player, attends, null);
 
-    handleDeleteEvent = (data) => {
-        this.props.store.matches.deleteEvent(data);
-    }
+    this.setState({});
+  };
 
-    handleChangePlayerAttendance = (match, player, attends) => {
-        const store = this.props.store.matches;
-        store.setPlayerAttendance(match, player, attends, null);
+  render() {
+    const p = this.props;
+    const store = p.store.matches;
 
-        this.setState({});
-    }
+    if (store.error) return <ErrorBox localizedMessage="Error.Loading" detail={store.error} />;
 
-    render() {
-        const p = this.props;
-        const store = p.store.matches;
-        if (store.error) return <ErrorBox localizedMessage='Error.Loading' detail={store.error} />
+    const { idMatch } = p.match.params;
+    const match = store.current;
 
-        const { idMatch } = p.match.params;
-        const match = store.current;
+    return (
+      <div>
+        <Spinner loading={store.loading}>
+          {
+            // eslint-disable-next-line eqeqeq
+            match && match.id == idMatch ? (
+              <div className="MatchDetails">
+                <h3>
+                  <Loc>Match.Details</Loc>
+                </h3>
+                <MatchHeader match={match} onEdit={this.handleEditMatch} />
+                <MatchReferees
+                  referees={match.referees}
+                  addRefereeHandler={this.handleAddRefereeClick}
+                  removeRefereeHandler={this.handleDeleteReferee}
+                />
+                <MatchPlayers match={match} onChangePlayerAttendance={this.handleChangePlayerAttendance} />
+                <MatchEvents
+                  data={match}
+                  addAction={this.handleAddEvent}
+                  editAction={this.handleEditEvent}
+                  deleteAction={this.handleDeleteEvent}
+                />
+                <MatchSanctions data={match} />
+              </div>
+            ) : null
+          }
+        </Spinner>
 
-        return (
-            <div>
-                
-                <Spinner loading={store.loading}>
-                    {   // eslint-disable-next-line eqeqeq
-                        match && match.id == idMatch ? 
-                        <div className='MatchDetails'>
-                            <h3><Loc>Match.Details</Loc></h3>
-                            <MatchHeader match={match} onEdit={this.handleEditMatch} />
-                            <MatchReferees referees={match.referees} addRefereeHandler={this.handleAddRefereeClick} removeRefereeHandler={this.handleDeleteReferee} />
-                            <MatchPlayers match={match} onChangePlayerAttendance={this.handleChangePlayerAttendance} />
-                            <MatchEvents data={match} addAction={this.handleAddEvent} editAction={this.handleEditEvent} deleteAction={this.handleDeleteEvent} />
-                            <MatchSanctions data={match} />
-                        </div>
-                        : null
-                    }
-                </Spinner>
-                
-                {this.showSelectReferee ? 
-                    <RefereeSelectorDialog show={this.showSelectReferee} from={match.startTime} duration={match.duration} closeHandler={this.handleAddReferee} />
-                    : null
-                }
-
-            </div>
-        )
-    }
+        {this.showSelectReferee ? (
+          <RefereeSelectorDialog
+            show={this.showSelectReferee}
+            from={match.startTime}
+            duration={match.duration}
+            closeHandler={this.handleAddReferee}
+          />
+        ) : null}
+      </div>
+    );
+  }
 }
-
-
 
 export default withRouter(MatchDetails);

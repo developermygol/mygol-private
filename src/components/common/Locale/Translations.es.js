@@ -941,6 +941,9 @@ export default {
     "Sanctions.AutoCardConfig.Hint": "Aquí se definen las sanciones que generan de manera automáticas las diferentes tarjetas de amonestación y sus combinaciones. Las sanciones generadas automáticamente pueden ser modificadas por el organizador.",
     "Sanctions.AutoCycleConfig": "Ciclos de sanción",     
     "Sanctions.AutoCycleConfig.Hint": "Aquí se definen las sanciones que se aplican automáticamente por acumulación de tarjetas amarillas. Cuando un jugador acumula un ciclo, se le aplica la sanción especificada. Las siguentes tarjetas que reciba irán acumulándosse en el siguiente ciclo.", 
+    "Sanctions.CyclesAcrossStages": "Accumlate cards across stages", 
+    "Sanctions.CyclesAcrossStages.Hint": "If set, the number of accumulated yellow cards by a player will be preserved when a stage ends and another starts, inside the same tournament. If the option is not set, accumulated yellow cards will be reset at the end of the stage.", 
+    
     "Sanctions.Players": "Sanciones de jugadores",
     "Sanctions.Teams": "Sanciones de equipo",
     "Sanctions.Type.Team": "Sanción de equipo",

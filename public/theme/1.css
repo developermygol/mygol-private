@@ -2945,3 +2945,12 @@ input:-webkit-autofill {
   height: 20px;
   border-radius: 5px;
 }
+
+.Slider.with-label .Label {
+  flex: 1;
+  display: block;
+  margin-bottom: 5px;
+  color: #b6c9c5;
+  font-size: 0.9rem;
+  text-transform: none;
+}

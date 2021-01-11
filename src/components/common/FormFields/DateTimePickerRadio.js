@@ -70,7 +70,6 @@ class DateTimePiker extends Component {
 
   render() {
     const { field, hint, type = 'text', inputRef } = this.props;
-    console.log('this.state.value', this.state.value);
 
     return (
       <div className="FormField">

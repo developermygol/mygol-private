@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import organizationReducer from './reducers/organizationReducer';
 import tournamentsReducer from './reducers/tournamentsReducer';
 import sponsorsReducer from './reducers/sponsorsReducer';
+import fieldsReducer from './reducers/fieldsReducer';
 
 const rootReducer = combineReducers({
   organizations: organizationReducer,
   tournaments: tournamentsReducer,
   sponsors: sponsorsReducer,
+  fields: fieldsReducer,
 });
 
 const composeEnhancers =

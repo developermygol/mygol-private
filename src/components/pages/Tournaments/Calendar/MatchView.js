@@ -77,13 +77,25 @@ class MatchView extends Component {
 
     const dd = new Date(match.startTime);
     const date = dd.getYear() === 1 ? null : getFormattedDateTime(dd);
+    const noDateSpecified = date === '01/01/1 00:00';
+    const isMatchStatusRecordClosed = match.status === 5;
 
     return (
       <tr>
-        <td className="First">
-          {match.status === 5 && <span className="MatchStatusRecordClosed" title="Record closed" />}
+        <td className={`First ${isMatchStatusRecordClosed ? 'flex' : ''}`}>
+          {isMatchStatusRecordClosed && <span className="MatchStatusRecordClosed" title="Record closed" />}
           {p.displaySanctioned ? this.getMatchSanctionStatusBadge(match) : null}
-          {readOnly ? date : <Link to={'/tournaments/' + tId + '/matches/' + match.id}>{date}</Link>}
+          {readOnly ? (
+            noDateSpecified ? (
+              ''
+            ) : (
+              date
+            )
+          ) : (
+            <Link to={'/tournaments/' + tId + '/matches/' + match.id}>
+              {noDateSpecified ? <Loc>Match.NoDate.Editable</Loc> : date}
+            </Link>
+          )}
         </td>
 
         {match.tournament && p.showTournament ? <td>{match.tournament.name}</td> : null}

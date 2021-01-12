@@ -18,6 +18,9 @@ const types = {
   sponsorsDelete: '[Sponsor] Delete sponsor',
   sponsorsImageUpload: '[Sponsor] Upload Image sponsor',
   sponsorsImageRemove: '[Sponsor] Upload Image remove',
+
+  //Fields
+  fieldsLoad: '[Fields] Load fields',
 };
 
 export default types;

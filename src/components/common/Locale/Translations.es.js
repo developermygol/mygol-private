@@ -295,6 +295,8 @@ export default {
     "Match.NoTime": "Fecha y hora no programadas",
     "Match.NoFacility": "Campo no establecido",
     "Match.Edit": "Editar",
+    "Match.NoDate.Editable": "Ver detalles", 
+    
     "Events": "Incidencias",
     "Event.Create": "Añadir incidencia",
     "Player.AttendanceSetOk": "Asistencia de jugador guardada correctamente",

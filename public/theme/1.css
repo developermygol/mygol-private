@@ -1247,9 +1247,13 @@ h3.ShowField {
 }
 
 .PlayDay .First {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
+}
+
+.PlayDay .First.flex {
+  display: flex;
 }
 
 .PlayDay .First a {
@@ -1258,6 +1262,11 @@ h3.ShowField {
 
 .PlayDay .ScoreCell {
   white-space: nowrap;
+}
+.PlayDay .Referees {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .PlayDay .Score {
@@ -1557,6 +1566,16 @@ h3.ShowField {
   border-radius: 5px;
   max-width: 200px;
   max-height: 200px;
+}
+
+.RefereeAvatar.Mini {
+  border-radius: 50px;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 30px;
+  max-height: 30px;
+  margin-right: 1px;
+  border: 1px solid #ccc;
 }
 
 .IdCard {

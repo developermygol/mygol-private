@@ -1,5 +1,6 @@
 import moment from 'moment';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -8,6 +9,8 @@ import Loc, { Localize, LocalizeI } from '../../common/Locale/Loc';
 import { getUploadsImg } from '../../helpers/Utils';
 
 const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) => {
+  const { fields } = useSelector(state => state.fields);
+
   const matchHasResult = match => {
     const s = match.status;
     return s === 3 || s === 4 || s === 5;
@@ -15,6 +18,9 @@ const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) =>
 
   const handleMatchTimeFormat = dateString => {
     // TODO: 🔎 English format uses am/pm others do NOT
+    const noSpecifiedDate = dateString === '0001-01-01T00:00:00';
+    if (noSpecifiedDate) return Localize('Match.NoDate.Editable');
+
     if (!dateString || dateString === '') return '';
     const date = new Date(dateString);
     // return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
@@ -37,6 +43,32 @@ const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) =>
     return finaltext;
   };
 
+  const handleField = idField => {
+    const noField = idField === 0 || idField === null || fields.length === 0;
+    if (noField) return null;
+
+    const matchField = fields.find(f => f.id === idField);
+    return matchField.name;
+  };
+
+  const handleLoadReferees = referees => {
+    if (!referees || referees.length === 0) return null;
+
+    return (
+      <td className="Referees">
+        {referees.map(ref => {
+          const { referee, idUser } = ref;
+          const { avatarImgUrl, name } = referee;
+          return (
+            <React.Fragment key={uuidv4()}>
+              {getUploadsImg(avatarImgUrl, idUser, 'user', 'RefereeAvatar Mini', name)}
+            </React.Fragment>
+          );
+        })}
+      </td>
+    );
+  };
+
   return (
     <div className="Card Hero CalendarView">
       <div className="PlayDay Content">
@@ -49,10 +81,13 @@ const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) =>
                   const home = match.homeTeam;
                   const visitor = match.visitorTeam;
                   const isClosedAct = match.status === 5;
+                  const field = handleField(match.idField);
+
+                  const referees = handleLoadReferees(match.referees);
 
                   return (
                     <tr key={uuidv4()}>
-                      <td className="First">
+                      <td className={`First ${isClosedAct ? 'flex' : ''}`}>
                         {isClosedAct && (
                           <span
                             className="MatchStatusRecordClosed"
@@ -99,6 +134,8 @@ const CalendarMatches = ({ matches, startDate, endDate, season, tournament }) =>
                       <td>
                         <Link to={'/tournaments/' + match.idTournament}>{match.tournament.name}</Link>
                       </td>
+                      {field && <td className="Left">{field}</td>}
+                      {referees}
                     </tr>
                   );
                 })}

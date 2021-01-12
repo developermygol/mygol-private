@@ -11,77 +11,81 @@ import { observable, observe } from 'mobx';
 import axios from '../../../../../axios';
 import Spinner from '../../../../common/Spinner/Spinner';
 
-
 export const hasCalendarFlagMask = 1;
 
-
-
-
-
-@inject('store') @observer
+@inject('store')
+@observer
 class Calendar extends Component {
+  @observable error = null;
+  @observable loading = true;
+  @observable loaded = false;
 
-    @observable error = null;
-    @observable loading = true;
-    @observable loaded = false;
+  componentDidMount() {
+    const p = this.props;
+    const { idGroup } = p.match.params;
 
-    componentDidMount() {
-        const p = this.props;
-        const { idGroup } = p.match.params;
-
-        this.td = observe(p.store.tournaments, "current", ({newValue}) => {
-            if (newValue) { 
-                requestAsync(this, axios.get, null, "/matches/forgroup/" + idGroup)
-                .then(
-                    res => {
-                        this.props.store.matches.all = res;
-                        this.loaded = true;
-                    }, 
-                    err => {
-                        this.loaded = true;
-                    }
-                );                    
+    this.td = observe(
+      p.store.tournaments,
+      'current',
+      ({ newValue }) => {
+        if (newValue) {
+          requestAsync(this, axios.get, null, '/matches/forgroup/' + idGroup).then(
+            res => {
+              this.props.store.matches.all = res;
+              this.loaded = true;
+            },
+            err => {
+              this.loaded = true;
             }
-        }, true);
-    }
+          );
+        }
+      },
+      true
+    );
+  }
 
-    componentWillUnmount = () => {
-        if (this.td) this.td();
-    }
+  componentWillUnmount = () => {
+    if (this.td) this.td();
+  };
 
-    render() {
-        const p = this.props;
-        const { idGroup } = p.match.params;
-        const groups = p.store.groups.all;
-        if (!groups) return <ErrorBox message='No groups' />;
+  render() {
+    const p = this.props;
+    const { idGroup } = p.match.params;
+    const groups = p.store.groups.all;
+    if (!groups) return <ErrorBox message="No groups" />;
 
-        const group = findByIdInArray(groups, idGroup);
-        if (!group) return <ErrorBox message='No group' />;
+    const group = findByIdInArray(groups, idGroup);
+    if (!group) return <ErrorBox message="No group" />;
 
-        const hasCalendar = group.flags & hasCalendarFlagMask;
+    const hasCalendar = group.flags & hasCalendarFlagMask;
 
-        const stages = p.store.stages.all;
-        if (!stages) return <ErrorBox message='No stages' />;
+    const stages = p.store.stages.all;
+    if (!stages) return <ErrorBox message="No stages" />;
 
-        const stage = findByIdInArray(stages, group.idStage);
-        if (!stage) return <ErrorBox message='No stage' />;
+    const stage = findByIdInArray(stages, group.idStage);
+    if (!stage) return <ErrorBox message="No stage" />;
 
-        const calendar = p.store.matches.all;
+    const calendar = p.store.matches.all;
 
-        return (
-            <Spinner loading={this.loading} >
-                <h3><Loc>Group.Calendar</Loc> {group.name}</h3>
-                {hasCalendar ?
-                    (calendar ? <CalendarView value={calendar} group={group} /> : <ErrorBox localizedMessage='Error.EmptyCalendarNotExpected' />)
-                    : 
-                    // <CalendarSetupTabWithRouter group={group} stage={stage} />
-                    <CalendarSetup group={group} stage={stage} />
-                }
-            </Spinner>
-        )
-    }
+    return (
+      <Spinner loading={this.loading}>
+        <h3>
+          <Loc>Group.Calendar</Loc> {group.name}
+        </h3>
+        {hasCalendar ? (
+          calendar ? (
+            <CalendarView value={calendar} group={group} />
+          ) : (
+            <ErrorBox localizedMessage="Error.EmptyCalendarNotExpected" />
+          )
+        ) : (
+          // <CalendarSetupTabWithRouter group={group} stage={stage} />
+          <CalendarSetup group={group} stage={stage} />
+        )}
+      </Spinner>
+    );
+  }
 }
-
 
 // const CalendarSetupTabWithRouter = withRouter(class CalendarSetupTabControl extends Component {
 //     render() {
@@ -107,6 +111,5 @@ class Calendar extends Component {
 //         )
 //     }
 // })
-
 
 export default withRouter(Calendar);

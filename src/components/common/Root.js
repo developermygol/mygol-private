@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import TopBar from './TopBar';
 import Content from './Content';
 import { startLoadOrganization } from '../../store/actions/organizations';
+import { startLoadingFields } from '../../store/actions/fields';
 
 @inject('store')
 @observer
@@ -18,6 +19,7 @@ class Root extends Component {
   componentDidMount = async () => {
     this.props.store.organization.fetch();
     await this.props.onLoadOrganizations();
+    await this.props.onLoadFields();
     this.setState({ loaded: true });
   };
 
@@ -43,6 +45,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onLoadOrganizations: () => dispatch(startLoadOrganization()),
+  onLoadFields: () => dispatch(startLoadingFields()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root);

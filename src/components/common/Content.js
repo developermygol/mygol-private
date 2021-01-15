@@ -23,7 +23,7 @@ class Content extends Component {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/players/:idPlayer" component={PlayerDetails} />
-              <Route path="/tournaments" component={Tournaments} />
+              <Route path="/tournaments" component={props => <Tournaments {...props} />} />
               <Route path="/calendar" component={Calendar} />
               <Route path="/facilities" component={Facilities} />
               <Route path="/referees" component={Referees} />

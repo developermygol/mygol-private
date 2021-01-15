@@ -161,7 +161,6 @@ class Edit extends Component {
 
   onSubmit = form => {
     const values = form.values();
-    // console.log(values);
     // if (values.startTime) values.startTime = new Date(values.startTime).toISOString();
     // console.log(values);
     this.props.saveButtonHandler(values);

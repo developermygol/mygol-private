@@ -28,7 +28,7 @@ class TournamentDetails extends Component {
     const id = this.props.match.params.idTournament;
     this.props.store.tournaments.setCurrent(id);
 
-    await this.props.onLoadTournaments();
+    // await this.props.onLoadTournaments(); //💥 Moved to Root
     this.props.onSetActiveTournament(this.props.tournaments.tournaments.find(t => t.id === parseInt(id, 10)));
   };
 

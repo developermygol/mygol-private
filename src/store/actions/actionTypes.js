@@ -5,6 +5,9 @@ const types = {
   organizationSetSponsorData: '[Tournaments] Set organization sponsor data',
   organizationSetAppearanceData: '[Tournaments] Set organization appearance data',
 
+  //Seasons
+  seasonsLoad: '[Seasons] Load seasons',
+
   //Tournaments
   tournamentsLoad: '[Tournaments] Load tournaments',
   tournamentActiveLoad: '[Tournaments] Load active tournament',

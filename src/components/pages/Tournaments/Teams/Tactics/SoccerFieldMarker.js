@@ -11,7 +11,7 @@ const SoccerFieldMarker = ({ marker, update, playerInfo }) => {
     const { id: idPlayer, teamData } = player;
     const { idTeam, idTacticPosition: playerCurrentIdTacticPosition } = teamData;
     if (marker.idx + 1 === playerCurrentIdTacticPosition) return;
-    console.log({ idPlayer, idTeam, playerCurrentIdTacticPosition });
+    // console.log({ idPlayer, idTeam, playerCurrentIdTacticPosition });
 
     update(idPlayer, idTeam, marker.idx);
   };

@@ -1,8 +1,8 @@
-import axios from "axios";
-import { getBaseUrl } from "./components/helpers/Utils";
+import axios from 'axios';
+import { getBaseUrl } from './components/helpers/Utils';
 
 const apiInstance = axios.create({
-  baseURL: getBaseUrl(process.env.REACT_APP_BACKEND_HOST + "/api"),
+  baseURL: getBaseUrl(process.env.REACT_APP_BACKEND_HOST + '/api'),
 });
 
 export const rootApiServer = axios.create({
@@ -12,5 +12,14 @@ export const rootApiServer = axios.create({
 export const staticServer = axios.create({
   baseURL: getBaseUrl(process.env.REACT_APP_STATIC_STATIC_URL),
 });
+
+const initAxios = () => {
+  const authToken = localStorage.getItem('auth.token');
+  if (!authToken) return;
+
+  apiInstance.defaults.headers.common['Authorization'] = 'Bearer ' + authToken;
+};
+
+initAxios();
 
 export default apiInstance;

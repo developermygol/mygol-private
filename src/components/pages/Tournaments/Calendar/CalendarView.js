@@ -242,7 +242,7 @@ class CalendarView extends Component {
               localizedLabel: 'Match.Status',
               hint: '',
               editRenderType: 'select',
-              selectOptions: getSelectOptionsFromFixedValues('MatchStatus', 1, 5),
+              selectOptions: getSelectOptionsFromFixedValues('MatchStatus', 1, 6),
               hideInAdd: true,
             },
             {

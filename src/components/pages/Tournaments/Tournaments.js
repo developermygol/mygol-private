@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { inject, observer } from 'mobx-react';
+import { v4 as uuidV4 } from 'uuid';
+import moment from 'moment';
+
 import CrudForm from '../../common/FormsMobx/CrudForm';
 import TournamentDetails from './TournamentDetails';
-import { inject, observer } from 'mobx-react';
 import { textLookup, lookupById, booleanRenderHandler } from '../../common/FormsMobx/ListRenderHandlers';
 import {
   getSelectOptionsFromTable,
@@ -10,9 +14,35 @@ import {
 } from '../../common/FormsMobx/EditRenderHandlers';
 import { getUploadsIcon } from '../../helpers/Utils';
 
+const initialActiveSeasonId = seasons => {
+  if (!seasons || seasons.length === 0) return null;
+
+  const today = moment(new Date());
+
+  let activeSeason = seasons.find(season => {
+    const start = moment(season.startDate);
+    const end = moment(season.endDate);
+
+    return today.isBetween(start, end);
+  });
+
+  if (activeSeason) return activeSeason.id;
+
+  // NO season in range return lastest
+  return seasons.sort(
+    (seasonA, seasonB) => new Date(seasonA.endDate).getTime() - new Date(seasonB.endDate).getTime()
+  )[0].id;
+};
+
 @inject('store')
 @observer
 class Tournaments extends Component {
+  state = {
+    activeSeasonId: null,
+  };
+
+  setActiveSeasonId = seasonId => this.setState({ activeSeasonId: seasonId });
+
   getTournamentLogo = tournament => {
     return (
       <img alt="" src={getUploadsIcon(tournament.logoImgUrl, tournament.id, 'tournament')} className="Logo" />
@@ -23,17 +53,43 @@ class Tournaments extends Component {
     // Load list of tournaments from server here instead of in the list.
     // This is to ensure that the list is available even when using it in inner routes.
     this.props.store.tournaments.actions.getAll();
+    this.setActiveSeasonId(initialActiveSeasonId(this.props.seasons.seasons));
   };
 
   render() {
+    //const { activeOrganization } = this.props.organizations;
+    const { seasons: seasonsStore } = this.props.seasons;
+    const { tournaments: tournamentsStore } = this.props.tournaments;
+
     const { store } = this.props;
     const { tournaments } = store;
     const listData = tournaments.all ? tournaments.all.slice() : null;
     const modes = store.organization.tournamentModes.all;
     const seasons = store.organization.seasons.all;
 
+    const isTournamentsAll =
+      this.props.location.pathname === '/tournaments/' || this.props.location.pathname === '/tournaments';
+
+    const filteredTournaments = tournamentsStore.filter(
+      tournament => tournament.idSeason === this.state.activeSeasonId
+    );
+    const sortedSeasons = seasonsStore.sort(
+      (seasonA, seasonB) => new Date(seasonA.endDate).getTime() - new Date(seasonB.endDate).getTime()
+    );
+
     return (
       <React.Fragment>
+        {isTournamentsAll && (
+          <div>
+            <ul className="TabBar">
+              {sortedSeasons.map(season => (
+                <li key={uuidV4()} className="TabItem" onClick={() => this.setActiveSeasonId(season.id)}>
+                  <a className={this.state.activeSeasonId === season.id ? 'active' : ''}>{season.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <CrudForm
           title="Tournaments"
           addMessage="Create new tournament"
@@ -44,7 +100,7 @@ class Tournaments extends Component {
           getByIdAction={id => tournaments.actions.get(id)}
           detailsComponent={TournamentDetails}
           routeIdParamName="idTournament"
-          listData={listData}
+          listData={isTournamentsAll ? filteredTournaments : listData}
           addData={{
             logoImgUrl: null,
             name: '',
@@ -123,4 +179,10 @@ class Tournaments extends Component {
   }
 }
 
-export default Tournaments;
+const mapStateToProps = state => ({
+  organizations: state.organizations,
+  tournaments: state.tournaments,
+  seasons: state.seasons,
+});
+
+export default connect(mapStateToProps)(Tournaments);

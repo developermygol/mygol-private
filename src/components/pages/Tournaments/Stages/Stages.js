@@ -21,6 +21,7 @@ class Stages extends Component {
   @observable dialogProps = null;
 
   isReadOnlyTournament = () => {
+    if (!this.props.store.tournaments.current) return false; // 💥
     return this.props.store.tournaments.current.status >= 3;
   };
 

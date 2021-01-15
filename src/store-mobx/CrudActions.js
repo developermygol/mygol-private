@@ -1,18 +1,14 @@
-import axios from "../axios";
-import { asyncAction } from "mobx-utils";
-import { request } from "./Store";
-import {
-  removeByIdInArray,
-  updateByIdInArray,
-  sortArrayById,
-} from "../components/helpers/Data";
+import axios from '../axios';
+import { asyncAction } from 'mobx-utils';
+import { request } from './Store';
+import { removeByIdInArray, updateByIdInArray, sortArrayById } from '../components/helpers/Data';
 
 const defaultOptions = {
   beforeEdit: null,
   beforeCreate: null,
 
   afterGet: null,
-  afterGetAll: (responseData) => {
+  afterGetAll: responseData => {
     return responseData;
   },
   afterCreate: (requestData, responseData) => {
@@ -22,7 +18,7 @@ const defaultOptions = {
   afterEdit: (requestData, responseData) => {
     return requestData;
   }, // Response is true if edited, so we update the table with edited data from the user
-  postProcessAll: (all) => {
+  postProcessAll: all => {
     return sortArrayById(all);
   }, // By default, we sort by Id after loading
 };
@@ -59,7 +55,7 @@ export const createCrudActions = (
     }),
 
     get: asyncAction(function* (id, url = null) {
-      const detailUrl = listUrl + "/" + id;
+      const detailUrl = listUrl + '/' + id;
 
       let result = yield request(target, axios.get, null, url || detailUrl);
 
@@ -76,21 +72,10 @@ export const createCrudActions = (
       return result;
     }),
 
-    create: asyncAction(function* (
-      data,
-      url = null,
-      okMessage = null,
-      addLocally = true
-    ) {
+    create: asyncAction(function* (data, url = null, okMessage = null, addLocally = true) {
       if (options.beforeCreate) data = options.beforeCreate(data);
 
-      let result = yield request(
-        target,
-        axios.post,
-        okMessage || "Item created ok",
-        url || addUrl,
-        data
-      );
+      let result = yield request(target, axios.post, okMessage || 'Item created ok', url || addUrl, data);
       if (!result) return;
 
       if (options.afterCreate) result = options.afterCreate(data, result);
@@ -102,29 +87,17 @@ export const createCrudActions = (
 
       target.current = result;
 
-      if (options.postProcessAll)
-        target.all = options.postProcessAll(target.all);
+      if (options.postProcessAll) target.all = options.postProcessAll(target.all);
 
       return result;
     }),
 
-    edit: asyncAction(function* (
-      data,
-      url = null,
-      okMessage = null,
-      updateLocally = true
-    ) {
+    edit: asyncAction(function* (data, url = null, okMessage = null, updateLocally = true) {
       if (options.beforeEdit) data = options.beforeEdit(data);
 
-      let result = yield request(
-        target,
-        axios.put,
-        okMessage || "Item updated ok",
-        url || editUrl,
-        data
-      );
-      if (!result) return;
+      let result = yield request(target, axios.put, okMessage || 'Item updated ok', url || editUrl, data);
 
+      if (!result) return;
       if (options.afterEdit) result = options.afterEdit(data, result, target);
 
       if (updateLocally) {
@@ -134,31 +107,24 @@ export const createCrudActions = (
 
       target.current = result;
 
-      if (options.postProcessAll)
-        target.all = options.postProcessAll(target.all);
+      if (options.postProcessAll) target.all = options.postProcessAll(target.all);
 
       return result;
     }),
 
-    remove: asyncAction(function* (
-      data,
-      url = null,
-      okMessage = null,
-      updateLocally = true
-    ) {
+    remove: asyncAction(function* (data, url = null, okMessage = null, updateLocally = true) {
       const result = yield request(
         target,
         axios.post,
-        okMessage || "Item deleted ok",
-        url || removeUrl + "/delete",
+        okMessage || 'Item deleted ok',
+        url || removeUrl + '/delete',
         data
       );
       if (!result) return;
 
       if (target.all && updateLocally) {
         removeByIdInArray(target.all, data.id);
-        if (options.postProcessAll)
-          target.all = options.postProcessAll(target.all);
+        if (options.postProcessAll) target.all = options.postProcessAll(target.all);
       }
 
       return result;

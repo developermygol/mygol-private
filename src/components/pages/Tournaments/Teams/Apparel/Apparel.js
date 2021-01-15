@@ -28,7 +28,7 @@ export default class Apparel extends Component {
   };
 
   onChange = data => {
-    console.log('onChange');
+    // console.log('onChange');
     this.props.store.teams.current.apparelConfig = JSON.stringify(data);
     this.canSave = true;
   };

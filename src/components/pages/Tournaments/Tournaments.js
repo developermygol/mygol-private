@@ -13,6 +13,9 @@ import {
   getSelectOptionsFromFixedValues,
 } from '../../common/FormsMobx/EditRenderHandlers';
 import { getUploadsIcon } from '../../helpers/Utils';
+import TournamentList from './TournamentList';
+import BackButton from '../../common/BackButton';
+import Loc from '../../common/Locale/Loc';
 
 const initialActiveSeasonId = seasons => {
   if (!seasons || seasons.length === 0) return null;
@@ -61,7 +64,8 @@ class Tournaments extends Component {
     const { seasons: seasonsStore } = this.props.seasons;
     const { tournaments: tournamentsStore } = this.props.tournaments;
 
-    const { store } = this.props;
+    const { store, history } = this.props;
+
     const { tournaments } = store;
     const listData = tournaments.all ? tournaments.all.slice() : null;
     const modes = store.organization.tournamentModes.all;
@@ -73,6 +77,9 @@ class Tournaments extends Component {
     const filteredTournaments = tournamentsStore.filter(
       tournament => tournament.idSeason === this.state.activeSeasonId
     );
+
+    // 🚧🚧🚧 Order by sequence order
+
     const sortedSeasons = seasonsStore.sort(
       (seasonA, seasonB) => new Date(seasonA.endDate).getTime() - new Date(seasonB.endDate).getTime()
     );
@@ -80,7 +87,14 @@ class Tournaments extends Component {
     return (
       <React.Fragment>
         {isTournamentsAll && (
-          <div>
+          <div className="ActionBar">
+            <h2>
+              <Loc>Tournaments</Loc>
+            </h2>
+            <BackButton />
+            <button className={'Button Active'} onClick={() => history.push('/tournaments/new')}>
+              <Loc>Create new tournament</Loc>
+            </button>
             <ul className="TabBar">
               {sortedSeasons.map(season => (
                 <li key={uuidV4()} className="TabItem" onClick={() => this.setActiveSeasonId(season.id)}>
@@ -101,6 +115,7 @@ class Tournaments extends Component {
           detailsComponent={TournamentDetails}
           routeIdParamName="idTournament"
           listData={isTournamentsAll ? filteredTournaments : listData}
+          listComponent={TournamentList}
           addData={{
             logoImgUrl: null,
             name: '',
@@ -108,6 +123,7 @@ class Tournaments extends Component {
             status: 1,
             idTournamentMode: null,
             idSeason: null,
+            notificationFlags: null,
           }}
           fieldDefinition={[
             {
@@ -155,6 +171,7 @@ class Tournaments extends Component {
             {
               fieldName: 'idSeason',
               localizedLabel: 'Season',
+              hideInList: true,
               listRenderHandler: lookupById(seasons, 'idSeason', 'name'),
               editRenderType: 'select',
               selectOptions: getSelectOptionsFromTable(seasons, 'name', true),
@@ -171,6 +188,13 @@ class Tournaments extends Component {
                 { value: 'false', label: 'No' },
                 { value: 'true', label: 'Yes' },
               ],
+            },
+            {
+              fieldName: 'notificationFlags',
+              localizedLabel: 'Tournament.Notifications',
+              hint: 'Tournament.Notifications.Hint',
+              hideInList: true,
+              editRenderType: 'multiplechecks',
             },
           ]}
         />

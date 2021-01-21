@@ -62,7 +62,7 @@ export const lookupById = (dataTable, idField, labelField) => {
 export const booleanRenderHandler = dataField => {
   return selectedRow => {
     const value = selectedRow[dataField];
-    return value === 'true' ? Localize('Yes') : Localize('No');
+    return value === true || value === 'true' ? Localize('Yes') : Localize('No');
   };
 };
 

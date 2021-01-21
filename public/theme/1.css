@@ -610,6 +610,10 @@ h3 {
   width: 50px;
 }
 
+.DataTableCell.Handle {
+  cursor: row-resize;
+}
+
 .DataTableHeaderCell {
   /* background-color: #f1f1f1;*/
   border-top: none;
@@ -1232,6 +1236,15 @@ h3.ShowField {
   text-align: center;
 }
 
+.PlayDay.Content {
+  padding: 0;
+}
+
+.PlayDay .Bottom {
+  margin: 0px 0px -20px 0px;
+  padding-top: 10px;
+}
+
 .CalendarView h3 {
   cursor: pointer;
 }
@@ -1254,6 +1267,7 @@ h3.ShowField {
 
 .PlayDay .First.flex {
   display: flex;
+  min-height: 40px;
 }
 
 .PlayDay .First a {
@@ -2972,4 +2986,36 @@ input:-webkit-autofill {
   color: #b6c9c5;
   font-size: 0.9rem;
   text-transform: none;
+}
+
+.Checkboxed li {
+  cursor: pointer;
+}
+
+.Checkboxed li span {
+  font-size: 0.8em;
+}
+
+.Checkboxed span.FlagTrue::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 7px;
+  background-color: #666;
+  border: 1px solid white;
+  outline: 1px solid #666;
+}
+
+.Checkboxed span.FlagFalse::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 7px;
+  outline: 1px solid #666;
+}
+
+.Checkboxed span.FlagFalse {
+  color: #ddd;
 }

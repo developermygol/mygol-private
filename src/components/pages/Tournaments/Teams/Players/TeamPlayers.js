@@ -475,6 +475,7 @@ class TeamPlayers extends Component {
     const userLevel = Number(auth.level);
 
     switch (userLevel) {
+      case 5: // MasterAdmin
       case 4: // OrgAdmin
         // Can edit everything
         break;

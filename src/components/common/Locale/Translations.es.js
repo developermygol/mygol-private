@@ -443,7 +443,11 @@ export default {
     "Tournament.RecalculateSanctions": "Recalcular sanciones",
     "Tournament.Actions": "Acciones de la competición",
     "Tournament.Visible": "Visible",
-    "Tournament.Visible.Hint": "¿Es esta competición visible en la zona pública?",    
+    "Tournament.Visible.Hint": "¿Es esta competición visible en la zona pública?",   
+    "Tournaments.OrderSavedOk": "Orden de las competiciones guardado correctamente", 
+    "Tournaments.DreamTeamSavedOk": "Dream team saved OK", 
+    "Tournament.Notifications": "Notificaciones app jugadores", 
+    "Tournament.Notifications.Hint": "Qué notificaciones se envían en esta competición (a la app móvil de jugadores)",  
 
     // Global Calendar
     "GlobalCalendar": "Calendario Global", 
@@ -557,6 +561,8 @@ export default {
     "PlayDay.DeletedOk": "Jornada eliminada OK",
     "PlayDay.SequenceOrder": "Posición",
     "PlayDay.SequenceOrder.Hint": "La posición determina el orden en que se muestran las jornadas. La primera es 1.",
+    "PlayDay.GenerateAwards": "Generar logros de la jornada", 
+    "PlayDay.AwardsGeneratedOk": "Logros de la jornada generados", 
     "PlayDay.Delete": "Borrar",
     "PlayDay.ConfirmDelete": "Confirma que deseas borrar la jornada", 
     "SequenceOrder": "Posición",
@@ -1003,6 +1009,14 @@ export default {
     "SanctionStatus2": "En vigor - alegaciones cerradas",
     "SanctionStatus3": "En trámite - alegaciones abiertas",
     "SanctionStatus4": "Cumplida",
+
+    "TN_MatchResult": "Resultado de partido a jugadores del propio partido", 
+    "TN_MatchResultAllInGroup": "Resultado de cada partido a todos los jugadores del mismo grupo", 
+    "TN_MatchResultAllInStage": "Resultado de cada partido a todos los jugadores del mismo stage", 
+    "TN_Award": "A cada jugador que consigue un logro", 
+    "TN_Sanction": "A cada jugador que es sancionado", 
+
+    // Dream Team
 
     // Appearance
     "Appearance": "Apariencia", 

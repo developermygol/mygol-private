@@ -1,6 +1,6 @@
-import axios from '../../axios';
 import { toast } from 'react-toastify';
 
+import axios from '../../axios';
 import types from './actionTypes';
 import { createDefaultSectionSponsorData } from '../../components/helpers/Sponsors';
 import { Localize } from '../../components/common/Locale/Loc';
@@ -14,8 +14,24 @@ export const startLoadTournaments = () => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
+    }
+  };
+};
+
+export const startUpdateTournamentsSequenceOrder = tournamentsSequence => {
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await axios.put('/tournaments/saveorder', { tournamentsSequence });
+      if (data) {
+        toast.success(Localize('Tournaments.OrderSavedOk'));
+        dispatch(setTournaments(data));
+      }
+      // return error or swal
+    } catch (err) {
+      console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -38,7 +54,6 @@ export const startUpdateTournamentAppearanceData = appearanceJsonString => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
       toast.error(getOpErrorText(err));
     }
@@ -73,8 +88,8 @@ export const startUpdateTorunamnetSponsorsData = (type, sectionConfig) => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };

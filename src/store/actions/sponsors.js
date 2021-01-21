@@ -1,5 +1,8 @@
+import { toast } from 'react-toastify';
+
 import axios from '../../axios';
 import types from './actionTypes';
+import { getOpErrorText } from '../../components/common/FormsMobx/Utils';
 
 export const startLoadingSponsorsByidOrganization = idOrganization => {
   return async (dispatch, getState) => {
@@ -10,8 +13,8 @@ export const startLoadingSponsorsByidOrganization = idOrganization => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -25,8 +28,8 @@ export const startLoadingSponsorsByidTournament = idTournamnet => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -39,8 +42,8 @@ export const startNewSponsor = sponsor => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -54,8 +57,8 @@ export const startUpdateSponsor = sponsor => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -69,8 +72,8 @@ export const startDeleteSponsor = sponsor => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };
@@ -84,8 +87,8 @@ export const startUploadSponsorImage = formData => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };

@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { observable } from 'mobx';
 import InfoBox from '../../../common/InfoBox';
 import Loc from '../../../common/Locale/Loc';
+import { startgenerateAwards } from '../../../../store/actions/playDays';
+import { connect } from 'react-redux';
 
 const defaultProps = {
   idTournament: -1,
@@ -21,6 +23,11 @@ class DayView extends Component {
 
   toggleCollapse = () => {
     this.collapsed = !this.collapsed;
+  };
+
+  handleGeneratePlayDayAwards = () => {
+    const { id, idTournament } = this.props.value;
+    this.props.onGenerateAwards(idTournament, id);
   };
 
   render() {
@@ -58,24 +65,34 @@ class DayView extends Component {
         {this.collapsed ? null : (
           <div className="PlayDay Content">
             {matches && matches.length > 0 ? (
-              <table>
-                <tbody>
-                  {matchesReorderedByRestTeam.map((match, i) => (
-                    <MatchView
-                      key={`${match.id}-${match.idHomeTeam}-${match.idVisitorTeam}-${i}`}
-                      normalizedTeams={p.normalTeams}
-                      normalizedGroups={p.normalGroups}
-                      normalizedFacilities={p.normalFacilities}
-                      match={match}
-                      idTournament={idTournament}
-                      readOnly={p.readOnly}
-                      canEdit={p.canEdit}
-                      canDelete={p.canDelete}
-                      actionButtonsHandler={p.actionButtonsHandler}
-                    />
-                  ))}
-                </tbody>
-              </table>
+              <React.Fragment>
+                <table>
+                  <tbody>
+                    {matchesReorderedByRestTeam.map((match, i) => (
+                      <MatchView
+                        key={`${match.id}-${match.idHomeTeam}-${match.idVisitorTeam}-${i}`}
+                        normalizedTeams={p.normalTeams}
+                        normalizedGroups={p.normalGroups}
+                        normalizedFacilities={p.normalFacilities}
+                        match={match}
+                        idTournament={idTournament}
+                        readOnly={p.readOnly}
+                        canEdit={p.canEdit}
+                        canDelete={p.canDelete}
+                        actionButtonsHandler={p.actionButtonsHandler}
+                      />
+                    ))}
+                  </tbody>
+                </table>
+                <div className="Bottom">
+                  <button
+                    className="Button Second SpinnerButtonIdle"
+                    onClick={this.handleGeneratePlayDayAwards}
+                  >
+                    <Loc>PlayDay.GenerateAwards</Loc>
+                  </button>
+                </div>
+              </React.Fragment>
             ) : (
               <InfoBox>
                 <Loc>No matches</Loc>
@@ -90,4 +107,8 @@ class DayView extends Component {
 
 DayView.defaultProps = defaultProps;
 
-export default withRouter(DayView);
+const mapDispatchToProps = dispatch => ({
+  onGenerateAwards: (torunamentId, playDayId) => dispatch(startgenerateAwards(torunamentId, playDayId)),
+});
+
+export default connect(null, mapDispatchToProps)(withRouter(DayView));

@@ -89,6 +89,11 @@ export const setActiveOrganization = organization => ({
   payload: organization,
 });
 
+export const setOrganizationTorunamentModes = modes => ({
+  type: types.organizationTournamentModesLoad,
+  pyload: modes,
+});
+
 export const updateActiveOrgSectionJSON = sectionsJson => ({
   type: types.organizationSetSponsorData,
   payload: sectionsJson,

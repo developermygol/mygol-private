@@ -12,7 +12,7 @@ export const isFillerMatch = match => {
 export const matchHasResult = match => {
   const s = match.status;
   // eslint-disable-next-line eqeqeq
-  return s == 3 || s == 4;
+  return s == 3 || s == 4 || s == 5;
 };
 
 @observer

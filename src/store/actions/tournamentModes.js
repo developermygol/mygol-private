@@ -4,11 +4,11 @@ import axios from '../../axios';
 import types from './actionTypes';
 import { getOpErrorText } from '../../components/common/FormsMobx/Utils';
 
-export const startLoadingFields = () => {
+export const startLoadTournamentModes = () => {
   return async (dispatch, getState) => {
     try {
-      const { data } = await axios.get('/fields');
-      if (data) dispatch(setFields(data));
+      const { data } = await axios.get('/tournamentmodes');
+      if (data) dispatch(setTournamentModes(data));
 
       // return error or swal
     } catch (err) {
@@ -18,7 +18,7 @@ export const startLoadingFields = () => {
   };
 };
 
-export const setFields = fields => ({
-  type: types.fieldsLoad,
-  payload: fields,
+const setTournamentModes = tournamentModes => ({
+  type: types.tournamentModesLoad,
+  payload: tournamentModes,
 });

@@ -8,11 +8,15 @@ const types = {
   //Seasons
   seasonsLoad: '[Seasons] Load seasons',
 
+  //TorunamentModes
+  tournamentModesLoad: '[TournamnetModes] Load tournament modes',
+
   //Tournaments
   tournamentsLoad: '[Tournaments] Load tournaments',
   tournamentActiveLoad: '[Tournaments] Load active tournament',
   tournamentSetSponsorData: '[Tournaments] Set tournament sponsor data',
   tournamentSetAppearanceData: '[Tournaments] Set tournament appearance data',
+  // tournamentsUpdateSequenceOrder: '[Tournements] Update sequence order',
 
   //Sponsors
   sponsorsLoad: '[Sponsor] Load sponsors',
@@ -24,6 +28,10 @@ const types = {
 
   //Fields
   fieldsLoad: '[Fields] Load fields',
+
+  //PlayDays
+  playDaysLoad: '[PlayDay] Load play days',
+  playDayGenerateAwards: '[PlayDay] Play day awards generated',
 };
 
 export default types;

@@ -1,5 +1,8 @@
 import axios from '../../axios';
 
+import { toast } from 'react-toastify';
+import { getOpErrorText } from '../../components/common/FormsMobx/Utils';
+
 import types from './actionTypes';
 
 export const startLoadSeasons = () => {
@@ -10,8 +13,8 @@ export const startLoadSeasons = () => {
 
       // return error or swal
     } catch (err) {
-      // return error or swal
       console.error(err);
+      toast.error(getOpErrorText(err));
     }
   };
 };

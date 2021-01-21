@@ -35,6 +35,7 @@ import ColoredCardSelector from '../FormFields/ColoredCardSelector';
 import CycleCardSelector from '../FormFields/CycleCardSelector';
 import GoalkeeperSelector from '../FormFields/GoalkeeperSelector';
 import ColorClassificationConfig from '../FormFields/ColorClassificationConfig';
+import MultipleChecks from '../FormFields/MultipleChecks';
 import { extractGroupFromArray } from '../../helpers/Data';
 
 const defaultProps = {
@@ -291,6 +292,9 @@ class Edit extends Component {
         break;
       case 'cyclecards':
         control.target = CycleCardSelector;
+        break;
+      case 'multiplechecks':
+        control.target = MultipleChecks;
         break;
       default:
         control.target = Text;

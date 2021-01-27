@@ -87,6 +87,9 @@ class DayView extends Component {
                 <div className="Bottom">
                   <button
                     className="Button Second SpinnerButtonIdle"
+                    disabled={
+                      playDay.lastUpdateTimeStamp && playDay.lastUpdateTimeStamp !== '0001-01-01T00:00:00'
+                    }
                     onClick={this.handleGeneratePlayDayAwards}
                   >
                     <Loc>PlayDay.GenerateAwards</Loc>

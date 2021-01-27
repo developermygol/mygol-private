@@ -321,6 +321,12 @@ class CalendarView extends Component {
               rules: '',
               hideInAdd: true,
             },
+            {
+              fieldName: 'notifyChanges',
+              localizedLabel: 'Match.NotifyChanges',
+              hint: 'Match.NotifyChanges.Hint',
+              editRenderType: 'booleanSlider',
+            },
           ]}
         />
         <MessageBox

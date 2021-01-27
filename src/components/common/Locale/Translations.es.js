@@ -330,6 +330,8 @@ export default {
     "Match.VideoUrl.Hint": "URL asociada a la retransmisión del partido", 
     "Match.Comments": "Observaciones", 
     "Match.Comments.Hint": "Observaciones para el acta del partido", 
+    "Match.NotifyChanges": "Notificar estado cambios", 
+    "Match.NotifyChanges.Hint": "Notificar a los jugadores de los cambios que se van a guardar ahora. No afecta a cambios posteriores.", 
     
     "No matches": "No hay partidos",
 

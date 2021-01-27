@@ -4,8 +4,12 @@ import en from './Translations.en';
 
 export const getLangOptions = () => {
     return [
-        { value: 'es', label: 'Castellano' },
+        { value: 'es', label: 'Español' },
         { value: 'ca_ES', label: 'Català' },
+        { value: 'en', label: 'English' },
+        { value: 'pt_PT', label: 'Português' },
+        { value: 'fr', label: 'Français' },
+        { value: 'ar', label: 'عربي' },
     ]
 }
 

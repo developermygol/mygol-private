@@ -17,7 +17,7 @@ const TournamenListItem = ({ tournament, tournamentModes, seasons, provided, sna
     status,
     // type,
     visible,
-    sequenceorder,
+    // sequenceorder,
   } = tournament;
 
   const getItemStyle = (isDragging, draggableStyle) => ({

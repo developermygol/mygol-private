@@ -36,6 +36,7 @@ import CycleCardSelector from '../FormFields/CycleCardSelector';
 import GoalkeeperSelector from '../FormFields/GoalkeeperSelector';
 import ColorClassificationConfig from '../FormFields/ColorClassificationConfig';
 import MultipleChecks from '../FormFields/MultipleChecks';
+import BooleanSliderComponent from '../FormFields/BooleanSliderComponent';
 import { extractGroupFromArray } from '../../helpers/Data';
 
 const defaultProps = {
@@ -256,6 +257,9 @@ class Edit extends Component {
         break;
       case 'boolean':
         control.target = BooleanComponent;
+        break;
+      case 'booleanSlider':
+        control.target = BooleanSliderComponent;
         break;
       case 'readonlytext':
         control.target = ReadOnlyText;

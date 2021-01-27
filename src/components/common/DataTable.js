@@ -63,8 +63,6 @@ class DataTable extends Component {
           {data.map(row => {
             if (!row) return null;
 
-            console.log('datatable: row: ', row);
-            console.log('columns:', this.props.columns);
             return (
               <tr className="DataTableRow" key={row.id}>
                 {this.props.columns.map(col => {

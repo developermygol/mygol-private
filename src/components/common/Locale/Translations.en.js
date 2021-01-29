@@ -509,8 +509,9 @@ export default {
     "No matches in tournament": "No matches in tournament yet.", 
 
     "StageStatus1": "Not started", 
-    "StageStatus2": "Playing", 
-    "StageStatus3": "Finished", 
+    "StageStatus2": "Not started", 
+    "StageStatus3": "Playing", 
+    "StageStatus4": "Finished", 
 
     "Stage.Edit": "Edit stage", 
     "Stage.Add": "Add new stage", 

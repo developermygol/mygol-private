@@ -489,8 +489,9 @@ export default {
     "No matches in tournament": "Aún no hay partidos en esta competición",
 
     "StageStatus1": "No iniciada", 
-    "StageStatus2": "En juego", 
-    "StageStatus3": "Finalizada",
+    "StageStatus2": "No iniciada", 
+    "StageStatus3": "En juego",
+    "StageStatus4": "Finalizada",
 
     "Stage.Edit": "Editar fase", 
     "Stage.Add": "Añadir nueva fase", 

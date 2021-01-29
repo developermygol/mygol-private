@@ -2281,17 +2281,15 @@ button.Center {
   padding: 2px 6px;
 }
 
-.StageStatus1 {
+.StageStatus1,
+.StageStatus2,
+.StageStatus4 {
   background-color: #eff1ea;
   color: #333;
 }
 
-.StageStatus2 {
-  background-color: #98d800;
-}
-
 .StageStatus3 {
-  background-color: #bdbdbd;
+  background-color: #98d800;
 }
 
 .Button.Second {

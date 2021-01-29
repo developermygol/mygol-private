@@ -86,6 +86,15 @@ class TeamPlayers extends Component {
     });
   };
 
+  hideInList = (fields, hideFields) => {
+    fields.map(f => {
+      if (hideFields.indexOf(f.fieldName) !== -1) {
+        f.hideInList = true;
+      }
+      return f;
+    });
+  };
+
   showAllBut = (fields, hideFields) => {
     fields.forEach(f => {
       if (hideFields.indexOf(f.fieldName) > -1)
@@ -483,6 +492,7 @@ class TeamPlayers extends Component {
       case 1: // Player
         if (this.isTeamAdmin()) {
           this.hideAllBut(fields, ['teamData.apparelNumber', 'teamData.fieldSide', 'teamData.fieldPosition']);
+          this.hideInList(fields, ['approved']);
         } else {
           this.showAllBut(fields, [
             'idCardNumber',
@@ -517,6 +527,10 @@ class TeamPlayers extends Component {
     //const auth = this.props.ui.auth;
     //const isOrgAdmin = auth.isOrgAdmin();
 
+    const hasTournamentClosedInscriptions = this.props.store.tournaments.current.status > 1;
+    const isTeamAdmin = this.isTeamAdmin();
+    const limitedPlayersAdministration = hasTournamentClosedInscriptions && isTeamAdmin;
+
     return (
       <Fragment>
         <CrudForm
@@ -539,20 +553,22 @@ class TeamPlayers extends Component {
           routeIdParamName="idPlayer"
           listBackButton={false}
           listAdditionalButtons={
-            <React.Fragment>
-              <button className="Button" onClick={this.handleInvitePlayer}>
-                <Loc>Invite player</Loc>
-              </button>
-              <button className="Button" onClick={this.handlePictureUpload}>
-                <Loc>Import player</Loc>
-              </button>
-              <input
-                id="fileSelector"
-                style={{ display: 'none' }}
-                type="file"
-                onChange={this.handleFileChange}
-              />
-            </React.Fragment>
+            !isTeamAdmin && (
+              <React.Fragment>
+                <button className="Button" onClick={this.handleInvitePlayer}>
+                  <Loc>Invite player</Loc>
+                </button>
+                <button className="Button" onClick={this.handlePictureUpload}>
+                  <Loc>Import player</Loc>
+                </button>
+                <input
+                  id="fileSelector"
+                  style={{ display: 'none' }}
+                  type="file"
+                  onChange={this.handleFileChange}
+                />
+              </React.Fragment>
+            )
           }
           addData={{
             name: null,
@@ -563,6 +579,8 @@ class TeamPlayers extends Component {
             },
           }}
           fieldDefinition={this.getFields()}
+          canAdd={!limitedPlayersAdministration}
+          canDelete={!limitedPlayersAdministration}
         />
 
         <PlayerInviteDialog

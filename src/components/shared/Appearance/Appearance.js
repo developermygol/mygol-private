@@ -10,7 +10,7 @@ import { startUpdateTournamentAppearanceData } from '../../../store/actions/tour
 import appearanceReducer from './appearanceReducer';
 
 import Upload from '../../common/Upload';
-import ColorPickerForm from './ColorPickerForm';
+import ColorPickerForm from '../ColorPickerForm';
 import AppearancePreview from './AppearancePreview';
 
 import SimpleMessageBox from '../../shared/Message/SimpleMessageBox';

@@ -3,6 +3,7 @@ import types from '../actions/actionTypes';
 const initialState = {
   tournaments: [],
   activeTournament: null,
+  activeTournamentDreamTeamRanking: null,
 };
 
 const tournamentsReducer = (state = initialState, action) => {
@@ -11,6 +12,9 @@ const tournamentsReducer = (state = initialState, action) => {
       return { ...state, tournaments: action.payload };
     case types.tournamentActiveLoad:
       return { ...state, activeTournament: action.payload };
+    case types.tournamentActiveDreamTeamRankingsLoad:
+      return { ...state, activeTournamentDreamTeamRanking: action.payload };
+
     case types.tournamentSetSponsorData:
       return {
         ...state,

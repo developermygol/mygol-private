@@ -4,7 +4,7 @@ const initalState = {
   tournamentModes: [],
 };
 
-const tournamnetModesReducer = (state = initalState, action) => {
+const tournamentModesReducer = (state = initalState, action) => {
   switch (action.type) {
     case types.tournamentModesLoad:
       return { ...state, tournamentModes: action.payload };
@@ -13,4 +13,4 @@ const tournamnetModesReducer = (state = initalState, action) => {
   }
 };
 
-export default tournamnetModesReducer;
+export default tournamentModesReducer;

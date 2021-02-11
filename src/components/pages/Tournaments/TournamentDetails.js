@@ -15,6 +15,8 @@ import PaymentsIndex from '../PaymentConfig/PaymentsIndex';
 import TournamentSanctions from './Sanctions/TournamentSanctions';
 import Sponsors from '../../shared/Sponsors/Sponsors';
 import AppearanceScreen from '../Config/Appearance';
+import DreamTeam from '../../pages/Tournaments/DreamTeam/DreamTeam';
+import Badges from './Badges/Badges';
 import { connect } from 'react-redux';
 import { startLoadTournaments, setActiveTournament } from '../../../store/actions/tournaments';
 
@@ -80,6 +82,13 @@ class TournamentDetails extends Component {
               </NavLink>
             </li>
           </AccessLimit>
+          <AccessLimit allowOrgAdmin>
+            <li>
+              <NavLink className="SecNavItem" onClick={this.linkClick} to={baseUrl + '/dreamteam'}>
+                <Loc>Dream team</Loc>
+              </NavLink>
+            </li>
+          </AccessLimit>
           {/* <AccessLimit allowOrgAdmin><li><NavLink className='SecNavItem' onClick={this.linkClick} to={baseUrl + '/players'}><Loc>Players</Loc></NavLink></li></AccessLimit> */}
           <AccessLimit allowOrgAdmin>
             <li>
@@ -92,6 +101,13 @@ class TournamentDetails extends Component {
             <li>
               <NavLink className="SecNavItem" onClick={this.linkClick} to={baseUrl + '/payments'}>
                 <Loc>Payments</Loc>
+              </NavLink>
+            </li>
+          </AccessLimit>
+          <AccessLimit allowOrgAdmin>
+            <li>
+              <NavLink className="SecNavItem" onClick={this.linkClick} to={baseUrl + '/badges'}>
+                <Loc>PlayerFiles</Loc>
               </NavLink>
             </li>
           </AccessLimit>
@@ -128,7 +144,13 @@ class TournamentDetails extends Component {
             <Route path={basePath + '/matches'} component={Matches} />
           </AccessLimit>
           <AccessLimit allowOrgAdmin>
+            <Route path={basePath + '/dreamteam'} component={DreamTeam} />
+          </AccessLimit>
+          <AccessLimit allowOrgAdmin>
             <Route path={basePath + '/payments'} component={PaymentsIndex} />
+          </AccessLimit>
+          <AccessLimit allowOrgAdmin>
+            <Route path={basePath + '/badges'} component={Badges} />
           </AccessLimit>
           <AccessLimit allowOrgAdmin>
             <Route path={basePath + '/sponsors'} component={Sponsors} />

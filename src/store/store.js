@@ -8,12 +8,14 @@ import sponsorsReducer from './reducers/sponsorsReducer';
 import fieldsReducer from './reducers/fieldsReducer';
 import playDaysReducer from './reducers/playDaysReducers';
 import tournamnetModesReducer from './reducers/tournamentModesReducer';
+import teamsReducer from './reducers/teamsReducer';
 
 const rootReducer = combineReducers({
   organizations: organizationReducer,
   seasons: seasonsReducer,
   tournamentModes: tournamnetModesReducer,
   tournaments: tournamentsReducer,
+  teams: teamsReducer,
   sponsors: sponsorsReducer,
   fields: fieldsReducer,
   playDays: playDaysReducer,

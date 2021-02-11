@@ -10,7 +10,7 @@ import { parseJson } from '../../helpers/Utils';
 import Loc, { Localize } from '../Locale/Loc';
 import IconButton from '../../../formFields/IconButton';
 import SimpleMessageBox from '../../shared/Message/SimpleMessageBox';
-import ColorPickerForm from '../../shared/Appearance/ColorPickerForm';
+import ColorPickerForm from '../../shared/ColorPickerForm';
 
 const initialForm = {
   start: 1,

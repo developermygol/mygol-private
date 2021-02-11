@@ -14,9 +14,15 @@ const types = {
   //Tournaments
   tournamentsLoad: '[Tournaments] Load tournaments',
   tournamentActiveLoad: '[Tournaments] Load active tournament',
+  tournamentActiveDreamTeamLoad: '[Tournaments] Load active trournament dreamteam',
+  tournamentActiveDreamTeamRankingsLoad: '[Tournaments] Load active trournament dreamteam rankings',
   tournamentSetSponsorData: '[Tournaments] Set tournament sponsor data',
   tournamentSetAppearanceData: '[Tournaments] Set tournament appearance data',
+  tournamentSetDreamTeam: '[Tournaments] Set dream team data',
   // tournamentsUpdateSequenceOrder: '[Tournements] Update sequence order',
+
+  // Teams
+  teamsLoad: '[Teams] Load current tournament teams',
 
   //Sponsors
   sponsorsLoad: '[Sponsor] Load sponsors',
@@ -32,6 +38,8 @@ const types = {
   //PlayDays
   playDaysLoad: '[PlayDay] Load play days',
   playDayGenerateAwards: '[PlayDay] Play day awards generated',
+
+  //TournamentModes
 };
 
 export default types;

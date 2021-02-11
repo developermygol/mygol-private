@@ -4,6 +4,8 @@ import { requestAsync } from '../../helpers/Utils';
 import Loc from '../../common/Locale/Loc';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
+import { v4 as uuidV4 } from 'uuid';
+
 import Spinner from '../../common/Spinner/Spinner';
 import axios from '../../../axios';
 import PlayerGridItem from './PlayerGridItem';
@@ -19,10 +21,15 @@ class PlayerGrid extends Component {
   @observable players = null;
 
   componentDidMount() {
-    const idTeam = this.props.match.params.idTeam;
-    requestAsync(this, axios.get, null, '/players/forteam/' + idTeam).then(res => {
-      this.players = res;
-    });
+    if (this.props.players) {
+      this.players = this.props.players;
+      this.loading = false;
+    } else {
+      const idTeam = this.props.match.params.idTeam;
+      requestAsync(this, axios.get, null, '/players/forteam/' + idTeam).then(res => {
+        this.players = res;
+      });
+    }
   }
 
   render() {
@@ -36,9 +43,9 @@ class PlayerGrid extends Component {
           {players &&
             players.map(pl =>
               p.draggable ? (
-                <DraggablePlayerGridItem key={pl.id} player={pl} />
+                <DraggablePlayerGridItem key={uuidV4()} player={pl} />
               ) : (
-                <PlayerGridItem key={pl.id} player={pl} />
+                <PlayerGridItem key={uuidV4()} player={pl} />
               )
             )}
         </ul>

@@ -3019,3 +3019,77 @@ input:-webkit-autofill {
 .Checkboxed span.FlagFalse {
   color: #ddd;
 }
+
+.TacticHint {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.CenteredSoccerField {
+  width: 600px;
+  margin-bottom: 5px;
+}
+
+.DreamTeamTabControl .TabBar {
+  margin: 0;
+  padding: 0;
+}
+
+.DreamTeamTabControl .TabItem {
+  margin: 0;
+  padding: 12px 20px 0 0;
+}
+
+.DreamTeamTabControl .TabItem .active {
+  margin: 0;
+  padding: 0 0 3px 0;
+}
+
+.PlayerGrid .PlayerGridItem {
+  position: relative;
+}
+
+.PlayerGrid .PlayerGridItem .Tip {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  background-color: yellowgreen;
+  font-weight: 900;
+  font-size: 0.7em;
+  padding: 5px 0;
+}
+
+/* Badges */
+.FormField .RadioItems.Horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.FormField .RadioItems {
+  padding-left: 10px;
+}
+
+.FormField .RadioItems.Horizontal .RadioItem {
+  margin-right: 20px;
+}
+
+.FormField .RadioContent {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.Row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.Column2 {
+  width: 50%;
+  margin-right: 10px;
+}

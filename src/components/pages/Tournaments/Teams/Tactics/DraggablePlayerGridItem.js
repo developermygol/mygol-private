@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { DragSource } from "react-dnd";
-import PlayerGridItem from "../../../Players/PlayerGridItem";
+import React, { Component } from 'react';
+import { DragSource } from 'react-dnd';
+import PlayerGridItem from '../../../Players/PlayerGridItem';
 
 export const Types = {
-  PLAYER: "player",
+  PLAYER: 'player',
 };
 
 const playerDragSpec = {
@@ -25,14 +25,14 @@ const playerDragCollector = (connect, monitor) => {
 class DraggablePlayerGridItem extends Component {
   render() {
     const { player } = this.props;
-    const { connectDragSource, readOnly } = this.props;
+    const { connectDragSource, readOnly, isDreamTeam } = this.props;
 
     if (readOnly) {
-      return <PlayerGridItem player={player} readonly />;
+      return <PlayerGridItem player={player} isDreamTeam={isDreamTeam} readonly />;
     } else {
       return connectDragSource(
         <span>
-          <PlayerGridItem player={player} />
+          <PlayerGridItem player={player} isDreamTeam={isDreamTeam} />
         </span>
       );
     }

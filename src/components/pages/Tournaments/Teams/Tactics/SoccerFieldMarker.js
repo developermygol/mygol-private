@@ -4,16 +4,27 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { getStaticRoot, getUploadUrl } from '../../../../helpers/Utils';
 
-const SoccerFieldMarker = ({ marker, update, playerInfo }) => {
+const SoccerFieldMarker = ({ marker, update, playerInfo, isDreamTeam = false }) => {
   const handleUpdatePlayerTacticPosition = monitor => {
-    const { player } = monitor;
-    if (!player) return;
-    const { id: idPlayer, teamData } = player;
-    const { idTeam, idTacticPosition: playerCurrentIdTacticPosition } = teamData;
-    if (marker.idx + 1 === playerCurrentIdTacticPosition) return;
-    // console.log({ idPlayer, idTeam, playerCurrentIdTacticPosition });
+    if (isDreamTeam) {
+      const { player } = monitor;
+      if (!player) return;
+      const { idPlayer, idTeam, fieldPosition } = player;
 
-    update(idPlayer, idTeam, marker.idx);
+      update(idPlayer, idTeam, marker.idx, fieldPosition);
+    } else {
+      const { player } = monitor;
+      if (!player) return;
+      const { id: idPlayer, teamData } = player;
+      const { idTeam, idTacticPosition: playerCurrentIdTacticPosition } = teamData;
+      if (marker.idx + 1 === playerCurrentIdTacticPosition) return;
+      // console.log({ idPlayer, idTeam, playerCurrentIdTacticPosition });
+      update(idPlayer, idTeam, marker.idx);
+    }
+  };
+
+  const handleRemovePlayer = () => {
+    if (isDreamTeam) update(undefined, undefined, marker.idx, undefined);
   };
 
   const scale = x => {
@@ -36,7 +47,7 @@ const SoccerFieldMarker = ({ marker, update, playerInfo }) => {
   const elementId = uuidv4();
 
   return (
-    <g ref={drop}>
+    <g ref={drop} onDoubleClick={handleRemovePlayer}>
       <circle
         style={{ fill: fill, stroke: '#ffffff', strokeWidth: '0' }}
         cx={scale(marker.x)}

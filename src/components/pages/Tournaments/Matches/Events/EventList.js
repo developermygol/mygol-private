@@ -49,10 +49,16 @@ class EventList extends Component {
     );
   };
 
-  getTypeElementWithTime = (type, minute) => {
+  getTypeElementWithTime = (type, minute, match) => {
+    const isShootout = type === 80;
     return (
       <span className={'EventType Single Type' + type}>
-        {Localize('MatchEventType' + type)} ({minute}")
+        {Localize('MatchEventType' + type)}{' '}
+        {isShootout &&
+          `(${match.homeScore - match.visibleHomeScore} - ${
+            match.visitorScore - match.visibleVisitorScore
+          }) `}
+        ({minute}")
       </span>
     );
   };
@@ -134,7 +140,7 @@ class EventList extends Component {
                     {ev.idTeam === 0 || isMatchStart ? (
                       <Fragment>
                         <div className="Wide" colSpan={5}>
-                          {this.getTypeElementWithTime(ev.type, ev.matchMinute)}
+                          {this.getTypeElementWithTime(ev.type, ev.matchMinute, match)}
                           <IconButton onClick={() => this.deleteEventHandler(ev)} icon="delete">
                             <XCircle size={15} />
                           </IconButton>

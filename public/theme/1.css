@@ -3064,6 +3064,15 @@ input:-webkit-autofill {
   padding: 5px 0;
 }
 
+.MatchStatus .Penalties {
+  margin-bottom: 7px;
+}
+
+.MatchStatus .Penalties span {
+  font-weight: 600;
+  font-size: 1.4em;
+}
+
 /* Badges */
 .FormField .RadioItems.Horizontal {
   display: flex;

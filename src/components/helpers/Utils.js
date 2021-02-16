@@ -208,3 +208,8 @@ export const getInt = value => {
 
   return value;
 };
+
+export const matchHasSootOut = match => {
+  if (match.visibleHomeScore !== 0 || match.visibleVisitorScore !== 0) return true;
+  return false;
+};

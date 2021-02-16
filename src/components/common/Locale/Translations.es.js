@@ -352,11 +352,14 @@ export default {
     "MatchStatus6": "Partido aplazado", 
     "MatchStatus8": "Partido cancelado",
     "MatchStatus10": "Equipo descansa",
+    "Penalties": "Penalties", 
 
     "MatchEventMinute": "Minuto de partido",
     "MatchEventType": "Tipo de incidencia",
     "MatchEventTeam": "Equipo",
     "MatchEventPlayer": "Jugador",
+    "PenaltyShootOutHome": "Penalty shootout: home result", 
+    "PenaltyShootOutVisitor": "Penalty shootout: visitor result", 
 
     "MatchEventType1": "Comienzo partido",
     "MatchEventType10": "Fin primera parte",
@@ -382,6 +385,7 @@ export default {
     "MatchEventType64": "Tarjeta verde",
     "MatchEventType65": "Tarjeta naranja",
     "MatchEventType70": "MVP",
+    "MatchEventType80": "Tanda de penalties", 
     "MatchEventType100": "Acta cerrada",
     "MatchEventType1001": "Ajuste tarjetas acumuladas",
     "MatchEventType1002": "Ajuste puntos sanción",

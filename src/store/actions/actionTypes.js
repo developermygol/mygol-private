@@ -23,6 +23,7 @@ const types = {
 
   // Teams
   teamsLoad: '[Teams] Load current tournament teams',
+  teamActiveLoad: '[Teams] Load active team',
 
   //Sponsors
   sponsorsLoad: '[Sponsor] Load sponsors',
@@ -39,7 +40,13 @@ const types = {
   playDaysLoad: '[PlayDay] Load play days',
   playDayGenerateAwards: '[PlayDay] Play day awards generated',
 
-  //TournamentModes
+  //Notices
+  noticesLoad: '[Notices] Load notices',
+  playerTeamAcceptedNoticesLoad: '[Notices] Load player team accepted notices',
+  playerMatchNoticesLoad: '[Notices] Load player match notices',
+  noticeAdd: '[Notices] Added notice',
+  noticeUpdated: '[Notices] Updated notice',
+  noticeRemoved: '[Notices] Removed notice',
 };
 
 export default types;

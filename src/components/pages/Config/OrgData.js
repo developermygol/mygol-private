@@ -10,9 +10,19 @@ import { observable } from 'mobx';
 class OrgData extends Component {
   @observable data = null;
 
+  state = {
+    getawayType: '',
+  };
+
   componentDidMount = () => {
     const org = this.props.store.organization;
-    org.getSecret().then(res => (this.data = res));
+    org.getSecret().then(res => {
+      this.data = res;
+      if (this.data.paymentGetawayType === '') {
+        this.data.paymentGetawayType = 'stripe';
+      }
+      this.setState({ getawayType: this.data.paymentGetawayType });
+    });
   };
 
   getCurrencyOptions = () => {
@@ -20,6 +30,13 @@ class OrgData extends Component {
       { value: '', label: '' },
       { value: 'eur', label: 'Euro (€)' },
       { value: 'usd', label: 'US Dollar ($)' },
+    ];
+  };
+
+  getGetawayTypeOptions = () => {
+    return [
+      { value: 'stripe', label: 'Stripe', onSelected: value => this.setState({ getawayType: value }) },
+      { value: 'paypal', label: 'Paypal', onSelected: value => this.setState({ getawayType: value }) },
     ];
   };
 
@@ -35,6 +52,8 @@ class OrgData extends Component {
   render() {
     const { data } = this;
     if (!data) return null;
+
+    const isPaypalType = this.state.getawayType === 'paypal';
 
     return (
       <div>
@@ -182,15 +201,21 @@ class OrgData extends Component {
               editRenderType: 'separator',
             },
             {
+              fieldName: 'paymentGetawayType',
+              localizedLabel: 'Org.PaymentData',
+              editRenderType: 'select',
+              selectOptions: this.getGetawayTypeOptions(),
+            },
+            {
               fieldName: 'paymentKeyPublic',
               localizedLabel: 'Org.PaymentKeyPublic',
-              hint: 'Org.PaymentKeyPublic.Hint',
+              hint: isPaypalType ? 'Org.Paypal.PaymentKeyPublic.Hint' : 'Org.PaymentKeyPublic.Hint',
               editRenderType: 'text',
             },
             {
               fieldName: 'paymentKey',
               localizedLabel: 'Org.PaymentKey',
-              hint: 'Org.PaymentKey.Hint',
+              hint: isPaypalType ? 'Org.Paypal.PaymentKey.Hint' : 'Org.PaymentKey.Hint',
               editRenderType: 'text',
             },
             {

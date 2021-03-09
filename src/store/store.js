@@ -9,6 +9,7 @@ import fieldsReducer from './reducers/fieldsReducer';
 import playDaysReducer from './reducers/playDaysReducers';
 import tournamnetModesReducer from './reducers/tournamentModesReducer';
 import teamsReducer from './reducers/teamsReducer';
+import noticesReducer from './reducers/noticesReducer';
 
 const rootReducer = combineReducers({
   organizations: organizationReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   sponsors: sponsorsReducer,
   fields: fieldsReducer,
   playDays: playDaysReducer,
+  notices: noticesReducer,
 });
 
 const composeEnhancers =

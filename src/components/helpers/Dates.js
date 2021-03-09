@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Localize } from '../common/Locale/Loc';
 
 // The indices of the week days.
@@ -14,6 +15,10 @@ export const getWeekDayIndices = () => {
 
 export const getTimeFromDate = date => {
   return date.toLocaleTimeString();
+};
+
+export const getDateTime = dateString => {
+  return moment(dateString).format('DD/MM/YYYY hh:mm A');
 };
 
 export const isSameDay = (date1, date2) => {

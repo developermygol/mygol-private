@@ -3102,3 +3102,140 @@ input:-webkit-autofill {
   width: 50%;
   margin-right: 10px;
 }
+
+/* 🚧 Notices */
+
+.Notices .FormField .Label {
+  display: block;
+  margin-bottom: 5px;
+  color: #212926;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.Notices .FormField .Text {
+  max-width: inherit;
+  width: 100%;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.Notices .FormField .TextArea {
+  width: 100%;
+  min-height: 1.2em;
+  min-height: 200px;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.Notices .Slider {
+  margin-bottom: 30px;
+}
+
+.Notices .Slider .Label {
+  color: #212926;
+}
+
+/* @Printer */
+.Printer {
+  display: none;
+}
+
+/* Makes your div to print cover the entire document, but only when it's printed: */
+@media print {
+  .Content {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .SecContent {
+    margin: 0;
+  }
+
+  .Printer {
+    display: block;
+  }
+
+  .Printer h2 {
+    font-size: 5rem;
+  }
+
+  .Printer h3 {
+    font-size: 2.5rem;
+  }
+
+  .Printer .BreadCrumbSeparator {
+    margin-top: 2.75rem;
+    font-size: 3rem;
+  }
+
+  .Info p {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .TabContent h2 {
+    display: none;
+  }
+
+  .Printer .Player {
+    display: block;
+    color: #000;
+  }
+
+  .PrinterTop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .PrinterTop .Info {
+    display: flex;
+  }
+
+  .PrinterTop .Info .Award {
+    margin-right: 0.75rem;
+  }
+
+  .PrinterTop .Info .Award img {
+    max-height: 70px;
+    max-width: 70px;
+  }
+
+  .OrganizationDetails .OrgName {
+    font-size: 1.55rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .OrganizationDetails .Logo {
+    max-height: 150px;
+  }
+
+  .DataTableCell {
+    font-size: 1.5rem;
+    padding: 15px 20px;
+  }
+
+  .NavBar,
+  .TopBar,
+  .BreadCrumb,
+  .TabBar,
+  .SecNavBar {
+    display: none;
+  }
+}

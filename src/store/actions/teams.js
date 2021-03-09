@@ -22,7 +22,26 @@ export const startLoadTournamentTeams = () => {
   };
 };
 
+export const startLoadTournamentTeam = idTeam => {
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await axios.get(`/teams/${idTeam}`);
+      if (data) dispatch(setTournamentTeam(data));
+
+      // return error or swal
+    } catch (err) {
+      console.error(err);
+      toast.error(getOpErrorText(err));
+    }
+  };
+};
+
 const setTournamentTeams = tournamentTeams => ({
   type: types.teamsLoad,
   payload: tournamentTeams,
+});
+
+const setTournamentTeam = tournamentTeam => ({
+  type: types.teamActiveLoad,
+  payload: tournamentTeam,
 });

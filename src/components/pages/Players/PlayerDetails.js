@@ -12,6 +12,7 @@ import PlayerData from './PlayerData';
 import PlayerTeams from './PlayerTeams';
 import PlayerPayment from './PlayerPayment';
 import PlayerSanctions from '../Tournaments/Teams/Players/PlayerSanctions';
+import PlayerNotices from './PlayerNotices';
 
 @inject('store')
 @observer
@@ -29,7 +30,7 @@ class PlayerDetails extends Component {
   };
 
   render() {
-    const { idTeam } = this.props.match.params;
+    const { idTeam, idTournament } = this.props.match.params;
 
     const player = this.player;
     if (!player) return null;
@@ -65,11 +66,18 @@ class PlayerDetails extends Component {
                   </NavLink>
                 </li>
                 {idTeam ? (
-                  <li className="TabItem">
-                    <NavLink to={baseUrl + '/payments'}>
-                      <Loc>Player.Payments</Loc>
-                    </NavLink>
-                  </li>
+                  <React.Fragment>
+                    <li className="TabItem">
+                      <NavLink to={baseUrl + '/payments'}>
+                        <Loc>Player.Payments</Loc>
+                      </NavLink>
+                    </li>
+                    <li className="TabItem">
+                      <NavLink to={baseUrl + '/notices'}>
+                        <Loc>Notices.Title</Loc>
+                      </NavLink>
+                    </li>
+                  </React.Fragment>
                 ) : null}
               </AccessLimit>
             </ul>
@@ -82,6 +90,10 @@ class PlayerDetails extends Component {
                 <Route
                   path={basePath + '/sanctions'}
                   render={() => <PlayerSanctions sanctions={player.sanctions} />}
+                />
+                <Route
+                  path={basePath + '/notices'}
+                  render={() => <PlayerNotices player={player} idTeam={idTeam} idTournament={idTournament} />}
                 />
                 <Route path={basePath} exact render={() => <PlayerData player={player} />} />
               </Switch>

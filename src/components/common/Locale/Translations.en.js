@@ -941,10 +941,13 @@ export default {
     "Org.PaymentDesc.Hint": "this is the description of the charge for inscriptions paid with card through the mobile player app. Should be a short text that helps the player know the origin of the payment in the monthly card report.", 
     "Org.PaymentCurr": "Currency", 
     "Org.PaymentCurr.Hint": "Currency of the charges configured in the payment workflows.", 
-    "Org.PaymentKey": "Stripe secret API key", 
+    "Org.PaymentKey": "Secret API key", 
     "Org.PaymentKey.Hint": "Secret API key. You can retrieve this value in the Stripe dashboard, under 'Developers'.", 
-    "Org.PaymentKeyPublic": "Stripe public API key", 
+    "Org.PaymentKeyPublic": "Public API key", 
     "Org.PaymentKeyPublic.Hint": "Public API key. You can retrieve this value in the Stripe dashboard, under 'Developers'.", 
+    
+    "Org.Paypal.PaymentKeyPublic.Hint": "This is the Paypal API client identifier.", 
+    "Org.Paypal.PaymentKey.Hint": "This is the secret key to the Paypal API to make charges.", 
 
 
     // Sanctions
@@ -1268,4 +1271,26 @@ export default {
     "Error.GeneratingReport": "An error occurred and the report could not be generated.",
     "Error.UnknownReportType": "Unknown report type.",
     "Error.SeasonOverlaps": "Season overlaps with some other season. They can't overlap.", 
+
+    // 💥 Notices for players. No other translations
+    "Notices.Title": "Notices for players",
+    "Notices.New": "Add new notice",
+    "Notices.Add.Title": "Add new notice",
+    "Notices.Edit.Title": "Edit notice",
+    "Notices.Title.Label": "Notice title",
+    "Notices.Title.Error": "The Notice title must be at least 3 characters.",
+    "Notices.Text.Label": "Notice text",
+    "Notices.Text1.Label": "Confirmation option text 1 (optional)",
+    "Notices.Text1.Hint": "If a value is set, the user will have to explicitly mark an acceptance box for this text to be able to press the accept button.",
+    "Notices.Text2.Label": "Confirmation option text 2 (optional)",
+    "Notices.Text3.Label": "Confirmation option text 3 (optional)",
+    "Notices.ButtonText.Label": "Accept button text (optional)",
+    "Notices.Time.Label": "Notice time (hours)",
+    "Notices.Time.Hint": "Warnings are shown to the player this number of hours before each game. During the number indicated in this field, the player must accept the text of this notice. If the value of this field is - 1, the player will only have to accept the warning once, and it will be valid for all matches",
+    "Notices.Time.Error": "The Notice Hour must be a number.",
+    "Notices.Active.Label": "Active",
+    "Notices.Confirm.Remove.Title": "Confirm delete",
+    "Notices.Confirm.Remove.Text": "Delete elemet {0} ?",
+    "Notices.AcceptedDate.Label": "Acknowledgement date",
+    "Notices.AttendanceNoticesNotAccepted.Error": "Player cannot attend the match because he has pending notices: {0} The player must acknowledge these pending notices before attending the match.",
 }

@@ -1,9 +1,15 @@
-import React, { Component } from "react";
-import Loc from "../../../common/Locale/Loc";
-import MatchTeamPlayers from "./MatchTeamPlayers";
-import { observer } from "mobx-react";
-import { observable, action } from "mobx";
-import ToggleButton from "../../../common/ToggleButton";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { observable, action } from 'mobx';
+import { observer } from 'mobx-react';
+
+import { startLoadingPlayerMatchNotices } from '../../../../store/actions/notices';
+
+import Loc, { LocalizeI } from '../../../common/Locale/Loc';
+import MatchTeamPlayers from './MatchTeamPlayers';
+import ToggleButton from '../../../common/ToggleButton';
+import { playerNotAcceptedNotices } from '../../../helpers/Notices';
+import { toast } from 'react-toastify';
 
 @observer
 class MatchPlayers extends Component {
@@ -13,14 +19,28 @@ class MatchPlayers extends Component {
     this.arePlayersVisible = !this.arePlayersVisible;
   };
 
-  handleChangePlayerAttendance = (player) => {
+  handleChangePlayerAttendance = async player => {
     const p = this.props;
 
-    const status = player.matchData && player.matchData.status;
-    const attends = status ? false : true;
+    const { id: idMatch, startTime } = this.props.match;
+    const { activeTournament } = this.props.tournaments;
+    const { idTeam } = player.teamData;
 
-    if (p.onChangePlayerAttendance)
-      p.onChangePlayerAttendance(p.match, player, attends);
+    await this.props.onLoadPlayerMatchNotices(player.id, idTeam, idMatch, activeTournament.id);
+
+    const { acticePlayerMatchNotices } = this.props.notices;
+
+    const notAcceptedNotices = playerNotAcceptedNotices(acticePlayerMatchNotices, startTime);
+
+    if (notAcceptedNotices.length === 0) {
+      const status = player.matchData && player.matchData.status;
+      const attends = status ? false : true;
+
+      if (p.onChangePlayerAttendance) p.onChangePlayerAttendance(p.match, player, attends);
+    } else {
+      const noticesNames = notAcceptedNotices.map(n => n.notice.name).join(',');
+      toast.error(LocalizeI('Notices.AttendanceNoticesNotAccepted.Error', noticesNames));
+    }
   };
 
   render() {
@@ -38,14 +58,11 @@ class MatchPlayers extends Component {
             falseMsg="Show"
           />
         </h4>
-        <div style={{ display: this.arePlayersVisible ? "" : "none" }}>
+        <div style={{ display: this.arePlayersVisible ? '' : 'none' }}>
           <div className="Legend">
             <p className="BottomSep10">
-              <Loc>Legend</Loc>:
-              <span className="ApparelNumber AttendsTrue">#</span>{" "}
-              <Loc>Attends</Loc>
-              <span className="ApparelNumber AttendsFalse">#</span>{" "}
-              <Loc>DoesNotAttend</Loc>
+              <Loc>Legend</Loc>:<span className="ApparelNumber AttendsTrue">#</span> <Loc>Attends</Loc>
+              <span className="ApparelNumber AttendsFalse">#</span> <Loc>DoesNotAttend</Loc>
             </p>
             <p>
               <small className="Hint">
@@ -71,4 +88,14 @@ class MatchPlayers extends Component {
   }
 }
 
-export default MatchPlayers;
+const mapStateToProps = state => ({
+  tournaments: state.tournaments,
+  notices: state.notices,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onLoadPlayerMatchNotices: (idPlayer, idTeam, idMatch, idTournament) =>
+    dispatch(startLoadingPlayerMatchNotices(idPlayer, idTeam, idMatch, idTournament)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MatchPlayers);

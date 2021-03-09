@@ -19,6 +19,7 @@ import DreamTeam from '../../pages/Tournaments/DreamTeam/DreamTeam';
 import Badges from './Badges/Badges';
 import { connect } from 'react-redux';
 import { startLoadTournaments, setActiveTournament } from '../../../store/actions/tournaments';
+import Notices from './Notices/Notices';
 
 const asyncTeams = asyncComponent(() => import('./Teams/Teams'));
 
@@ -125,6 +126,13 @@ class TournamentDetails extends Component {
               </NavLink>
             </li>
           </AccessLimit>
+          <AccessLimit allowOrgAdmin>
+            <li>
+              <NavLink className="SecNavItem" onClick={this.linkClick} to={baseUrl + '/notices'}>
+                <Loc>Notices.Title</Loc>
+              </NavLink>
+            </li>
+          </AccessLimit>
           {/* <li><NavLink className='SecNavItem' onClick={this.linkClick} to={baseUrl + '/content'}><Loc>Content management</Loc></NavLink></li> */}
         </ul>
 
@@ -157,6 +165,9 @@ class TournamentDetails extends Component {
           </AccessLimit>
           <AccessLimit allowOrgAdmin>
             <Route path={basePath + '/appearance'} component={AppearanceScreen} />
+          </AccessLimit>
+          <AccessLimit allowOrgAdmin>
+            <Route path={basePath + '/notices'} exact component={Notices} />
           </AccessLimit>
           <AccessLimit allowOrgAdmin>
             <Route path={basePath} exact component={TournamentIndex} />

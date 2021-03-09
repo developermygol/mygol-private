@@ -913,11 +913,13 @@ export default {
     "Org.PaymentDesc.Hint": "Esta es la descripción que aparece en los cargos de las inscripciones hechos por la pasarela de pago. Debe ser un texto que ayude al jugador a saber la procedencia del cargo en su tarjeta.",
     "Org.PaymentCurr": "Moneda",
     "Org.PaymentCurr.Hint": "La moneda en la que se hacen los cargos",
-    "Org.PaymentKey": "Stripe secret key",
+    "Org.PaymentKey": "Secret key",
     "Org.PaymentKey.Hint": "Esta es la clave secreta del API de Stripe para hacer cargos. Esta clave debería estar limitada a la creación de tokens (read & write) y cargos (read & write)",
-    "Org.PaymentKeyPublic": "Stripe public key",
+    "Org.PaymentKeyPublic": "Public key",
     "Org.PaymentKeyPublic.Hint": "Esta es la clave pública del API de Stripe para hacer cargos. Esta clave debería estar limitada a la creación de tokens (read & write) y cargos (read & write)",
 
+    "Org.Paypal.PaymentKeyPublic.Hint": "This is the Paypal API client identifier.", 
+    "Org.Paypal.PaymentKey.Hint": "This is the secret key to the Paypal API to make charges.", 
 
     // Sanctions
     "Details": "Detalles",
@@ -1231,4 +1233,26 @@ export default {
     "Error.Email.NotFound": "No se ha podido completar el reinicio de contraseña. El email no existe.", 
     "Error.Email.CouldNotUpdate": "No se ha podido completar el reinicio de contraseña. El email no se ha encontrado.", 
     "Attempted to perform an unauthorized operation.": "No tienes permisos para completar esta acción",
+
+    // 💥 Notices for players. No other translations
+    "Notices.Title": "Notices for players",
+    "Notices.New": "Add new notice",
+    "Notices.Add.Title": "Add new notice",
+    "Notices.Edit.Title": "Edit notice",
+    "Notices.Title.Label": "Notice title",
+    "Notices.Title.Error": "The Notice title must be at least 3 characters.",
+    "Notices.Text.Label": "Notice text",
+    "Notices.Text1.Label": "Confirmation option text 1 (optional)",
+    "Notices.Text1.Hint": "If a value is set, the user will have to explicitly mark an acceptance box for this text to be able to press the accept button.",
+    "Notices.Text2.Label": "Confirmation option text 2 (optional)",
+    "Notices.Text3.Label": "Confirmation option text 3 (optional)",
+    "Notices.ButtonText.Label": "Accept button text (optional)",
+    "Notices.Time.Label": "Notice time (hours)",
+    "Notices.Time.Hint": "Warnings are shown to the player this number of hours before each game. During the number indicated in this field, the player must accept the text of this notice. If the value of this field is - 1, the player will only have to accept the warning once, and it will be valid for all matches",
+    "Notices.Time.Error": "The Notice Hour must be a number.",
+    "Notices.Active.Label": "Active",
+    "Notices.Confirm.Remove.Title": "Confirm delete",
+    "Notices.Confirm.Remove.Text": "Delete elemet {0} ?",
+    "Notices.AcceptedDate.Label": "Acknowledgement date",
+    "Notices.AttendanceNoticesNotAccepted.Error": "Player cannot attend the match because he has pending notices: {0} The player must acknowledge these pending notices before attending the match.",
 }

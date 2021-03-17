@@ -33,7 +33,7 @@ class StageEdit extends Component {
       localizedLabel: 'Stage.Status',
       hint: '',
       editRenderType: 'radio',
-      selectOptions: getSelectOptionsFromFixedValues('StageStatus', 1, 3),
+      selectOptions: getSelectOptionsFromFixedValues('StageStatus', 1, 4, null, null, [2]),
     },
     //{ fieldName: 'colorConfig', localizedLabel: 'Stage.Colors', hint: 'Stage.Colors.Hint', editRenderType: 'text', rules: '' },
   ];
@@ -74,7 +74,7 @@ class StageEdit extends Component {
   render() {
     const p = this.props;
 
-    const readOnlyFields = p.readOnly ? null : this.otherFields;
+    const readOnlyFields = p.readOnly ? [] : this.otherFields;
     const fields = this.isLeague
       ? [...this.commonFields, ...readOnlyFields, ...this.leagueFields]
       : [...this.commonFields, ...readOnlyFields];

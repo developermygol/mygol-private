@@ -5,30 +5,37 @@ import InfoBox from '../../../../common/InfoBox';
 import { findByIdInArray } from '../../../../helpers/Data';
 import Loc from '../../../../common/Locale/Loc';
 
-@inject('store') @observer
+@inject('store')
+@observer
 class TacticWidget extends Component {
+  componentDidMount() {
+    this.props.store.tactics.fetchOnce();
+  }
 
-    componentDidMount() {
-        this.props.store.tactics.fetchOnce();
-    }
+  render() {
+    const p = this.props;
+    const { data } = p.store.tactics;
+    if (!data) return null;
 
-    render() {
-        const p = this.props;
-        const { data } = p.store.tactics;
-        if (!data) return null;
+    const selectedTactic = findByIdInArray(data.tactics, p.idTactic);
+    if (!selectedTactic)
+      return (
+        <InfoBox>
+          <Loc>Error.TacticNotFound</Loc>
+        </InfoBox>
+      );
 
-        const selectedTactic = findByIdInArray(data.tactics, p.idTactic);
-        if (!selectedTactic) return <InfoBox><Loc>Error.TacticNotFound</Loc></InfoBox>;
-
-        return (
-            <div>
-                <SoccerField positions={selectedTactic.positions} />
-                <div>
-                    <p className='Center'>{selectedTactic.name} {selectedTactic.title}</p>
-                </div>
-            </div>
-        )
-    }
+    return (
+      <div>
+        <SoccerField positions={selectedTactic.positions} className="none" />
+        <div>
+          <p className="Center">
+            {selectedTactic.name} {selectedTactic.title}
+          </p>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default TacticWidget;

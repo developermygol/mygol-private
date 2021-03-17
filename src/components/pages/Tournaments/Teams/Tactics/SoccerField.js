@@ -65,7 +65,7 @@ class SoccerField extends Component {
     const sw = 0.1;
 
     return (
-      <div className="CenteredSoccerField">
+      <div className={this.props.className ? this.props.className : 'CenteredSoccerField'}>
         <svg
           version="1.1"
           viewBox="0 0 16 10"

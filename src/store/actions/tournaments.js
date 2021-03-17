@@ -51,7 +51,7 @@ export const startLoadTournamentDreamTeamRankings = tournamentId => {
                 }
                 return accumulator;
               })
-            : null;
+            : [];
 
         dispatch(setActiveTournamentDreamTeamRanking(rankingGroupByFieldPosition));
       }

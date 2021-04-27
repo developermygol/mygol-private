@@ -181,13 +181,16 @@ class TeamPlayers extends Component {
     formData.append('idTournament', idTournament);
     formData.append('file', file, file.name);
 
-    const response = await store.uploadPalyer(formData);
-
-    if (response.data) {
-      toast.success('✔ Player Added');
-      store.actions.getAll('/players/forteam/' + idTeam);
-    } else {
-      if (response.data.Message) toast.error(`❌ ${response.data.Message}`);
+    try {
+      const response = await store.uploadPalyer(formData);
+      if (response.data) {
+        toast.success('✔ Player Added');
+        store.actions.getAll('/players/forteam/' + idTeam);
+      } else {
+        if (response.data.Message) toast.error(`❌ ${response.data.Message}`);
+      }
+    } catch (err) {
+      toast.error(`❌ ${err}`);
     }
   };
 
@@ -553,22 +556,24 @@ class TeamPlayers extends Component {
           routeIdParamName="idPlayer"
           listBackButton={false}
           listAdditionalButtons={
-            !isTeamAdmin && (
-              <React.Fragment>
-                <button className="Button" onClick={this.handleInvitePlayer}>
-                  <Loc>Invite player</Loc>
-                </button>
-                <button className="Button" onClick={this.handlePictureUpload}>
-                  <Loc>Import player</Loc>
-                </button>
-                <input
-                  id="fileSelector"
-                  style={{ display: 'none' }}
-                  type="file"
-                  onChange={this.handleFileChange}
-                />
-              </React.Fragment>
-            )
+            <React.Fragment>
+              <button className="Button" onClick={this.handleInvitePlayer}>
+                <Loc>Invite player</Loc>
+              </button>
+              {!isTeamAdmin && (
+                <React.Fragment>
+                  <button className="Button" onClick={this.handlePictureUpload}>
+                    <Loc>Import player</Loc>
+                  </button>
+                  <input
+                    id="fileSelector"
+                    style={{ display: 'none' }}
+                    type="file"
+                    onChange={this.handleFileChange}
+                  />
+                </React.Fragment>
+              )}
+            </React.Fragment>
           }
           addData={{
             name: null,

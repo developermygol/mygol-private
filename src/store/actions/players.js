@@ -21,3 +21,13 @@ export const startGenerateplayersfile = req => {
     }
   };
 };
+
+export const getPlayersInTournamentWithField = async tournamentId => {
+  try {
+    const { data } = await axios.get(`/players/fortournament/withfield/${tournamentId}`);
+    return data;
+  } catch (err) {
+    console.error(err);
+    toast.error(getOpErrorText(err));
+  }
+};

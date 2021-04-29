@@ -20,15 +20,21 @@ export const startLoadTournaments = () => {
   };
 };
 
-export const startLoadTournamentDreamTeamRankings = tournamentId => {
+export const startLoadTournamentDreamTeamRankings = (tournamentId, allPlayers) => {
   return async (dispatch, getState) => {
     try {
       const { data } = await axios.get(`/tournaments/dreamteamrankings/${tournamentId}`);
 
       if (data) {
+        const mixedData = allPlayers.map(player => {
+          const rankedPlayer = data.find(p => p.idPlayer === player.idPlayer);
+          if (rankedPlayer) return rankedPlayer;
+          return player;
+        });
+
         const rankingGroupByFieldPosition =
-          data.length > 0
-            ? data.reduce((accumulator, currentValue, currentIndex) => {
+          mixedData.length > 0
+            ? mixedData.reduce((accumulator, currentValue, currentIndex) => {
                 if (currentIndex === 1) {
                   accumulator = { [accumulator.fieldPosition]: [accumulator] };
                   if (!accumulator[currentValue.fieldPosition]) {

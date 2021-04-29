@@ -13,6 +13,7 @@ import SoccerField from '../Teams/Tactics/SoccerField';
 import DreamTeamPlayersGrid from './DreamTeamPlayersGrid';
 import InfoBox from '../../../common/InfoBox';
 import Loc from '../../../common/Locale/Loc';
+import { getPlayersInTournamentWithField } from '../../../../store/actions/players';
 
 // const fakePlayers = [
 //   {
@@ -118,9 +119,14 @@ const DreamTeam = () => {
   }, []);
 
   useEffect(() => {
-    if (activeTournament) {
-      dispatch(startLoadTournamentDreamTeamRankings(activeTournament.id));
+    const loadData = async () => {
+      const tournamentPlayersWithField = await getPlayersInTournamentWithField(activeTournament.id);
+
+      dispatch(startLoadTournamentDreamTeamRankings(activeTournament.id, tournamentPlayersWithField));
       if (activeTournament.dreamTeam) setDreamTeam(JSON.parse(activeTournament.dreamTeam));
+    };
+    if (activeTournament) {
+      loadData();
     }
   }, [activeTournament]);
 
@@ -168,8 +174,6 @@ const DreamTeam = () => {
   const defaultTactic = tactics.filter(t => t.numPlayers === numPlayers)[0];
 
   if (!defaultTactic) return null;
-
-  // TODO: Get Dream Team Players currently using fakePlayers
 
   return (
     <div className="CardContainer">
